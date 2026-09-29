@@ -5,60 +5,69 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SORT II für Martin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,500;0,600;1,300&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fbf9f6;--fg:#2b2622;--mut:#6f665e;--line:#e2d9cd;--acc:#935100;--soft:#f4ece2;--card:#fffdf9}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a17;--fg:#ece6df;--mut:#a89e94;--line:#3b352f;--acc:#dca56f;--soft:#28231f;--card:#231f1b}}
 :root[data-theme="dark"]{--bg:#1d1a17;--fg:#ece6df;--mut:#a89e94;--line:#3b352f;--acc:#dca56f;--soft:#28231f;--card:#231f1b}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.62 Georgia,"Times New Roman",serif}
+body{margin:0;background:var(--bg);color:var(--fg);font:300 17px/1.62 "Fira Sans",system-ui,sans-serif}
 main{max-width:44rem;margin:0 auto;padding:32px 16px 72px}
 a{color:var(--acc)}
-.kicker{font:600 .78rem system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.kicker{font:600 .78rem "Fira Sans",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 h1{font-size:2rem;line-height:1.2;margin:.3rem 0 .6rem;color:var(--acc)}
 .lead{font-size:1.1rem}
 h2{font-size:1.3rem;margin:2.8rem 0 .7rem;padding-bottom:.25rem;border-bottom:1px solid var(--line)}
 h2 .n{display:inline-block;min-width:1.7rem;color:var(--acc)}
-h3{font:700 1rem system-ui,sans-serif;margin:1.6rem 0 .4rem}
+h3{font:700 1rem "Fira Sans",system-ui,sans-serif;margin:1.6rem 0 .4rem}
 ul{padding-left:1.2rem} li{margin:.3rem 0}
 .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.7rem;margin:.8rem 0 1rem}
 .links a{display:block;text-decoration:none;color:var(--fg);background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:4px;padding:.65rem .8rem}
-.links a b{display:block;color:var(--acc);font:700 .95rem system-ui,sans-serif}
+.links a b{display:block;color:var(--acc);font:700 .95rem "Fira Sans",system-ui,sans-serif}
 .links a span{font-size:.9rem;color:var(--mut)}
 .links a:hover{border-color:var(--acc)}
 details.alle{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:4px;margin:.8rem 0 1rem}
-details.alle summary{cursor:pointer;padding:.65rem .8rem;font:700 .95rem system-ui,sans-serif;color:var(--acc)}
+details.alle summary{cursor:pointer;padding:.65rem .8rem;font:700 .95rem "Fira Sans",system-ui,sans-serif;color:var(--acc)}
 .themen{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.2rem 1.2rem;padding:0 .9rem .7rem}
-.thema b{font:700 .9rem system-ui,sans-serif} .thema ul{margin:.2rem 0 .7rem;font-size:.93rem}
+.thema b{font:700 .9rem "Fira Sans",system-ui,sans-serif} .thema ul{margin:.2rem 0 .7rem;font-size:.93rem}
 .bloecke{display:grid;gap:.8rem;margin:1rem 0}
 .block{background:var(--soft);border-radius:6px;padding:.8rem 1rem}
 .block h3{margin:0 0 .3rem;color:var(--acc)}
 .block p{margin:0}
 .rolle{display:grid;grid-template-columns:9.5rem 1fr;gap:.3rem 1rem;margin:1rem 0;font-size:.97rem}
-.rolle dt{font:700 .95rem system-ui,sans-serif;padding-top:.15rem}
+.rolle dt{font:700 .95rem "Fira Sans",system-ui,sans-serif;padding-top:.15rem}
 .rolle dd{margin:0 0 .6rem}
 @media(max-width:560px){.rolle{grid-template-columns:1fr}.rolle dd{margin-bottom:.9rem}}
 .frage{border-left:3px solid var(--acc);padding:.2rem 0 .2rem 1rem;margin:1.1rem 0}
-.frage b{display:block;font:700 1rem system-ui,sans-serif;margin-bottom:.2rem}
+.frage b{display:block;font:700 1rem "Fira Sans",system-ui,sans-serif;margin-bottom:.2rem}
 .frage p{margin:0}
 .banner{width:100%;border-radius:6px;margin:.4rem 0 1.4rem;display:block}
 details.auf{background:var(--soft);border-radius:6px;margin:.6rem 0}
 details.auf>summary{cursor:pointer;list-style:none;padding:.7rem 1rem .7rem 2.3rem;position:relative}
 details.auf>summary::-webkit-details-marker{display:none}
-details.auf>summary::before{content:"+";position:absolute;left:.9rem;top:.62rem;font:700 1.05rem system-ui,sans-serif;color:var(--acc)}
+details.auf>summary::before{content:"+";position:absolute;left:.9rem;top:.62rem;font:700 1.05rem "Fira Sans",system-ui,sans-serif;color:var(--acc)}
 details.auf[open]>summary::before{content:"\2212"}
-details.auf>summary b{display:block;font:700 1rem system-ui,sans-serif;color:var(--acc)}
+details.auf>summary b{display:block;font:700 1rem "Fira Sans",system-ui,sans-serif;color:var(--acc)}
 details.auf>summary span{display:block;font-size:.95rem}
 details.auf .innen{padding:0 1rem .9rem 2.3rem}
 details.auf .innen p{margin:.5rem 0}
 details.frage{background:transparent;border-left:3px solid var(--acc);border-radius:0}
 details.frage>summary b{color:var(--fg)}
-.plan{border-collapse:collapse;width:100%;font:14px/1.45 system-ui,sans-serif}
+.plan{border-collapse:collapse;width:100%;font:14px/1.45 "Fira Sans",system-ui,sans-serif}
 .plan th,.plan td{border-bottom:1px solid var(--line);padding:.4rem .5rem;text-align:left;vertical-align:top}
 .plan th{color:var(--acc)}
 .tabwrap{overflow-x:auto}
 .hinweis-klein{font-size:.85rem;color:var(--mut)}
 .ende{margin-top:2.6rem;padding-top:1rem;border-top:1px solid var(--line)}
 .hinweis{font-size:.9rem;color:var(--mut)}
+b,strong,dt{font-weight:600}
+h1,h2,h3,details.auf>summary b,.thema b,.kicker{font-family:"Patrick Hand","Bradley Hand",cursive;font-weight:400;letter-spacing:.01em}
+h1{font-size:2.4rem} h2{font-size:1.75rem} h3{font-size:1.35rem}
+details.auf>summary b{font-size:1.3rem;line-height:1.25}
+.thema b{font-size:1.15rem}
+.kicker{font-size:1.05rem;letter-spacing:.04em;text-transform:none}
 </style>
 </head>
 <body>
