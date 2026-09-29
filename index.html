@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SORT II für Martin</title>
+<style>
+:root{--bg:#fbf9f6;--fg:#2b2622;--mut:#6f665e;--line:#e2d9cd;--acc:#935100;--soft:#f4ece2;--card:#fffdf9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a17;--fg:#ece6df;--mut:#a89e94;--line:#3b352f;--acc:#dca56f;--soft:#28231f;--card:#231f1b}}
+:root[data-theme="dark"]{--bg:#1d1a17;--fg:#ece6df;--mut:#a89e94;--line:#3b352f;--acc:#dca56f;--soft:#28231f;--card:#231f1b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.62 Georgia,"Times New Roman",serif}
+main{max-width:44rem;margin:0 auto;padding:32px 16px 72px}
+a{color:var(--acc)}
+.kicker{font:600 .78rem system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+h1{font-size:2rem;line-height:1.2;margin:.3rem 0 .6rem;color:var(--acc)}
+.lead{font-size:1.1rem}
+h2{font-size:1.3rem;margin:2.8rem 0 .7rem;padding-bottom:.25rem;border-bottom:1px solid var(--line)}
+h2 .n{display:inline-block;min-width:1.7rem;color:var(--acc)}
+h3{font:700 1rem system-ui,sans-serif;margin:1.6rem 0 .4rem}
+ul{padding-left:1.2rem} li{margin:.3rem 0}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.7rem;margin:.8rem 0 1rem}
+.links a{display:block;text-decoration:none;color:var(--fg);background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:4px;padding:.65rem .8rem}
+.links a b{display:block;color:var(--acc);font:700 .95rem system-ui,sans-serif}
+.links a span{font-size:.9rem;color:var(--mut)}
+.links a:hover{border-color:var(--acc)}
+details.alle{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:4px;margin:.8rem 0 1rem}
+details.alle summary{cursor:pointer;padding:.65rem .8rem;font:700 .95rem system-ui,sans-serif;color:var(--acc)}
+.themen{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.2rem 1.2rem;padding:0 .9rem .7rem}
+.thema b{font:700 .9rem system-ui,sans-serif} .thema ul{margin:.2rem 0 .7rem;font-size:.93rem}
+.bloecke{display:grid;gap:.8rem;margin:1rem 0}
+.block{background:var(--soft);border-radius:6px;padding:.8rem 1rem}
+.block h3{margin:0 0 .3rem;color:var(--acc)}
+.block p{margin:0}
+.rolle{display:grid;grid-template-columns:9.5rem 1fr;gap:.3rem 1rem;margin:1rem 0;font-size:.97rem}
+.rolle dt{font:700 .95rem system-ui,sans-serif;padding-top:.15rem}
+.rolle dd{margin:0 0 .6rem}
+@media(max-width:560px){.rolle{grid-template-columns:1fr}.rolle dd{margin-bottom:.9rem}}
+.frage{border-left:3px solid var(--acc);padding:.2rem 0 .2rem 1rem;margin:1.1rem 0}
+.frage b{display:block;font:700 1rem system-ui,sans-serif;margin-bottom:.2rem}
+.frage p{margin:0}
+.ende{margin-top:2.6rem;padding-top:1rem;border-top:1px solid var(--line)}
+.hinweis{font-size:.9rem;color:var(--mut)}
+</style>
+</head>
+<body>
+<main>
+
+<div class="kicker">SORT · Kärtchensortieraufgaben · PH Luzern</div>
+<h1>SORT II — was ich vorhabe, und wo du ins Spiel kämst</h1>
+<p class="lead">Lieber Martin, ich plane ein Anschlussprojekt an SORT und möchte es gern mit dir
+besprechen. Hier steht, was es heute gibt, wohin ich damit will und welche Fragen noch
+offen sind.</p>
+
+<!-- ===================================================== 1 -->
+<h2><span class="n">1</span>SORT heute</h2>
+
+<p>SORT entwickelt <b>Kärtchensortieraufgaben für selbstregulierte Lernphasen</b> auf der
+Sekundarstufe&nbsp;I. Eine Gruppe ordnet Karten mit Termen, Figuren oder Aussagen, einigt
+sich auf ein Kriterium, begründet es und entscheidet die Grenzfälle. Entscheidend ist
+nicht die fertige Sortierung, sondern die Begründung.</p>
+
+<p>Das Pilotprojekt wird von der Milton Ray Hartmann Stiftung gefördert und läuft bis
+Sommer 2027. Es entstehen acht Kartensätze für die Klassen 7 und 9, jeder mit mehreren
+Sortierlogiken, erprobt in fünf Klassen an der Kantonsschule Reussbühl und der
+Sekundarschule Hochdorf.</p>
+
+<h3>Zum Anschauen</h3>
+<p>Die <a href="https://sort-phlu.github.io/sort/">Projektseite</a> erklärt, worum es geht und wie
+eine Stunde läuft. Und hier sind <b>alle 21 Aufgaben, die es bisher gibt</b>, aus vier Themen.
+Sie laufen direkt im Browser; es ist ein Zwischenstand, manches hakt noch.</p>
+<details class="alle"><summary>Alle 21 Aufgaben anzeigen</summary><div class="themen"><div class="thema"><b>Ähnlichkeit</b><ul><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/aehnlichkeit/variante_1/">Ähnlichkeitsklassen</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/aehnlichkeit/variante_2/">Welche Merkmale passen?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/aehnlichkeit/variante_3/">Der Umweg</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/aehnlichkeit/variante_4/">Immer – manchmal – nie</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/aehnlichkeit/variante_5/">Der Eindringling</a></li></ul></div><div class="thema"><b>Faktorisieren und Bruchterme</b><ul><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/faktorisieren_und_bruchterme/variante_1/">Wonach kann man diese Karten ordnen?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/faktorisieren_und_bruchterme/variante_2/">Welche Bausteine stecken drin?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/faktorisieren_und_bruchterme/variante_3/">Wie wenige Karten bleiben übrig?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/faktorisieren_und_bruchterme/variante_4/">Welche Bruchterme sind gleichwertig?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/faktorisieren_und_bruchterme/variante_5/">Immer, manchmal oder nie?</a></li></ul></div><div class="thema"><b>Potenzen</b><ul><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/potenzen/wonach-ordnen/">Wonach kann man diese Karten ordnen?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/potenzen/nach-groesse/">Ordnet nach Grösse</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/potenzen/viele-wege/">Viele Wege, ein Wert</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/potenzen/drei-karten/">Drei Karten, die zusammenpassen</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/potenzen/eindringling/">Der Eindringling</a></li></ul></div><div class="thema"><b>Variablen und Terme</b><ul><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_1/">Welche Terme passen zu dieser Figur?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_2/">Wo steckt dieser Term überall?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_3/">Welche drei Karten gehören zum selben Term?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_5/">Was gehört alles zusammen?</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_6/">Der Eindringling</a></li><li><a href="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_7/">Immer – manchmal – nie</a></li></ul></div></div></details>
+
+<h3>Was ich dafür gebaut habe</h3>
+<ul>
+  <li><b>Die Sortierflächen.</b> Jede Aufgabe ist eine einzelne HTML-Datei: läuft im
+  Browser, ohne Konto und ohne Installation, zwei bis vier Lernende an einem Gerät.</li>
+  <li><b>Kasper</b> (<i>KArtensets Planen, Erzeugen, Revidieren</i>), einen KI-gestützten Assistenten, der die Kartensätze mit mir baut.
+  Er kennt die Sortierlogiken, die Qualitätskriterien für Karten und die technische
+  Umsetzung bis zur fertigen Datei.</li>
+  <li><b>Die Aufnahme.</b> In der Erprobungsfassung zeichnet jede Aufgabe auf, wie die
+  Gruppe sortiert — jede Kartenbewegung und das Gespräch dazu. Die Gruppe legt ihr
+  Paket selbst in den Ordner ihrer Klasse.</li>
+  <li><b>Das Abspiel- und Auswertungswerkzeug.</b> Gebaut ist es vorerst nur für uns, für
+  die Auswertung in SORT. Wir ziehen die Pakete einer Klasse hinein, sehen die Klasse im
+  Überblick und können jede Gruppe abspielen und anhören, so wie die Sortierung entstanden
+  ist. Es läuft im Browser, die Aufnahmen bleiben auf dem eigenen Rechner. Es übernimmt bereits erste, vorsichtige Auswertungen statistischer Art und
+  markiert Stellen, an denen genaueres Hinhören lohnen könnte. Das ist noch nicht gut:
+  Erst aus unseren eigenen Auswertungen werden wir gezielter sagen können, welche Stellen
+  es markieren sollte. Wie sich das Werkzeug auf Lehrpersonen übertragen lässt, überlegt
+  SORT&nbsp;II (siehe unten).
+  <a href="https://sort-phlu.github.io/sort/erprobung/abspielen.html">Das Werkzeug ansehen</a>
+  — ohne ein Paket bleibt es leer; ich zeige es dir gern mit echten Daten.</li>
+</ul>
+
+<h3>Was bis zum Ende von SORT noch ansteht</h3>
+<ul>
+  <li>Die Erprobung in den fünf Klassen zu Ende führen und auswerten.</li>
+  <li>Die übrigen Kartensätze fertigstellen und alle nach der Erprobung überarbeiten.</li>
+  <li>Die Gestaltungsprinzipien festhalten: was eine tragfähige Sortieraufgabe von einer
+  beliebigen unterscheidet.</li>
+  <li>Eine Handreichung für den Unterricht schreiben: wie man eine Sortierphase einführt
+  und die Ergebnisse im Klassengespräch aufgreift.</li>
+  <li>Die Sätze als Open Educational Resource veröffentlichen.</li>
+</ul>
+
+<!-- ===================================================== 2 -->
+<h2><span class="n">2</span>Was ich mit SORT II vorhabe</h2>
+
+<p>SORT zeigt, dass die Aufgaben im Unterricht funktionieren. Für eine Handvoll
+Klassen und einzelne Themen. SORT II soll daraus ein <b>Angebot für die ganze
+Sekundarstufe&nbsp;I</b> machen. Ich möchte es bei der Stiftung Mercator Schweiz
+beantragen: drei Jahre, Start frühestens Herbst 2027.</p>
+
+<div class="bloecke">
+  <div class="block"><h3>Feintuning durch breitere Erprobung</h3>
+  <p>Die Applets aus SORT in deutlich mehr Klassen einsetzen, rund zwölf im Jahr, und
+  sie danach gezielt überarbeiten: Welche Sortierlogik trägt, welche Karte hakt, welche
+  Sortierfläche passt nicht zur Aufgabe.</p></div>
+
+  <div class="block"><h3>Die ganze Sekundarstufe&nbsp;I</h3>
+  <p>Fertige Kartensätze für alle drei Klassenstufen, abgestimmt auf den Lehrplan&nbsp;21
+  und auf die Lehrmittel, allen voran das Mathbuch. Material, das zum Thema der nächsten
+  Woche passt, wird eingesetzt. Material neben dem Lehrmittel selten.</p></div>
+
+  <div class="block"><h3>Eine Plattform</h3>
+  <p>Ein Ort, an dem die Applets leben und Lehrpersonen finden, was zu ihrer Planung
+  passt, und an dem sie sich die Prozesse ihrer Klasse ansehen können. Meine Idee
+  dazu: <b>Das Abspielwerkzeug bleibt, wie es ist, und läuft im Browser. Umgebaut wird
+  die Aufnahme.</b> Sie landet nicht bei uns: Die Lehrperson gibt selbst die Adresse ein,
+  an der die Aufnahmen ihrer Klasse landen sollen. Ob sie dafür SWITCHdrive nutzt oder
+  etwas anderes, ist ihre Sache; eine bestimmte Cloud binden wir nicht an. Mit dem Abspielwerkzeug sieht sie
+  sie sich dann an, ohne dass etwas hochgeladen werden muss. Das muss technisch
+  umgesetzt werden, und das Werkzeug muss so werden, dass eine Lehrperson ohne
+  Einarbeitung schnell sieht, was in den Gruppen passiert ist.</p></div>
+
+  <div class="block"><h3>Lehrerfortbildungen</h3>
+  <p>Wie man die Applets in selbstregulierten Phasen einsetzt, und wie das, was die
+  Gruppen erarbeitet haben, zurück ins Klassenzimmer kommt: ins gemeinsame Gespräch.
+  Zweimal durchgeführt, danach im Programm der Weiterbildung der PH Luzern.</p></div>
+</div>
+
+<h3>Was am Ende stehen soll</h3>
+<ul>
+  <li>Kartensätze für die ganze Sekundarstufe&nbsp;I, an Lehrplan und Lehrmittel
+  angebunden, frei veröffentlicht.</li>
+  <li>Eine Plattform, auf der die Klasse arbeitet und die Lehrperson anschliessend sieht,
+  wie ihre Gruppen vorgegangen sind.</li>
+  <li>Ein erprobtes Fortbildungsangebot.</li>
+</ul>
+
+<!-- ===================================================== 3 -->
+<h2><span class="n">3</span>Ein Kernteam, und wo du ins Spiel kämst</h2>
+
+<p>Ich möchte SORT II nicht allein tragen, sondern mit einem kleinen Kernteam, in dem
+jede Person etwas mitbringt, was die anderen nicht haben. So stelle ich es mir vor:</p>
+
+<dl class="rolle">
+  <dt>Ich</dt>
+  <dd>Die Leitung des Projekts. Von mir stammen die Systematik der Sortieraktivitäten,
+  die Sets aus SORT und die Entwicklung mit Kasper. In meinen eigenen Veranstaltungen
+  in der Lehrpersonenbildung setze ich Sortieraufgaben ebenfalls ein, etwa zur
+  Wahrscheinlichkeitsrechnung, zu Differentialgleichungen und zu komplexen Zahlen.</dd>
+  <dt>Luzia</dt>
+  <dd>Die Verbindung zur Schule und zum Kanton, über die Fachberatung Mathematik;
+  der Lehrplan und der Zugang zu den Klassen. In welchem Umfang Luzia mitmachen
+  möchte, ist noch nicht geklärt.</dd>
+  <dt>Du</dt>
+  <dd>Das Lehrmittel. Du kennst das Mathbuch von innen und hast seine digitalen
+  Applets mitentwickelt. Genau das braucht SORT II: Kartensätze, die an die richtige
+  Stelle im Lehrmittel passen, und Erfahrung damit, wie digitale Elemente in einem
+  Lehrmittel wirklich funktionieren.</dd>
+</dl>
+
+<p>Dazu sollen <b>wissenschaftliche Mitarbeitende</b> kommen, die einen grossen Teil
+der Arbeit übernehmen: Kartensätze mit Kasper bauen, die Erprobung begleiten, die
+Aufnahmen sichten. Ich möchte, dass wir im Kernteam entwickeln, prüfen und
+entscheiden, und nicht alles selbst machen.</p>
+
+<!-- ===================================================== 4 -->
+<h2><span class="n">4</span>Offene Fragen</h2>
+
+<div class="frage"><b>Wie viel Erprobung und Auswertung braucht die Entwicklung?</b>
+<p>SORT II ist ein Entwicklungsprojekt, kein Forschungsprojekt. Die Auswertung soll
+zeigen, ob die Applets bei den Schülerinnen und Schülern funktionieren und was wir
+überarbeiten müssen, nicht mehr. Wie verteilen wir die Stunden zwischen Erprobung,
+Auswertung und Entwicklung?</p></div>
+
+<div class="frage"><b>Wo lebt die Plattform?</b>
+<p>Nach Auskunft von Maurus möchte die PH Luzern selbst keine Plattformen betreiben.
+Heute liegen die Aufgaben auf GitHub Pages. Für ein professionelles Angebot reicht das
+vermutlich nicht. Wo also sollen die Applets leben?</p></div>
+
+<div class="frage"><b>Wer trägt die technische Entwicklung?</b>
+<p>Können wir das mit unserer eigenen Erfahrung stemmen — deiner mit den
+Mathbuch-Applets, meiner mit den Sortierflächen —, oder brauchen wir ICT-Expertise
+im Projekt oder als Auftrag?</p></div>
+
+<div class="frage"><b>Wie viel wissenschaftliche Mitarbeit, und wofür?</b>
+<p>Mir ist wichtig, dass wir das nicht zu zweit oder zu dritt stemmen. Wie viele
+Mitarbeitende sind sinnvoll, in welchem Umfang, und welche Arbeit geben wir ihnen?</p></div>
+
+<div class="frage"><b>Und du selbst</b>
+<p>Hättest du Lust, im Kernteam mitzumachen, und in welchem Umfang wäre das für
+dich möglich?</p></div>
+
+<div class="ende">
+<p>Ich freue mich auf das Gespräch.<br>Henrike</p>
+<p class="hinweis">Stand: Ende September 2026. Die Projektidee ist noch nicht
+eingereicht.</p>
+</div>
+
+</main>
+</body>
+</html>
