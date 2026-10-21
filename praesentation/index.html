@@ -876,9 +876,6 @@ h3.zw{margin:2rem 0 .4rem;font-size:1.5rem;color:var(--braun)}
 
 /* v25: eine grosse Ueberschrift je Seite */
 .kapitel .kapkopf h2{transition:font-size .2s}
-.kapitel.folge .kapkopf h2{font:600 .95rem "Fira Sans",sans-serif!important;color:var(--mut);margin:.1rem 0 .2rem}
-.kapitel.folge .kapkopf h2::after{content:" ›"}
-.kapitel.folge .seite.an .seitentitel{font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.15;margin:.1rem 0 .7rem}
 
 /* v25: Karte 6 wie das Abspielwerkzeug */
 .ohr{width:1em;height:1em;vertical-align:-.15em;fill:currentColor;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -1162,6 +1159,68 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 .feldgruppe{padding-top:2rem!important}
 .plan{gap:1rem 1rem!important}
 @media (max-height:840px) and (min-width:801px){.tischkopf{margin-bottom:.2rem}.pilotnotiz{font-size:.92rem;padding:.35rem .7rem .4rem}.feldgruppe{padding-bottom:.6rem!important}.fg-pilot .fg-karten{gap:.4rem!important}.fg-umsetzung .fg-karten{gap:.3rem!important}}
+/* v37: Startseite als Herausforderung und Antwort */
+.st-label{font:700 .72rem "Fira Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--braun);margin:0 0 -.3rem}
+.st-antwort{margin:.2rem 0 -.2rem}
+.schritt.antwort{background:var(--braun);color:#fffdf9;border-radius:12px;padding:.7rem .9rem}
+.schritt.antwort h3{color:#fffdf9}
+.schritt.antwort .sn{background:#fffdf9;border-color:#fffdf9;color:var(--braun)}
+
+/* v38: Kopfleiste, Titelband, Seiten- und Kartenwechsel */
+.miniplan{gap:1.1rem!important;align-items:flex-end!important}
+.mp-pfeil{display:none}
+.mp-gr{gap:.25rem!important}
+.mp-t{color:var(--gf)!important;font-size:.6rem!important}
+.mp-k{gap:.3rem!important;align-items:center}
+.mp-k button{display:inline-flex;align-items:center;gap:.35rem;height:1.75rem;min-width:1.75rem;justify-content:center;padding:0 .2rem!important;border-radius:99px!important;border:1.5px solid var(--gf)!important;background:#fffdf9!important;color:var(--gf)!important;font:700 .78rem "Fira Sans",sans-serif!important;transition:background .15s}
+.mp-k button span{display:none;font-weight:600;color:inherit!important}
+.mp-k button.gelesen{background:color-mix(in srgb,var(--gf) 14%,#fffdf9)!important}
+.mp-k button[aria-current=true]{background:var(--gf)!important;color:#fffdf9!important;padding:0 .7rem 0 .25rem!important}
+.mp-k button[aria-current=true] b{background:#fffdf9;color:var(--gf);border-radius:50%;width:1.3rem;height:1.3rem;display:inline-flex;align-items:center;justify-content:center}
+.mp-k button[aria-current=true] span{display:inline}
+.mp-k button:hover span{display:inline}
+.mp-k button:hover{padding:0 .6rem!important}
+.kapkopf{background:var(--creme);margin:-.9rem -2rem .8rem;padding:.75rem 2rem .65rem;border-bottom:3px solid var(--akz,var(--braun))}
+@media(max-width:700px){.kapkopf{margin:-.7rem -1rem .7rem;padding:.6rem 1rem}}
+.kapkopf h2{font-size:clamp(1.7rem,2.9vw,2.4rem)!important;margin:.1rem 0 0!important}
+.kapkopf .augen{display:inline-block;background:var(--akz,var(--braun));color:#fffdf9;border-radius:99px;padding:.12rem .6rem;font-size:.66rem}
+.kapkopf .litknopf{top:.8rem;right:2rem}
+.kapitel.vor .seite.an{animation:blaettern-vor .35s cubic-bezier(.2,.8,.2,1)}
+.kapitel.zurueck .seite.an{animation:blaettern-zurueck .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes blaettern-vor{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}}
+@keyframes blaettern-zurueck{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:none}}
+.kapitel.neu{animation:karte-neu .45s cubic-bezier(.2,.8,.2,1);transform-origin:50% 0}
+.kapitel.neu .seite.an{animation:none}
+@keyframes karte-neu{from{opacity:0;transform:translateY(24px) rotate(-1.2deg) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.kapitel.vor .seite.an,.kapitel.zurueck .seite.an,.kapitel.neu{animation:none}}
+.seite.an>*{zoom:var(--z,1)}
+/* v39: Karte 1, Seite 2 ruhiger */
+.art-zeile>b i{display:block;font:500 .72rem "Fira Sans",sans-serif;color:var(--mut);font-style:normal;margin-top:.1rem}
+.arten-legende{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1rem;font-size:.9rem;color:var(--mut);margin:.2rem 0 .9rem}
+.arten-legende span{display:inline-flex;align-items:center;gap:.4rem;background:var(--creme);border-radius:99px;padding:.2rem .7rem;color:var(--tinte);font-weight:600}
+.arten{gap:.9rem!important}
+
+/* v40 */
+.bk-tipp{font:600 .72rem "Fira Sans",sans-serif;color:var(--mut);align-self:center;margin-left:.3rem}
+.bk-tipp::before{content:"✋ "}
+#geo{max-width:100%!important;max-height:11rem!important;touch-action:none}
+#geo .g-griff{fill:#fffdf9;stroke:var(--braun);stroke-width:2.5;cursor:grab}
+#geo .g-griff:hover{fill:var(--braun)}
+.pilotleiste .pz{display:flex;align-items:center;gap:.45rem}
+.pilotleiste .pz span{display:flex;flex-direction:column;font-weight:600;font-size:.9rem;line-height:1.15}
+.pilotleiste .pz span i{font-style:normal;font-weight:400;font-size:.78rem;color:var(--mut)}
+.prinzipien{margin:.2rem 0 0;padding-left:1rem;font-size:.86rem;display:grid;gap:.05rem}
+/* v41: Grenzen des Pilots gegliedert */
+.grenzen-intro{max-width:none!important}
+.weichen button .wl{display:block;font-size:.88rem;line-height:1.4;margin-top:.35rem}
+.weichen button .wl em{font-style:normal;font-weight:600;color:var(--braun)}
+.weichen button img{height:4.5rem!important}
+
+/* v42 */
+.pf-liste{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.3rem;font-size:.93rem}
+.monitor .titel .proto{font:700 .68rem "Fira Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#fffdf9;background:var(--braun);border-radius:99px;padding:.1rem .6rem}
+.m-legende{margin-top:.5rem;font-size:.78rem;display:flex;flex-wrap:wrap;gap:.3rem .8rem;color:var(--mut)}
+.team.gross .person p b{color:var(--braun);font-weight:600}
 </style>
 </head>
 <body>
@@ -1193,9 +1252,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <p class="minilegende">Eine Gruppe sortiert frei und muss zuerst entscheiden, wonach. Beispiel «Bruch · Dezimalzahl · Bild» aus dem SORT-Antrag; das Gespräch ist nachgestellt.</p>
   </div>
   <div class="schritte">
-    <div class="schritt"><span class="sn">1</span><div><h3>Die Herausforderung</h3><p>Schulen bauen selbstregulierte Phasen aus: Lernateliers, Wochenpläne, offene Arbeitszeit.<button class="litm" data-lit="luecke-srl" aria-label="Literatur">Lit.</button> Damit wächst die Frage, was in dieser Zeit gelernt wird und wie es in den Klassenunterricht zurückfindet.</p></div></div>
-    <div class="schritt"><span class="sn">2</span><div><h3>Was es braucht</h3><p>Aufgaben, die sich selbständig bearbeiten lassen und trotzdem anspruchsvolles Denken auslösen. Und die etwas hervorbringen, an dem die Klasse gemeinsam weiterarbeiten kann. Beides zusammen ist selten.</p></div></div>
-    <div class="schritt"><span class="sn">3</span><div><h3>Kärtchensortieraktivitäten</h3><p>Gruppen ordnen Karten mit Termen, Figuren oder Aussagen, einigen sich auf ein Kriterium und begründen es.<button class="litm" data-lit="klappauf" aria-label="Literatur">Lit.</button> Was dabei entsteht, wird zum Ausgangspunkt für das Klassengespräch.</p></div></div>
+    <p class="st-label">Die Herausforderung</p>
+    <div class="schritt"><span class="sn">1</span><div><h3>Mehr selbstregulierte Phasen</h3><p>Schulen bauen selbstregulierte Phasen aus: Lernateliers, Wochenpläne, offene Arbeitszeit. Damit wächst die Frage, was in dieser Zeit gelernt wird und wie es in den Klassenunterricht zurückfindet.</p></div></div>
+    <div class="schritt"><span class="sn">2</span><div><h3>Was es dafür braucht</h3><p>Aufgaben, die sich selbständig bearbeiten lassen und trotzdem anspruchsvolles Denken auslösen. Und die etwas hervorbringen, an dem die Klasse gemeinsam weiterarbeiten kann. Beides zusammen ist selten.</p></div></div>
+    <p class="st-label st-antwort">↓ Unsere Antwort</p>
+    <div class="schritt antwort"><span class="sn">✓</span><div><h3>Kärtchensortieraktivitäten</h3><p>Sie leisten beides. Gruppen ordnen Karten mit Termen, Figuren oder Aussagen, einigen sich auf ein Kriterium und begründen es. Was dabei entsteht, wird zum Ausgangspunkt für das Klassengespräch.</p></div></div>
     <p class="pilotzeile">Grundlage ist das Pilotprojekt SORT der PH Luzern (2026/27): acht Kartensätze, erprobt in fünf Klassen, gefördert von der Milton Ray Hartmann Stiftung.</p>
   </div>
   <div class="quer">
@@ -1249,14 +1310,14 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     </div>
     <div class="seite">
       <h3 class="seitentitel">Woran sich Sortierungen unterscheiden<button class="litm" data-lit="swan2005" aria-label="Literatur">Lit.</button></h3>
-      <p class="text">Eine Grundform und drei Stellschrauben. Sie entscheiden, wie viel die Gruppe selbst festlegen muss und wie viel die Karten vorgeben. Wo die beiden Beispiele liegen:</p>
+      <p class="text">Eine Grundform und drei Stellschrauben. Sie entscheiden, wie viel die Gruppe selbst festlegen muss und wie viel die Karten vorgeben.</p>
+      <p class="arten-legende">Wo die beiden Beispiele liegen: <span><em class="zm zm-kreis"></em> Ähnlichkeitsklassen</span> <span><em class="zm zm-raute"></em> Wo steckt dieser Term überall?</span></p>
       <div class="arten">
-        <div class="art-zeile"><b>Grundform</b><div class="skala zwei"><span>Gruppieren<i>am Ende stehen Gruppen</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>Reihen bilden<i>am Ende steht eine Reihenfolge</i></span></div></div>
-        <div class="art-zeile"><b>Offenheit</b><div class="skala pfeil"><span>offen<i>«Sortiert in Gruppen»</i></span><span>Richtung vorgegeben<i>«Sortiert nach …»</i><em class="zm zm-kreis"></em></span><span>Kategorien vorgegeben</span><span>geschlossen<i>alle Felder stehen fest</i><em class="zm zm-raute"></em></span></div></div>
-        <div class="art-zeile"><b>Eindeutigkeit</b><div class="skala"><span>eindeutig<i>genau eine richtige Zuordnung</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>mathematisch mehrdeutig<i>mehrere Kriterien treffen zu</i></span><span>wissensabhängig<i>bestimmbar mit dem nötigen Wissen</i></span><span>subjektiv<i>kein objektives Richtig</i></span></div></div>
-        <div class="art-zeile"><b>Vollständigkeit</b><div class="skala pfeil"><span>vollständig<i>alle Karten</i><em class="zm zm-kreis"></em></span><span>mit Ausnahmen<i>was nicht passt, kommt beiseite</i><em class="zm zm-raute"></em></span><span>selektiv<i>«Findet möglichst viele …»</i></span><span>punktuell<i>«Findet drei, die …»</i></span></div></div>
+        <div class="art-zeile"><b>Grundform<i>zwei Formen</i></b><div class="skala zwei"><span>Gruppieren<i>am Ende stehen Gruppen</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>Reihen bilden<i>am Ende steht eine Reihenfolge</i></span></div></div>
+        <div class="art-zeile"><b>Offenheit<i>von offen bis geschlossen</i></b><div class="skala"><span>offen<i>«Sortiert in Gruppen»</i></span><span>Richtung vorgegeben<i>«Sortiert nach …»</i><em class="zm zm-kreis"></em></span><span>Kategorien vorgegeben<i>«je ein Term, eine Figur, …»</i><em class="zm zm-raute"></em></span><span>geschlossen<i>alle Felder stehen fest</i></span></div></div>
+        <div class="art-zeile"><b>Eindeutigkeit<i>vier Typen</i></b><div class="skala"><span>eindeutig<i>genau eine richtige Zuordnung</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>mathematisch mehrdeutig<i>mehrere Kriterien treffen zu</i></span><span>wissensabhängig<i>bestimmbar mit dem nötigen Wissen</i></span><span>subjektiv<i>kein objektives Richtig</i></span></div></div>
+        <div class="art-zeile"><b>Vollständigkeit<i>von allen bis wenigen Karten</i></b><div class="skala"><span>vollständig<i>alle Karten</i><em class="zm zm-kreis"></em></span><span>mit Ausnahmen<i>was nicht passt, kommt beiseite</i><em class="zm zm-raute"></em></span><span>selektiv<i>«Findet möglichst viele …»</i></span><span>punktuell<i>«Findet drei, die …»</i></span></div></div>
       </div>
-      <p class="seitenvermerk"><em class="zm zm-kreis"></em> Ähnlichkeitsklassen &nbsp; <em class="zm zm-raute"></em> Der Eindringling</p>
     </div>
   </section>
 
@@ -1269,9 +1330,9 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
       <div class="mit-bild">
         <ol class="argumente">
           <li class="breit"><h3>Ordnen ist ein mathematischer Kernprozess</h3><p>Begriffe gruppieren, Darstellungen vergleichen, Verfahren unterscheiden, Grenzfälle begründen: Das ist für mathematisches Lernen grundlegend. In vielen Aufgaben steht aber die einzelne Lösung im Vordergrund, nicht die Ordnung dahinter.<button class="litm" data-lit="barzel2013" aria-label="Literatur">Lit.</button></p></li>
-          <li><h3>Kognitiv aktivierend</h3><p>Statt abzuarbeiten, vergleichen die Lernenden, begründen, prüfen und werfen eine Ordnung notfalls wieder um.<button class="litm" data-lit="susi-ordnen" aria-label="Literatur">Lit.</button></p></li>
-          <li><h3>Diskursiv</h3><p>Die Gruppe muss sich einigen. Dafür wird über Mathematik gesprochen: Was ist das Kriterium, und wo hört es auf zu passen?<button class="litm" data-lit="lp21-dialog" aria-label="Literatur">Lit.</button></p></li>
-          <li><h3>Selbstdifferenzierend</h3><p>Alle können eine erste Ordnung versuchen. Die Sortierung trägt auch ohne laufende Anleitung durch die Lehrperson.</p></li>
+          <li><h3>Erzwingt Entscheidungen</h3><p>Jede Karte muss irgendwo hin, und die Zuordnung kann falsch sein. Stimmige Distraktoren verhindern, dass nach Oberflächenmerkmalen sortiert wird: Die Gruppe muss vergleichen und prüfen.</p></li>
+          <li><h3>Macht Denken sichtbar</h3><p>Die Ordnung liegt offen auf dem Tisch. Wer anderer Meinung ist, muss begründen: Was ist das Kriterium, und wo hört es auf zu passen? So wird über Mathematik gesprochen.</p></li>
+          <li><h3>Differenziert von selbst</h3><p>Den Einstieg schafft jede und jeder: eine erste Karte legen. Wie weit eine Gruppe geht, von der groben Ordnung bis zur Begründung von Grenzfällen, bestimmt sie selbst. Wer schneller ist, legt weitere Karten nach.</p></li>
           <li><h3>Übt, was Selbstregulation verlangt</h3><p>Planen, die eigene Arbeit überwachen, reflektieren: Eine Sortierung verlangt genau das. Ein Kriterium wählen, die Ordnung laufend prüfen, begründen und notfalls umwerfen.<button class="litm" data-lit="zimmerman" aria-label="Literatur">Lit.</button><button class="litm" data-lit="lp21-planen" aria-label="Literatur">Lit.</button></p></li>
         </ol>
         <div class="bildspalte">
@@ -1292,15 +1353,15 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
         <div class="dg-rechts">
           <div class="dg"><span class="dg-nr">1</span><h3>Der Sortierprozess bleibt erhalten</h3><p>Analoge Kärtchen werden eingesammelt. Digital bleiben Sortierstände, Kartenbewegungen und Gespräch erhalten: Die Lehrperson sieht, wie ihre Gruppen vorgegangen sind, und setzt im Gespräch dort an, wo es sich lohnt.<button class="litm" data-lit="chi" aria-label="Literatur">Lit.</button></p></div>
           <div class="dg"><span class="dg-nr">2</span><h3>Leicht zu übernehmen und weiterzugeben</h3><p>Ohne Schneiden, Laminieren und Materialverwaltung. Die Kartensätze lassen sich an die eigene Klasse anpassen und als Open Educational Resource weitergeben.</p></div>
-          <div class="dg"><span class="dg-nr">3</span><h3>Für selbstregulierte Phasen gebaut</h3><p>Digitale Sortierumgebungen gibt es bereits. Die Kartensätze von SORT sind gezielt für selbstregulierte Phasen entwickelt und folgen Gestaltungsprinzipien.</p></div>
+          <div class="dg"><span class="dg-nr">3</span><h3>Rückmeldung, wenn die Gruppe sie braucht</h3><p>Die Gruppe kann ihre Ordnung prüfen lassen: Die Kontrolle sagt, ob es passt, nicht warum. Wer weiter ist, holt weitere Karten. So steuert die Gruppe ihr Vorgehen selbst.</p></div>
         </div>
         <div class="dg dg-gross"><span class="dg-nr">4</span><span class="mitsort2">mit SORT II ausgebaut</span><h3>Karten, die sich verändern lassen</h3>
           <p>Auf dynamischen Karten lässt sich etwas bewegen, bevor die Gruppe sie einordnet. So werden Zusammenhänge sortierbar, die erst beim Verändern sichtbar werden.<button class="litm" data-lit="wittmann" aria-label="Literatur">Lit.</button></p>
           <div class="beispielkarte" aria-label="Beispiel einer dynamischen Karte">
             <span class="bk-label">Zum Ausprobieren</span>
             <p class="bk-frage">Addiert man zu jeder Seite gleich viel, entsteht eine ähnliche Figur.</p>
-            <div class="bk-wahl" role="group" aria-label="Figur"><button class="an" data-fig="r">Rechteck</button><button data-fig="q">Quadrat</button></div>
-            <svg id="geo" viewBox="0 0 260 96" aria-hidden="true"></svg>
+            <div class="bk-wahl" role="group" aria-label="Figur"><button class="an" data-fig="r">Rechteck</button><button data-fig="d">Dreieck</button><span class="bk-tipp">Ecken ziehen</span></div>
+            <svg id="geo" viewBox="0 0 250 112" aria-label="Figur vorher und nachher"></svg>
             <label class="bk-regler">+ <b id="gd">0</b> cm an jeder Seite<input type="range" id="greg" min="0" max="4" step="0.5" value="2" aria-label="Zentimeter an jeder Seite"></label>
             <p class="bk-stand" id="gstand"></p>
             <p class="bk-auftrag">Immer, manchmal oder nie wahr?</p>
@@ -1318,17 +1379,17 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="seite">
       <p class="kurz">Im Schuljahr 2026/27 entwickelt und erprobt das Pilotprojekt SORT der PH Luzern Sortieraktivitäten für die Klassen 7 und 9.</p>
       <div class="pilotleiste">
-        <div><b>8</b><span>Kartensätze</span></div>
-        <div><b>5</b><span>Klassen in der Erprobung</span></div>
-        <div><b>2</b><span>Schulen: Reussbühl und Hochdorf</span></div>
+        <div class="pz"><b>8</b><span>Kartensätze<i>Klassen 7 und 9</i></span></div>
+        <div class="pz"><b>5</b><span>Klassen<i>in der Erprobung</i></span></div>
+        <div class="pz"><b>2</b><span>Schulen<i>Reussbühl und Hochdorf</i></span></div>
         <button class="themenknopf" id="themenknopf">Die acht Themen ansehen</button>
         <a class="themenknopf" href="https://sort-phlu.github.io/sort/" target="_blank" rel="noopener">Projektseite ↗</a>
         <div class="foerder"><img src="bilder/logo-mrh.png" alt="Milton Ray Hartmann Stiftung"><span>gefördert von der Milton Ray Hartmann Stiftung</span></div>
       </div>
       <h3 class="zw">Was im Pilot entsteht</h3>
       <div class="produkte">
-        <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="10"/><path d="M30 32h26M48 32v9M55 32v6"/></svg><div><h3>Gestaltungsprinzipien</h3><div class="kriterien klein"><span>klar</span><span>unterscheidbar</span><span>bedeutsam</span><span>vernetzend</span><span>begründbar</span><span>lernwirksam</span></div><p>Sie halten fest, was eine tragfähige Sortieraufgabe von einer beliebigen unterscheidet, und werden in der Erprobung geschärft.<button class="litm" data-lit="barzel2013" aria-label="Literatur">Lit.</button></p></div></div>
-        <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="20" width="28" height="34" rx="3"/><rect x="24" y="10" width="28" height="34" rx="3"/></svg><div><h3>Acht digitale Kartensätze</h3><p>Je Thema ein Kartensatz mit mehreren Sortierungen, im Browser nutzbar, dazu je eine Anleitung und eine Druckvorlage. Die Lehrpersonen der Erprobung können sich ansehen und anhören, wie ihre Gruppen sortiert haben.</p></div></div>
+        <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="10"/><path d="M30 32h26M48 32v9M55 32v6"/></svg><div><h3>Gestaltungsprinzipien</h3><ul class="prinzipien"><li>eine Entscheidung, die falsch sein kann</li><li>Zahlen und Farben dürfen nicht entscheiden</li><li>stimmige Distraktoren, deren Denkfehler benannt ist</li><li>Kontrolle sagt, ob es passt, nicht warum</li><li>Basis und Erweiterung für 20 bis 25 Minuten</li><li>ein Kartentisch, der übersichtlich bleibt</li></ul></div></div>
+        <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="20" width="28" height="34" rx="3"/><rect x="24" y="10" width="28" height="34" rx="3"/></svg><div><h3>Acht digitale Kartensätze</h3><p>Je Thema ein Kartensatz mit mehreren Sortierungen, im Browser nutzbar, mit Anleitung und Druckvorlage, veröffentlicht als Open Educational Resource.</p></div></div>
         <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 18c-6-5-14-6-22-5v34c8-1 16 0 22 5 6-5 14-6 22-5V13c-8-1-16 0-22 5zM32 18v34"/></svg><div><h3>Didaktische Handreichung</h3><p>Wie Sortierphasen eingeführt werden, worauf während der Gruppenarbeit zu achten ist und wie die Ergebnisse ins Klassengespräch zurückkommen.</p></div></div>
         <div class="produkt"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="22" width="36" height="26" rx="5"/><circle cx="25" cy="34" r="3"/><circle cx="39" cy="34" r="3"/><path d="M32 22v-8M28 13h8M26 42h12M9 31v8M55 31v8"/></svg><div><h3>KI-gestützter Assistent</h3><p>Im Pilot schauen wir, wie KI die Entwicklung von Kartensätzen unterstützen kann. Dafür entsteht ein geführter Assistent, der die Gestaltungsprinzipien kennt.</p></div></div>
       </div>
@@ -1336,11 +1397,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     </div>
     <div class="seite">
       <h3 class="seitentitel">Wo der Pilot an Grenzen kommt</h3>
-      <p class="text">Der Pilot zeigt, dass das Format im Unterricht trägt. An drei Stellen kommt er an Grenzen. Genau dort setzt SORT II an.</p>
+      <p class="text grenzen-intro">Der Pilot zeigt, dass das Format im Unterricht trägt. An drei Stellen kommt er an Grenzen, und genau dort setzt SORT II an.</p>
       <div class="weichen">
-        <button data-zu="5"><img src="bilder/karte-5.jpg" alt=""><b>Kartensätze</b><span>Acht Kartensätze decken einzelne Themen der Klassen 7 und 9 ab. Für Klasse 8 gibt es noch nichts, und erprobt sind sie in fünf Klassen. Bei dynamischen Karten sehen wir mehr Möglichkeiten, als der Pilot ausschöpfen kann.</span></button>
-        <button data-zu="6"><img src="bilder/karte-6.jpg" alt=""><b>Plattform</b><span>Die Kartensätze werden frei zugänglich, aber es fehlt eine Seite, auf der Lehrpersonen finden, was zu ihrer Planung passt. Und ansehen, wie die Gruppen gearbeitet haben, können bisher nur die Lehrpersonen der Erprobung.</span></button>
-        <button data-zu="7"><img src="bilder/karte-7.jpg" alt=""><b>Fortbildung</b><span>Die Handreichung beschreibt, wie man Sortierphasen einführt und aufgreift. Den Einsatz ausprobieren und mit anderen besprechen, wie es gelaufen ist, kann man mit einem Text nicht.</span></button>
+        <button data-zu="5"><img src="bilder/karte-5.jpg" alt=""><b>Kartensätze</b><span class="wl"><em>Noch wenig erprobt.</em> Fünf Klassen sind eine kleine Stichprobe. Ob und wo die Sortierungen tragen, muss sich in mehr und unterschiedlicheren Klassen zeigen.</span><span class="wl"><em>Nur einzelne Themen.</em> Die acht Kartensätze decken Teile der Klassen 7 und 9 ab, Klasse 8 fehlt ganz.</span><span class="wl"><em>Dynamische Karten.</em> Hier sehen wir Möglichkeiten, die der Pilot nicht ausschöpft.</span></button>
+        <button data-zu="6"><img src="bilder/karte-6.jpg" alt=""><b>Plattform</b><span class="wl"><em>Einzeln freigegeben.</em> Im Pilot werden die Kartensätze als Open Educational Resource veröffentlicht, Datei für Datei.</span><span class="wl"><em>Systematisch finden.</em> Lehrpersonen brauchen einen Ort, an dem sie finden, was zu ihrer Planung passt.</span><span class="wl"><em>Prozesse sehen.</em> Und sie sollen nach der Sortierphase sehen, wie ihre Gruppen vorgegangen sind. Dafür reicht eine einzelne Datei nicht.</span></button>
+        <button data-zu="7"><img src="bilder/karte-7.jpg" alt=""><b>Fortbildung</b><span class="wl"><em>Kein Selbstläufer.</em> Die Handreichung gibt erste Ideen. Unsere Erfahrung aus dem Pilot: Der Einsatz braucht eine gezielte Planung.</span><span class="wl"><em>Der Zeitpunkt entscheidet.</em> Je nachdem, wann im Unterrichtsverlauf sortiert wird, braucht es eine andere Anleitung und eine andere Auswahl an Karten.</span><span class="wl"><em>Zurück ins Gespräch.</em> Wie die Ergebnisse ins Klassengespräch kommen, lernt man im Tun und im Austausch, nicht aus einem Text.</span></button>
       </div>
     </div>
   </section>
@@ -1355,30 +1416,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
       <div class="kacheln5">
         <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="24" r="6"/><circle cx="32" cy="20" r="6"/><circle cx="46" cy="24" r="6"/><path d="M8 46c0-9 20-9 20 0M22 42c0-9 20-9 20 0M36 46c0-9 20-9 20 0"/></svg><h3>Breiter erprobt</h3><p>Die bestehenden Kartensätze kommen in rund zwölf Klassen im Jahr an Volksschulen zum Einsatz und werden danach überarbeitet.</p></div>
         <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="28" height="38" rx="3"/><path d="M48 34v18M39 43h18"/></svg><h3>Neue Kartensätze</h3><p>Für Klasse 8 und weitere Themen, bis ein Schuljahr abgedeckt ist.</p></div>
-        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="40" rx="3"/><path d="M20 38h24"/><circle cx="36" cy="38" r="4"/><rect x="20" y="18" width="12" height="10"/></svg><h3>Dynamische Karten</h3><p>Neben den statischen Karten solche, auf denen sich etwas verändern lässt.</p></div>
-        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="22" width="36" height="26" rx="5"/><circle cx="25" cy="34" r="3"/><circle cx="39" cy="34" r="3"/><path d="M32 22v-8M28 13h8M26 42h12"/></svg><h3>Assistent ausgebaut</h3><p>Der KI-gestützte Assistent aus dem Pilot wird weiterentwickelt und unterstützt die Entwicklung der neuen Kartensätze.</p></div>
-        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><path d="M26 38l12-12"/><path d="M22 30l-6 6a7 7 0 0 0 10 10l6-6M42 34l6-6a7 7 0 0 0-10-10l-6 6"/></svg><h3>Angebunden und frei</h3><p>Abgeglichen mit Lehrplan 21, Mathbuch und dem Zürcher Lehrmittel, veröffentlicht als Open Educational Resource.</p></div>
+        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="40" rx="3"/><path d="M20 38h24"/><circle cx="36" cy="38" r="4"/><rect x="20" y="18" width="12" height="10"/></svg><h3>Erweitert durch dynamische Karten</h3><p>Karten, auf denen Lernende etwas verändern, etwa eine Figur verziehen. So werden Zusammenhänge sortierbar, die erst beim Verändern sichtbar werden.</p></div>
+        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="22" width="36" height="26" rx="5"/><circle cx="25" cy="34" r="3"/><circle cx="39" cy="34" r="3"/><path d="M32 22v-8M28 13h8M26 42h12"/></svg><h3>Assistent ausgebaut</h3><p>Der KI-gestützte Assistent aus dem Pilot unterstützt die Entwicklung der neuen Kartensätze. Geprüft wird, ob er auch personenunabhängig trägt.</p></div>
+        <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><path d="M26 38l12-12"/><path d="M22 30l-6 6a7 7 0 0 0 10 10l6-6M42 34l6-6a7 7 0 0 0-10-10l-6 6"/></svg><h3>Systematisch angebunden</h3><p>Schon der Pilot orientiert sich an Lehrplan und Lehrmitteln. SORT II gleicht die Kartensätze systematisch mit Lehrplan 21, Mathbuch und dem Zürcher Lehrmittel ab.</p></div>
         <img class="seitenbild kachel5-bild" src="bilder/karte-5.jpg" alt="">
       </div>
-    </div>
-    <div class="seite">
-      <h3 class="seitentitel">Was dazukommt</h3>
-      <div class="stufen">
-        <div class="stufe"><h3>Klasse 7</h3>
-          <div class="thema"><i>●</i><div>vier Kartensätze aus dem Pilot<small>breiter erprobt, überarbeitet</small></div></div>
-          <div class="thema sort2"><i>○</i><div>weitere Themen</div></div>
-        </div>
-        <div class="stufe"><h3>Klasse 8</h3>
-          <div class="thema sort2"><i>○</i><div>erste Kartensätze im ersten Projektjahr</div></div>
-          <div class="thema sort2"><i>○</i><div>weitere Themen bis über ein Schuljahr</div></div>
-        </div>
-        <div class="stufe"><h3>Klasse 9</h3>
-          <div class="thema"><i>●</i><div>vier Kartensätze aus dem Pilot<small>breiter erprobt, überarbeitet</small></div></div>
-          <div class="thema sort2"><i>○</i><div>weitere Themen</div></div>
-        </div>
-      </div>
-      <div class="legende"><span><i>●</i>aus dem Pilot</span><span><i>○</i>neu in SORT II</span></div>
-      <p class="hinweisbox"><b>Geprüft, bevor es hinausgeht:</b> Jeder Kartensatz wird von einer zweiten Person gegengeprüft und vor dem Einsatz getestet, jede Sortierung in mindestens zwei Klassen genauer angeschaut. Eine Begleitforschung fragt: Welche Sortierungen lohnen sich? Wie müssen sie gebaut sein, damit sie tragen? In welche Phase des Unterrichts gehören sie?<button class="litm" data-lit="kernprozesse" aria-label="Literatur">Lit.</button></p>
     </div>
   </section>
 
@@ -1390,22 +1432,23 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
       <p class="ausgang"><span class="bk">● Ausgangspunkt im Pilot</span> Die Kartensätze werden als Open Educational Resource frei zugänglich. Ansehen und anhören, wie die Gruppen gearbeitet haben, können bisher nur die Lehrpersonen der Erprobung.</p>
       <p class="zwei-kopf"><span class="bk">○ Das macht SORT II: eine Plattform, die zwei Dinge leistet</span></p>
       <div class="plattform2">
-        <div class="sort2box"><span class="pf-nr">1</span><h3>Übersichtlich zugänglich</h3><p>Eine Seite, auf der Lehrpersonen die Kartensätze nach Klasse, Thema und Lehrplan finden und direkt einsetzen können, frei und ohne Konto für die Klasse.</p></div>
-        <div class="sort2box"><span class="pf-nr">2</span><h3>Lernprozesse sichtbar</h3><p>Nach der Sortierphase sieht die Lehrperson, wie ihre Gruppen vorgegangen sind, und erkennt die Stellen, die sich für das Gespräch lohnen: wo Gruppen verschieden entschieden haben, aber auch, wo alle dasselbe getan haben. Die Aufzeichnungen bleiben bei ihr.<button class="litm" data-lit="nijenhuis" aria-label="Literatur">Lit.</button></p></div>
+        <div class="sort2box"><span class="pf-nr">1</span><h3>Übersichtlich zugänglich</h3><ul class="pf-liste"><li>Kartensätze nach Klasse, Thema und Lehrplan finden</li><li>direkt im Browser einsetzen</li><li>frei und ohne Konto für die Klasse</li></ul></div>
+        <div class="sort2box"><span class="pf-nr">2</span><h3>Lernprozesse sichtbar</h3><ul class="pf-liste"><li>nach der Sortierphase sehen, wie jede Gruppe vorgegangen ist</li><li>die Stellen finden, die sich für das Gespräch lohnen: wo Gruppen verschieden entschieden haben und wo alle dasselbe taten</li><li>die Aufzeichnungen bleiben bei der Lehrperson</li></ul></div>
         <img class="seitenbild" src="bilder/karte-6.jpg" alt="">
       </div>
     </div>
     <div class="seite">
-      <h3 class="seitentitel">Ein Blick in die Plattform nach der Sortierphase</h3>
-      <p class="text">Vier Gruppen einer Klasse 9 haben sechzehn Aussagen über ähnliche Figuren nach «immer», «manchmal» oder «nie» sortiert. Die Lehrperson sieht links die ganze Klasse und kann rechts eine Gruppe abspielen.</p>
+      <h3 class="seitentitel">So könnte die Plattform aussehen</h3>
+      <p class="text">Ein Prototyp mit nachgestellten Daten: Vier Gruppen einer Klasse 9 haben sechzehn Aussagen aus dem Kartensatz «Ähnlichkeit» nach «immer», «manchmal» oder «nie» sortiert. Links die ganze Klasse, rechts eine Gruppe zum Abspielen.</p>
       <div class="monitor">
-        <div class="titel"><b>SORT</b> · Sitzungen ansehen · Klasse 9b · Ähnlichkeit <span class="r">4 Gruppen · nachgestellt</span></div>
+        <div class="titel"><b>SORT</b> · Sitzungen ansehen · Klasse 9b · Ähnlichkeit <span class="r proto">Prototyp</span></div>
         <div class="mgrid">
           <div class="mspalte">
             <h3>Die Klasse im Überblick</h3>
             <p class="mhilfe">Oben stehen die Aussagen, bei denen sich das Gespräch lohnt.</p>
             <table class="klasse" id="klasse"></table>
             <button class="mehr" id="mehr">alle 16 Aussagen zeigen</button>
+            <div class="legende m-legende"><span><span class="sym s-immer">imm</span> immer</span><span><span class="sym s-manchmal">man</span> manchmal</span><span><span class="sym s-nie">nie</span> nie</span><span><span class="sym s-offen">?</span> noch offen</span><span>↺ umgelegt</span></div>
           </div>
           <div class="mspalte">
             <h3>Wiedergabe · Gruppe B</h3>
@@ -1417,8 +1460,6 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
           </div>
         </div>
       </div>
-      <div class="legende" style="margin-bottom:.5rem"><span><span class="sym s-immer">imm</span> immer</span><span><span class="sym s-manchmal">man</span> manchmal</span><span><span class="sym s-nie">nie</span> nie</span><span><span class="sym s-offen">?</span> noch offen</span><span>↺ umgelegt</span></div>
-      <p class="vermerk">Die Klasse, die Entscheidungen und das Gespräch sind nachgestellt. Die Aussagekarten stammen aus dem Kartensatz «Ähnlichkeit» des Pilots.</p>
     </div>
   </section>
 
@@ -1436,7 +1477,6 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
           <div class="k4 k4-3"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h30v18H20l-8 7v-7H8z"/><path d="M30 38h4v-6h22v18h-4v7l-8-7H30z"/></svg><span class="k4-nr">3</span><h3>Aufgreifen</h3><p>Das Erarbeitete ins Klassengespräch zurückholen, ausgehend von den Stellen, die sich lohnen.</p></div>
           <div class="k4 k4-4"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="22" r="7"/><circle cx="44" cy="22" r="7"/><path d="M8 50c0-11 24-11 24 0M32 50c0-11 24-11 24 0"/><path d="M26 8c4-3 8-3 12 0" /></svg><span class="k4-nr">4</span><h3>Reflektieren</h3><p>Die eigene Durchführung mit anderen besprechen und daraus die nächste planen.<button class="litm" data-lit="swan2007" aria-label="Literatur">Lit.</button></p></div>
           <span class="k4p k4p-o" aria-hidden="true">→</span><span class="k4p k4p-r" aria-hidden="true">↓</span><span class="k4p k4p-u" aria-hidden="true">←</span><span class="k4p k4p-l" aria-hidden="true">↑</span>
-          <div class="k4-mitte">↻<span>und wieder<br>von vorn</span></div>
         </div>
       </div>
       <p class="hinweisbox"><b>Die Lehrperson wird nicht ersetzt.</b> Sie wird an anderer Stelle gebraucht: bei der Wahl, welche Sortierung in welche Phase passt, und beim Aufgreifen dessen, was die Gruppen erarbeitet haben.<button class="litm" data-lit="kernprozesse-konvergenz" aria-label="Literatur">Lit.</button></p>
@@ -1450,9 +1490,9 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="seite">
       <p class="kurz">Drei Dozierende der Mathematik-Lehrpersonenbildung an der PH Luzern tragen das Vorhaben gemeinsam. Dazu kommen wissenschaftliche Mitarbeit für die Begleitforschung, studentische Hilfskräfte und eine technische Position für die Plattform.</p>
       <div class="team gross">
-        <div class="person"><img src="bilder/team-allmendinger.jpg" alt="Henrike Allmendinger"><div><h3>Henrike Allmendinger</h3><p>Dozentin für Mathematikdidaktik, forscht zu kognitiv aktivierenden Aufgaben (Projekt Borel). Setzt in der Lehre auf selbstreguliertes Lernen, mit Inverted Classroom und Sortieraktivitäten.</p><a class="profil" href="https://www.phlu.ch/henrike-allmendinger.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
-        <div class="person"><div class="init" aria-hidden="true">ML</div><div><h3>Martin Lacher</h3><p>Dozent für Mathematik Sek I. Projektleiter von «Das neue Mathbuch» und der Mathbuch-Applets; forscht zu explorierendem Arbeiten und Selbstregulation.</p><a class="profil" href="https://www.phlu.ch/martin-lacher.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
-        <div class="person"><img src="bilder/team-christen.jpg" alt="Luzia Christen"><div><h3>Luzia Christen</h3><p>Sekundarlehrerin, Dozentin für Mathematik Sek I und Fachberaterin Mathematik. Hat sich in ihrer Masterarbeit mit der Ausbildung von Praxislehrpersonen befasst.</p><a class="profil profil-fehlt" href="#" title="Profil folgt">Profil PH Luzern ↗</a></div></div>
+        <div class="person"><img src="bilder/team-allmendinger.jpg" alt="Henrike Allmendinger"><div><h3>Henrike Allmendinger</h3><p>Dozentin für Mathematikdidaktik an der PH Luzern. <b>Bringt das Format mit:</b> setzt Sortieraktivitäten seit Jahren in selbstreguliert angelegter Lehre ein und hat sie im Pilot systematisiert.</p><a class="profil" href="https://www.phlu.ch/henrike-allmendinger.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
+        <div class="person"><div class="init" aria-hidden="true">ML</div><div><h3>Martin Lacher</h3><p>Dozent für Mathematik Sek&nbsp;I an der PH Luzern. <b>Bringt die Lehrmittel mit:</b> leitet «Das neue Mathbuch» und die Mathbuch-Applets, forscht zu explorierendem Arbeiten und Selbstregulation.</p><a class="profil" href="https://www.phlu.ch/martin-lacher.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
+        <div class="person"><img src="bilder/team-christen.jpg" alt="Luzia Christen"><div><h3>Luzia Christen</h3><p>Sekundarlehrerin und Dozentin für Mathematik Sek&nbsp;I. <b>Bringt die Schulpraxis mit:</b> kennt als Fachberaterin die Schulen, ihre Masterarbeit galt der Ausbildung von Praxislehrpersonen.</p><a class="profil profil-fehlt" href="#" title="Profil folgt">Profil PH Luzern ↗</a></div></div>
       </div>
     </div>
   </section>
@@ -1673,7 +1713,7 @@ document.getElementById('zurstart').onclick=()=>{location.hash='start';};
 const blatt=document.getElementById('blatt'),inhalt=document.getElementById('blattinhalt');
 const kap=[...document.querySelectorAll('.kapitel')];
 const mini=document.getElementById('miniplan');
-mini.innerHTML=Object.entries(GRUPPEN).map(([g,t])=>`<div class="mp-gr"><span class="mp-t">${t}</span><div class="mp-k">${KM.filter(m=>m.g===g).map(m=>`<button data-k="${m.k}" title="${m.f}">${m.k}<span> ${m.kurz}</span></button>`).join('')}</div></div>`).join('<span class="mp-pfeil" aria-hidden="true">→</span>');
+mini.innerHTML=Object.entries(GRUPPEN).map(([g,t])=>`<div class="mp-gr" style="--gf:${GRUPPENFARBE[g]}"><span class="mp-t">${t}</span><div class="mp-k">${KM.filter(m=>m.g===g).map(m=>`<button data-k="${m.k}" title="${m.f}"><b>${m.k}</b><span>${m.kurz}</span></button>`).join('')}</div></div>`).join('');
 mini.querySelectorAll('button').forEach(b=>b.onclick=()=>zeige(+b.dataset.k));
 // Jedes Kapitel einmal in Seiten gliedern: Kopf (Augen, Frage) bleibt stehen,
 // jeder Mehr-dazu-Block wird eine eigene Seite, und was nicht passt, rutscht weiter.
@@ -1687,16 +1727,27 @@ function seitenBauen(sec){
   sec.appendChild(kopf);sec.appendChild(seiten);sec.dataset.gebaut='1';
 }
 function seitenTeilen(){} // Seiten sind von Hand gestaltet
-let aktuell=1,seite=0,offen=false;
+let aktuell=1,seite=0,offen=false,kartenwechsel=false;
 function seitenVon(n){return [...kap[n-1].querySelectorAll('.seite')];}
 function zeigeSeite(i){
-  const ss=seitenVon(aktuell);seite=Math.max(0,Math.min(ss.length-1,i));
+  const ss=seitenVon(aktuell),vorher=seite;seite=Math.max(0,Math.min(ss.length-1,i));
+  // Seitenwechsel blaettert seitlich; ein Kartenwechsel hat seine eigene Bewegung
+  const sec=kap[aktuell-1];sec.classList.remove('vor','zurueck');
+  if(!kartenwechsel&&seite!==vorher){void sec.offsetWidth;sec.classList.add(seite>vorher?'vor':'zurueck');}
   ss.forEach((s,j)=>s.classList.toggle('an',j===seite));
+  seiteEinpassen();setTimeout(seiteEinpassen,450);
   // ab Seite 2 traegt der Seitentitel die Seite, die Kartenfrage tritt zurueck
   kap[aktuell-1].classList.toggle('folge',seite>0);
   const hk=kap[aktuell-1].querySelector('.litknopf');if(hk){const key=aktuell+'-'+(seite+1);hk.hidden=!HG[key];hk.dataset.hg=key;}
   fuss();
 }
+// Passt eine Seite knapp nicht, wird sie leicht verkleinert statt gescrollt (hoechstens auf 82 %)
+function seiteEinpassen(){
+  const p=seitenVon(aktuell)[seite];if(!p)return;p.style.removeProperty('--z');
+  if(innerWidth<=800)return;
+  let z=1;while(p.scrollHeight>p.clientHeight+1&&z>.82){z=Math.round((z-.02)*100)/100;p.style.setProperty('--z',z);}
+}
+window.addEventListener('resize',()=>{if(offen)seiteEinpassen();});
 function fuss(){
   const ss=seitenVon(aktuell),n=aktuell,m=KM[n];
   const f=document.getElementById('blattfuss');
@@ -1718,7 +1769,8 @@ function zeige(n,ab){
   const sec=kap[n-1];seitenBauen(sec);seitenTeilen(sec);
   mini.querySelectorAll('button').forEach(b=>{b.setAttribute('aria-current',+b.dataset.k===n);b.classList.toggle('gelesen',gelesen.has(+b.dataset.k));});
   if(n===6)lehrer();
-  zeigeSeite(ab==='ende'?999:0);
+  kartenwechsel=true;seite=0;zeigeSeite(ab==='ende'?999:0);kartenwechsel=false;
+  sec.classList.remove('neu');void sec.offsetWidth;sec.classList.add('neu');
   if(location.hash!=='#karte-'+n)history.replaceState(null,'','#karte-'+n);
 }
 function oeffne(n,von){
@@ -1757,9 +1809,18 @@ function route(){
   const m=h.match(/^#karte-(\d+)$/);
   if(m){oeffne(+m[1]);return;}
   if(offen){blatt.classList.remove('offen');document.body.style.overflow='';offen=false;}
-  ansicht(h==='#tisch'?'tisch':'start');markiereGelesen();
+  ansicht(h==='#tisch'?'tisch':'start');markiereGelesen();einpassen();
 }
 window.addEventListener('hashchange',route);
+// Kartentisch: die Schrift so weit verkleinern, dass der ganze Tisch ohne Scrollen sichtbar ist
+function einpassen(){
+  const r=document.documentElement;r.style.fontSize='';
+  if(document.getElementById('ansicht-tisch').hidden||innerWidth<=800)return;
+  let fs=parseFloat(getComputedStyle(r).fontSize),n=0;
+  while(r.scrollHeight>innerHeight+1&&fs>12&&n<40){fs-=.25;r.style.fontSize=fs+'px';n++;}
+}
+let einpassZeit;window.addEventListener('resize',()=>{clearTimeout(einpassZeit);einpassZeit=setTimeout(einpassen,150);});
+document.fonts&&document.fonts.ready.then(einpassen);
 // Gelesene Karten wieder auf die Vorderseite drehen
 function ruecksetzKnopf(){const b=document.getElementById('umdrehen');if(b)b.hidden=gelesen.size===0;}
 document.getElementById('umdrehen').onclick=()=>{gelesen.clear();markiereGelesen();ruecksetzKnopf();};
@@ -1769,7 +1830,7 @@ document.getElementById('umdrehen').onclick=()=>{gelesen.clear();markiereGelesen
 // ---------- Karte 2: Galerie der echten Sortierungen ----------
 const BEISPIELE=[
   ['aehnlichkeit_1','Ähnlichkeit · Klasse 9','<em class="zm zm-kreis"></em> Ähnlichkeitsklassen','Offen gruppieren','Die Gruppe legt Figuren zusammen, die zueinander ähnlich sind. Wie viele Gruppen es gibt, wird nicht verraten, und eine Figur ganz allein ist auch eine Gruppe.'],
-  ['aehnlichkeit_5','Ähnlichkeit · Klasse 9','<em class="zm zm-raute"></em> Der Eindringling','Den Eindringling finden','In jeder Vierergruppe passt eine Karte nicht zu den anderen. Die Gruppe legt sie heraus und hält fest, woran sie sie erkannt hat.']];
+  ['variablen_und_terme_2','Variablen und Terme · Klasse 7','<em class="zm zm-raute"></em> Wo steckt dieser Term überall?','Darstellungen zuordnen','Zu jedem Term gehören eine Punktfigurenfolge, eine Fläche und eine Sachsituation. Die Gruppe sucht die Vierergruppen und übersetzt dabei zwischen den Darstellungen. Einzelne Karten passen nirgends.']];
 const gal=document.getElementById('galerie');
 BEISPIELE.forEach(([datei,thema,t,art,d,lit])=>{
   const b=document.createElement('button');b.className='vk';
@@ -1876,18 +1937,46 @@ function ereignis(i,z,b){
 
 // ---------- Karte 5: Wendekarten, dynamische Karte ----------
 document.querySelectorAll('.wk').forEach(w=>{const um=()=>{w.classList.toggle('um');w.setAttribute('aria-pressed',w.classList.contains('um'));};w.onclick=um;w.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();um();}};});
-// Karte 3: dynamische Beispielkarte, ein Rechteck oder Quadrat waechst an jeder Seite gleich viel
-{const gr=document.getElementById('greg'),svg=document.getElementById('geo');let fig='r';
- const z=n=>(Math.round(n*100)/100).toString().replace('.',',');
- function geo(){const d=+gr.value,w0=fig==='q'?2:4,h0=fig==='q'?2:1,w=w0+d,h=h0+d,k=14,y=80;
-  const fig1=`<rect x="10" y="${y-h0*k}" width="${w0*k}" height="${h0*k}" class="g-alt"/>`;
-  const x2=10+w0*k+40;
-  const fig2=`<rect x="${x2}" y="${y-h*k}" width="${w*k}" height="${h*k}" class="g-neu"/>`;
-  svg.innerHTML=fig1+`<text x="${10+w0*k+14}" y="${y-4}" class="g-p">→</text>`+fig2+
-   `<text x="10" y="${y+12}" class="g-t">${z(w0)} × ${z(h0)}</text><text x="${x2}" y="${y+12}" class="g-t">${z(w)} × ${z(h)}</text>`;
-  document.getElementById('gd').textContent=z(d);
-  const v0=w0/h0,v1=w/h,gleich=Math.abs(v0-v1)<1e-9;
-  document.getElementById('gstand').innerHTML=`Länge durch Breite: ${z(v0)} vorher, ${z(v1)} nachher. <b>${gleich?'Ähnlich.':'Nicht ähnlich.'}</b>`;}
+// Karte 3: dynamische Beispielkarte. Ecken ziehen (Raster 0,5 cm), an jeder Seite gleich viel dazugeben
+{const gr=document.getElementById('greg'),svg=document.getElementById('geo'),K=12,ox=8,oy=98;
+ let fig='r',R={w:4,h:1},D=[[0,0],[4,0],[1,2.5]],zieh=null;
+ const z=n=>(Math.round(n*10)/10).toString().replace('.',',');
+ const len=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
+ const z2=n=>(Math.round(n*100)/100).toFixed(2).replace('.',',');
+ const P=(x,y,dx=0)=>[(ox+dx+x*K).toFixed(1),(oy-y*K).toFixed(1)].join(',');
+ function geo(){
+  const d=+gr.value;document.getElementById('gd').textContent=z(d);
+  let h='',st;
+  if(fig==='r'){
+   const w=R.w,hh=R.h,w2=w+d,h2=hh+d,dx=Math.max(w,4)*K+26;
+   h+=`<polygon class="g-alt" points="${P(0,0)} ${P(w,0)} ${P(w,hh)} ${P(0,hh)}"/>`;
+   h+=`<circle class="g-griff" data-i="r" cx="${ox+w*K}" cy="${oy-hh*K}" r="5"/>`;
+   h+=`<polygon class="g-neu" points="${P(0,0,dx)} ${P(w2,0,dx)} ${P(w2,h2,dx)} ${P(0,h2,dx)}"/>`;
+   h+=`<text x="${ox}" y="${oy+11}" class="g-t">${z(w)} × ${z(hh)}</text><text x="${ox+dx}" y="${oy+11}" class="g-t">${z(w2)} × ${z(h2)}</text>`;
+   const g=Math.abs(w/hh-w2/h2)<1e-9;st=`Länge durch Breite: ${z2(w/hh)} vorher, ${z2(w2/h2)} nachher. <b>${g?'Ähnlich.':'Nicht ähnlich.'}</b>`;
+  }else{
+   const [A,B,C]=D,a=len(B,C),b=len(A,C),c=len(A,B),a2=a+d,b2=b+d,c2=c+d;
+   // neues Dreieck: Seite c2 auf der Grundlinie, Spitze nach dem Kosinussatz
+   const x=(b2*b2+c2*c2-a2*a2)/(2*c2),y=Math.sqrt(Math.max(0,b2*b2-x*x));
+   const dx=(Math.max(...D.map(p=>p[0]))+1)*K+18;
+   h+=`<polygon class="g-alt" points="${D.map(p=>P(p[0],p[1])).join(' ')}"/>`;
+   D.forEach((p,i)=>{h+=`<circle class="g-griff" data-i="${i}" cx="${ox+p[0]*K}" cy="${oy-p[1]*K}" r="5"/>`;});
+   h+=`<polygon class="g-neu" points="${P(0,0,dx)} ${P(c2,0,dx)} ${P(x,y,dx)}"/>`;
+   h+=`<text x="${ox}" y="${oy+11}" class="g-t">${z(a)} · ${z(b)} · ${z(c)}</text><text x="${ox+dx}" y="${oy+11}" class="g-t">${z(a2)} · ${z(b2)} · ${z(c2)}</text>`;
+   const g=Math.abs(a/c-a2/c2)<.015*a/c&&Math.abs(b/c-b2/c2)<.015*b/c;
+   st=`Seitenverhältnis ${z2(a/c)} : ${z2(b/c)} : 1 vorher, ${z2(a2/c2)} : ${z2(b2/c2)} : 1 nachher. <b>${g?'Ähnlich.':'Nicht ähnlich.'}</b>`;
+  }
+  svg.innerHTML=h;document.getElementById('gstand').innerHTML=st;
+ }
+ function punkt(e){const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(svg.getScreenCTM().inverse());
+  const s5=v=>Math.round(v*2)/2;return [s5((q.x-ox)/K),s5((oy-q.y)/K)];}
+ svg.addEventListener('pointerdown',e=>{const g=e.target.closest('.g-griff');if(!g)return;zieh=g.dataset.i;svg.setPointerCapture(e.pointerId);e.preventDefault();});
+ svg.addEventListener('pointermove',e=>{if(zieh===null)return;let [x,y]=punkt(e);
+  if(zieh==='r'){R.w=Math.min(6,Math.max(.5,x));R.h=Math.min(4,Math.max(.5,y));}
+  else{x=Math.min(6,Math.max(0,x));y=Math.min(4,Math.max(0,y));D[+zieh]=[x,y];
+   const [A,B,C]=D;if(Math.abs((B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0]))<.5)return;}
+  geo();});
+ svg.addEventListener('pointerup',()=>{zieh=null;});
  gr.addEventListener('input',geo);
  document.querySelectorAll('.bk-wahl button').forEach(b=>b.onclick=()=>{fig=b.dataset.fig;document.querySelectorAll('.bk-wahl button').forEach(x=>x.classList.toggle('an',x===b));geo();});
  geo();}
@@ -2044,11 +2133,11 @@ const HG={
     ['Swan, M. (2008). A Designer Speaks. <i>Educational Designer</i>, 1(1).'],
     ['Swan, M. &amp; Burkhardt, H. (2014). Lesson Design for Formative Assessment. <i>Educational Designer</i>, 2(7).']]},
 '2-1':{t:'Worauf sich der Mehrwert stützt',a:[
- ['Offene Lernformen brauchen gute Aufgaben','Die perLen-Studie hat 65 Deutschschweizer Schulen mit Lernlandschaften und Lernateliers begleitet. Sie hält fest, dass eine neue Lernorganisation die Lernqualität nicht automatisch verbessert, und erklärt die enttäuschenden Leistungseffekte offener Formen mit einem niedrigen kognitiven Anregungsgehalt der Aufgaben (Stebler, Pauli &amp; Reusser 2018). Beobachtungen in individualisiertem Unterricht zeigen, dass dort das Erledigen des Pensums leicht wichtiger wird als der Inhalt (Breidenstein &amp; Rademacher 2013).'],
- ['Ordnen ist ein Kernprozess','Ordnen ist im KOSIMA-Modell einer von vier Kernprozessen des Mathematiklernens (Prediger et al. 2013). Aufgaben, mit denen Lernende ihr Wissen selbst ordnen, führten in kontrollierten Studien zu höheren Lernzuwächsen (Prediger et al. 2021).'],
+ ['Offene Lernformen brauchen gute Aufgaben','Die perLen-Studie hat 65 Deutschschweizer Schulen mit personalisierten Lernkonzepten begleitet, etwa Lernlandschaften und Lernateliers. Sie hält fest, dass eine neue Lernorganisation die Lernqualität nicht automatisch verbessert, und nennt als mögliche Erklärung für die enttäuschenden Leistungseffekte offener Formen Mängel der Unterrichtsqualität, etwa einen niedrigen kognitiven Anregungsgehalt der Aufgaben (Stebler, Pauli &amp; Reusser 2018). Beobachtungen in individualisiertem Unterricht zeigen, dass die Zeitvorgaben dort gleichgültig gegenüber den Lerninhalten bleiben können (Breidenstein &amp; Rademacher 2013).'],
+ ['Ordnen ist ein Kernprozess','Ordnen ist im KOSIMA-Modell einer von vier Kernprozessen des Mathematiklernens (Prediger et al. 2013). Aufgaben, mit denen Lernende ihr Wissen selbst ordnen, führten in zwei kontrollierten Studien zu höheren Lernzuwächsen; die Autoren warnen selbst vor Überinterpretation (Prediger et al. 2021).'],
  ['Vergleichen aktiviert','Vergleichen und Kontrastieren fördert konzeptuelles Verständnis (Hattikudur &amp; Alibali 2010). Wonach jemand sortiert, zeigt, wie das Wissen organisiert ist: Novizen ordnen nach Oberflächenmerkmalen, Expertinnen nach dem zugrunde liegenden Prinzip (Chi, Feltovich &amp; Glaser 1981).'],
  ['Selbstregulation','Selbstreguliertes Lernen läuft in Phasen ab: vorausdenken und planen, ausführen und überwachen, reflektieren (Zimmerman 2000; Überblick über die Modelle bei Panadero 2017). Der Lehrplan 21 verlangt, «Lernstrategien [zu] erwerben, Lern- und Arbeitsprozesse [zu] planen, durch[zu]führen und [zu] reflektieren», und als soziale Kompetenz, «sich mit Menschen aus[zu]tauschen, zusammen[zu]arbeiten».'],
- ['Zurück ins Klassengespräch','Was das Aufgreifen bringt, zeigt das Schweizer Projekt MathFlex (SNF, PH FHNW und Universität Zürich). Lehrpersonen lernten in einer Weiterbildung, Lösungswege vergleichen zu lassen; eine zweite Gruppe lernte zusätzlich, Klassengespräche nach dem Ansatz «Accountable Talk» zu führen. Beide förderten Flexibilität und prozedurales Wissen, nur die Gesprächsgruppe auch das konzeptuelle Wissen (Rüede, Mok &amp; Staub 2023). Werden Lösungswege im Gespräch ausdrücklich verglichen statt nur nebeneinandergestellt, wird deutlich mehr über das Vorgehen gesprochen (Hämmerle 2023). Accountable Talk verpflichtet das Gespräch auf die Gemeinschaft, auf korrektes Wissen und auf schlüssiges Begründen (Michaels, O’Connor &amp; Resnick 2008). Wie Lehrpersonen Ergebnisse der Gruppen dafür auswählen und ordnen, beschreiben Stein et al. (2008) in fünf Praktiken.']],
+ ['Zurück ins Klassengespräch','Was das Aufgreifen bringt, zeigt das Schweizer Projekt MathFlex (SNF, PH FHNW und Universität Zürich). Lehrpersonen lernten in einer Weiterbildung, Lösungswege vergleichen zu lassen; eine zweite Gruppe lernte zusätzlich, Klassengespräche nach dem Ansatz «Accountable Talk» zu führen. Beide förderten Flexibilität und prozedurales Wissen, nur die Gesprächsgruppe auch das konzeptuelle Wissen (Rüede, Mok &amp; Staub 2023). Werden Lösungswege im Gespräch ausdrücklich verglichen statt nur nebeneinandergestellt, wird etwa doppelt so oft über die Planung des Lösungswegs gesprochen (Hämmerle 2023). Accountable Talk verpflichtet das Gespräch auf die Gemeinschaft, auf überprüfbares Wissen und auf schlüssiges Begründen (Michaels, O’Connor &amp; Resnick 2008). Wie Lehrpersonen Ergebnisse der Gruppen dafür auswählen und ordnen, beschreiben Stein et al. (2008) in fünf Praktiken.']],
  l:[['Breidenstein, G. &amp; Rademacher, S. (2013). Vom Nutzen der Zeit. Beobachtungen und Analysen zum individualisierten Unterricht. <i>Zeitschrift für Pädagogik</i>, 59(3), 336–356.'],
     ['Chi, M. T. H., Feltovich, P. J. &amp; Glaser, R. (1981). Categorization and representation of physics problems by experts and novices. <i>Cognitive Science</i>, 5(2), 121–152.'],
     ['Hattikudur, S. &amp; Alibali, M. W. (2010). Learning about the equal sign: Does comparing with inequality symbols help? <i>Journal of Experimental Child Psychology</i>, 107(1), 15–30.'],
@@ -2060,20 +2149,20 @@ const HG={
     ['Prediger, S., Leuders, T., Barzel, B. &amp; Hußmann, S. (2013). Anknüpfen, Erkunden, Ordnen, Vertiefen. In <i>Beiträge zum Mathematikunterricht 2013</i>. Münster: WTM.'],
     ['Rüede, C., Mok, S. Y. &amp; Staub, F. C. (2023). Fostering flexibility using comparing solution strategies and classroom discussion: Effects of two professional development programs. <i>Journal for Research in Mathematics Education</i>, 54(1), 43–63.'],
     ['Stebler, R., Pauli, C. &amp; Reusser, K. (2018). Personalisiertes Lernen. Zur Analyse eines Bildungsschlagwortes und erste Ergebnisse aus der perLen-Studie. <i>Zeitschrift für Pädagogik</i>, 64(2), 159–178.'],
-    ['Stein, M. K., Engle, R. A., Smith, M. S. &amp; Hughes, E. K. (2008). Orchestrating productive mathematical discussions. <i>Mathematical Thinking and Learning</i>, 10(4), 313–340.'],
+    ['Stein, M. K., Engle, R. A., Smith, M. S. &amp; Hughes, E. K. (2008). Orchestrating productive mathematical discussions: Five practices for helping teachers move beyond show and tell. <i>Mathematical Thinking and Learning</i>, 10(4), 313–340.'],
     ['Zimmerman, B. J. (2000). Attaining self-regulation: A social cognitive perspective. In M. Boekaerts, P. R. Pintrich &amp; M. Zeidner (Hrsg.), <i>Handbook of Self-Regulation</i> (S. 13–39). San Diego: Academic Press.']]},
 '3-1':{t:'Was für digitale Sortierungen spricht',a:[
  ['Digitale Werkzeuge im Mathematikunterricht','Eine Metaanalyse über 92 Studien der Sekundarstufe findet insgesamt positive Effekte digitaler Werkzeuge auf das Lernen in Mathematik und Naturwissenschaften (Hillmayr et al. 2020).'],
- ['Prozesse sichtbar machen','Lehrpersonen ziehen Informationen über den Lernstand ihrer Klasse im Unterricht häufig heran und deuten sie mit ihrem Wissen über die Lernenden (Molenaar &amp; Knoop-van Campen 2019). Werkzeuge, die zeigen, wie Gruppen arbeiten, helfen Lehrpersonen, Schwierigkeiten zu erkennen und gezielter einzugreifen (van Leeuwen et al. 2014).'],
+ ['Prozesse sichtbar machen','Lehrpersonen ziehen Informationen über den Lernstand ihrer Klasse im Unterricht häufig heran und deuten sie mit ihrem Wissen über die Lernenden (Molenaar &amp; Knoop-van Campen 2019). In einer Simulationsstudie halfen Werkzeuge, die zeigen, wie Gruppen arbeiten, Lehrpersonen, Probleme bei der Beteiligung zu erkennen und häufiger einzugreifen (van Leeuwen et al. 2014).'],
  ['Karten, die sich verändern lassen','Ein mathematisches Objekt zu untersuchen heisst nach dem operativen Prinzip, zu erforschen, wie es sich unter Operationen verhält (Wittmann 1985). In dynamischen Umgebungen macht das Verändern sichtbar, was dabei gleich bleibt (Leung 2008). Dynamische Karten nutzen das für das Sortieren.']],
- l:[['Hillmayr, D., Ziernwald, L., Reinhold, F., Hofer, S. I. &amp; Reiss, K. M. (2020). The potential of digital tools to enhance mathematics and science learning in secondary schools. <i>Computers &amp; Education</i>, 153, 103897.'],
+ l:[['Hillmayr, D., Ziernwald, L., Reinhold, F., Hofer, S. I. &amp; Reiss, K. M. (2020). The potential of digital tools to enhance mathematics and science learning in secondary schools: A context-specific meta-analysis. <i>Computers &amp; Education</i>, 153, 103897.'],
     ['Leung, A. (2008). Dragging in a dynamic geometry environment through the lens of variation. <i>International Journal of Computers for Mathematical Learning</i>, 13(2), 135–157.'],
     ['Molenaar, I. &amp; Knoop-van Campen, C. A. N. (2019). How teachers make dashboard information actionable. <i>IEEE Transactions on Learning Technologies</i>, 12(3), 347–355.'],
     ['van Leeuwen, A., Janssen, J., Erkens, G. &amp; Brekelmans, M. (2014). Supporting teachers in guiding collaborating students: Effects of learning analytics in CSCL. <i>Computers &amp; Education</i>, 79, 28–39.','pruefen'],
     ['Wittmann, E. Ch. (1985). Objekte – Operationen – Wirkungen: Das operative Prinzip in der Mathematikdidaktik. <i>mathematik lehren</i>, 11, 7–11.','pruefen']]},
-'5-2':{t:'Wie Qualität gesichert wird',a:[
+'5-1':{t:'Wie Qualität gesichert wird',a:[
  ['Gestaltungsprinzipien','Aufgaben für das Ordnen brauchen eine eigene Gestaltung: Sie sollen jede einzelne Person aktivieren und trotzdem zu geteiltem Wissen führen (Barzel et al. 2013). Die Kriterien, nach denen SORT II Kartensätze baut und prüft, sind daraus und aus der Erprobung im Pilot entwickelt.'],
- ['Entwicklung und Forschung verschränkt','Dass gezielt entwickelte Aufgaben zum Ordnen wirken, zeigen kontrollierte Studien aus KOSIMA (Prediger et al. 2021). SORT II verbindet Entwicklung und Begleitforschung auf ähnliche Weise: Jede Sortierung wird in Klassen angeschaut und danach überarbeitet.']],
+ ['Entwicklung und Forschung verschränkt','Erste Hinweise, dass gezielt entwickelte Aufgaben zum Ordnen wirken, geben zwei kontrollierte Studien aus KOSIMA (Prediger et al. 2021). SORT II verbindet Entwicklung und Begleitforschung auf ähnliche Weise: Jede Sortierung wird in Klassen angeschaut und danach überarbeitet.']],
  l:[['Barzel, B., Leuders, T., Prediger, S. &amp; Hußmann, S. (2013). Designing tasks for engaging students in active knowledge organization. In A. Watson et al. (Hrsg.), <i>ICMI Study 22 on Task Design</i> (S. 285–294). Oxford.','pruefen'],
     ['Prediger, S., Barzel, B., Hußmann, S. &amp; Leuders, T. (2021). Towards a research base for textbooks as teacher support. <i>ZDM</i>, 53(6), 1233–1248.'],
     ['Prediger, S., Barzel, B., Hußmann, S. &amp; Leuders, T. (2021). Towards a research base for textbooks as teacher support. <i>ZDM</i>, 53(6), 1233–1248.']]},
@@ -2085,16 +2174,16 @@ const HG={
 '6-2':{t:'Wozu der Blick auf den Prozess dient',a:[
  ['Wozu der Blick auf den Prozess dient','Für ein Klassengespräch, das an den Ideen der Lernenden ansetzt, müssen Lehrpersonen beobachten, auswählen und ordnen, was die Gruppen getan haben (Stein et al. 2008). Gerade bei offenen, erkundenden Aktivitäten kann die gezielte Auswertung von Prozessdaten dabei helfen (Mavrikis et al. 2019).']],
  l:[['Mavrikis, M., Geraniou, E., Gutierrez Santos, S. &amp; Poulovassilis, A. (2019). Intelligent analysis and data visualisation for teacher assistance tools: The case of exploratory learning. <i>British Journal of Educational Technology</i>, 50(6), 2920–2942.'],
-    ['Stein, M. K., Engle, R. A., Smith, M. S. &amp; Hughes, E. K. (2008). Orchestrating productive mathematical discussions. <i>Mathematical Thinking and Learning</i>, 10(4), 313–340.']]},
+    ['Stein, M. K., Engle, R. A., Smith, M. S. &amp; Hughes, E. K. (2008). Orchestrating productive mathematical discussions: Five practices for helping teachers move beyond show and tell. <i>Mathematical Thinking and Learning</i>, 10(4), 313–340.']]},
 '7-1':{t:'Warum es eine Fortbildung braucht',a:[
  ['Gute Aufgaben allein genügen nicht','Anspruchsvolle Aufgaben verlieren im Unterricht oft ihren Anspruch (Stein, Grover &amp; Henningsen 1996). Lehrpersonen setzen Material nicht einfach um, sie deuten es (Remillard 2005).'],
- ['Fortbildung über Aufgaben','Eine Fortbildung, die mit Aufgabentypen wie Sortierungen arbeitet, hat Unterrichtspraxis und Überzeugungen von Lehrpersonen verändert (Swan 2007). Nach einer Fortbildung zu anspruchsvollen Aufgaben hielten Lehrpersonen deren Anspruch im Unterricht besser aufrecht (Boston &amp; Smith 2009).'],
+ ['Fortbildung über Aufgaben','Eine Fortbildung, die mit kollaborativen Aufgabentypen arbeitet, hat die Unterrichtspraxis von Lehrpersonen verändert und ihre Überzeugungen herausgefordert (Swan 2007). Nach einer Fortbildung zu anspruchsvollen Aufgaben hielten Lehrpersonen deren Anspruch im Unterricht besser aufrecht (Boston &amp; Smith 2009).'],
  ['Wie wirksame Fortbildung gebaut ist','Wirksam sind Fortbildungen, die Input, Erprobung im eigenen Unterricht und gemeinsame Reflexion verknüpfen (Lipowsky &amp; Rzejak 2021). Genau so sind die vier Schritte angelegt.']],
- l:[['Boston, M. D. &amp; Smith, M. S. (2009). Transforming secondary mathematics teaching. <i>Journal for Research in Mathematics Education</i>, 40(2), 119–156.'],
+ l:[['Boston, M. D. &amp; Smith, M. S. (2009). Transforming secondary mathematics teaching: Increasing the cognitive demands of instructional tasks used in teachers’ classrooms. <i>Journal for Research in Mathematics Education</i>, 40(2), 119–156.'],
     ['Lipowsky, F. &amp; Rzejak, D. (2021). <i>Fortbildungen für Lehrpersonen wirksam gestalten.</i> Gütersloh: Bertelsmann Stiftung.'],
     ['Remillard, J. T. (2005). Examining key concepts in research on teachers’ use of mathematics curricula. <i>Review of Educational Research</i>, 75(2), 211–246.'],
-    ['Stein, M. K., Grover, B. W. &amp; Henningsen, M. (1996). Building student capacity for mathematical thinking and reasoning. <i>American Educational Research Journal</i>, 33(2), 455–488.'],
-    ['Swan, M. (2007). The impact of task-based professional development on teachers’ practices and beliefs. <i>Journal of Mathematics Teacher Education</i>, 10(4–6), 217–237.']]}
+    ['Stein, M. K., Grover, B. W. &amp; Henningsen, M. (1996). Building student capacity for mathematical thinking and reasoning: An analysis of mathematical tasks used in reform classrooms. <i>American Educational Research Journal</i>, 33(2), 455–488.'],
+    ['Swan, M. (2007). The impact of task-based professional development on teachers’ practices and beliefs: A design research study. <i>Journal of Mathematics Teacher Education</i>, 10(4–6), 217–237.']]}
 };
 const hp=document.getElementById('hgpop');
 function hintergrund(k){const h=HG[k];
