@@ -1226,6 +1226,36 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 .vollbild .leiste{background:var(--papier);border-radius:12px 12px 0 0;border-bottom:1px solid var(--linie)}
 .vollbild iframe{border-radius:0 0 12px 12px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 @media(max-width:700px){.vollbild{padding:0}.vollbild .leiste,.vollbild iframe{border-radius:0}}
+
+/* v46: Bilder auf dem Tisch groesser. Der Rahmen schneidet den weissen Rand der Vignetten weg. */
+.pk-bildrahmen{display:block;overflow:hidden;border-radius:3px;background:#fff;flex:0 0 auto}
+.pk-bildrahmen>img.pk-bild{width:100%!important;height:100%!important;min-height:0!important;aspect-ratio:auto!important;object-fit:cover!important;border-radius:0;transform:scale(1.3)}
+.fg-format .pk-bildrahmen,.fg-vorhaben .pk-bildrahmen,.fg-pilot .pk-bildrahmen{aspect-ratio:16/8.6}
+@media(min-width:901px){.fg-format .pk,.fg-vorhaben .pk,.fg-pilot .pk,.fg-format .pk .pk-vorne,.fg-vorhaben .pk .pk-vorne,.fg-pilot .pk .pk-vorne{height:14rem!important}}
+.plan .pk.band .pk-bildrahmen{width:46%;align-self:stretch}
+@media(max-width:900px){.plan .pk .pk-bildrahmen{width:44%;aspect-ratio:4/3;align-self:center}}
+/* v46: Kartenbild rechts neben dem Einleitungssatz */
+.kurz-bild{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:1.6rem;align-items:center;margin-bottom:.4rem}
+.kurz-bild .kurz{margin:0}
+.kurzrahmen{display:block;aspect-ratio:2/1;overflow:hidden;border-radius:8px;background:#fff}
+.kurzrahmen img{width:100%;height:100%;object-fit:cover;transform:scale(1.3)}
+@media(max-width:800px){.kurz-bild{grid-template-columns:1fr}.kurzrahmen{max-width:20rem}}
+/* v47: Seitenbilder im Zoomrahmen, Hoehe je Seite so gross, dass nichts scrollt */
+.seitenbild.zoom{display:block;aspect-ratio:2/1;width:min(100%,calc(var(--h,220px)*2));height:auto;max-height:none!important;overflow:hidden;border-radius:8px;background:#fff;margin-inline:auto;justify-self:center;align-self:center}
+.seitenbild.zoom img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.3)}
+/* Groessen gemessen bei 1440x900 und 1280x800: groesser wuerde dort ein Scrollbalken entstehen */
+@media(min-width:801px){
+.kapitel[data-k="1"] .kurz-bild{grid-template-columns:minmax(0,1fr) min(480px,52vh,46%)}
+.kapitel[data-k="4"] .kurz-bild{grid-template-columns:minmax(0,1fr) min(270px,29vh,40%)}
+.kapitel[data-k="7"] .kurz-bild{grid-template-columns:minmax(0,1fr) min(260px,30vh,40%)}
+.kapitel[data-k="8"] .kurz-bild{grid-template-columns:minmax(0,1fr) min(420px,50vh,45%)}
+.kapitel[data-k="2"] .mit-bild{grid-template-columns:1fr 1fr}
+.geldunten{grid-template-columns:1fr 1fr}
+#zb-2,#zb-5,#zb-6,#zb-10{--h:400px}
+#zb-9b{--h:min(260px,30vh)}
+#zb-6 img{transform:scale(1.12)}
+}
+@media(min-width:861px){.plattform2{grid-template-columns:1fr 1fr 1.3fr}}
 </style>
 </head>
 <body>
@@ -1309,7 +1339,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="augen">Das Format · Karte 1</div>
     <h2>Wie sieht eine Sortieraktivität aus?</h2>
     <div class="seite">
-      <p class="kurz">Eine Gruppe bekommt einen Satz Karten mit Termen, Figuren oder Aussagen und ordnet sie. Gefragt ist nicht die eine richtige Ordnung, sondern das Kriterium und seine Begründung.<button class="litm" data-lit="klappauf" aria-label="Literatur">Lit.</button></p>
+      <div class="kurz-bild"><p class="kurz">Eine Gruppe bekommt einen Satz Karten mit Termen, Figuren oder Aussagen und ordnet sie. Gefragt ist nicht die eine richtige Ordnung, sondern das Kriterium und seine Begründung.<button class="litm" data-lit="klappauf" aria-label="Literatur">Lit.</button></p><span class="kurzrahmen"><img src="bilder/karte-1.jpg" alt=""></span></div>
       <h3 class="zw">Zwei Beispiele aus dem Pilot, zum Ausprobieren</h3>
       <div class="galerie zwei-bsp" id="galerie"></div>
     </div>
@@ -1341,7 +1371,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
           <li><h3>Übt, was Selbstregulation verlangt</h3><p>Planen, die eigene Arbeit überwachen, reflektieren: Eine Sortierung verlangt genau das. Ein Kriterium wählen, die Ordnung laufend prüfen, begründen und notfalls umwerfen.<button class="litm" data-lit="zimmerman" aria-label="Literatur">Lit.</button><button class="litm" data-lit="lp21-planen" aria-label="Literatur">Lit.</button></p></li>
         </ol>
         <div class="bildspalte">
-          <img class="seitenbild" src="bilder/karte-2.jpg" alt="">
+          <span class="seitenbild zoom" id="zb-2"><img src="bilder/karte-2.jpg" alt=""></span>
           <p class="quintessenz"><b>Und danach:</b> Was die Gruppen erarbeiten, bleibt nicht in der selbständigen Phase. Es wird im Klassengespräch aufgegriffen, damit selbständige Arbeit und Unterricht nicht nebeneinanderher laufen.<button class="litm" data-lit="susi-mittelweg" aria-label="Literatur">Lit.</button></p>
         </div>
       </div>
@@ -1382,7 +1412,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="augen">Der Pilot · Karte 4</div>
     <h2>Was hat der Pilot schon geleistet?</h2>
     <div class="seite">
-      <p class="kurz">Im Schuljahr 2026/27 entwickelt und erprobt das Pilotprojekt SORT der PH Luzern Sortieraktivitäten für die Klassen 7 und 9.</p>
+      <div class="kurz-bild"><p class="kurz">Im Schuljahr 2026/27 entwickelt und erprobt das Pilotprojekt SORT der PH Luzern Sortieraktivitäten für die Klassen 7 und 9.</p><span class="kurzrahmen"><img src="bilder/karte-4.jpg" alt=""></span></div>
       <div class="pilotleiste">
         <div class="pz"><b>8</b><span>Kartensätze<i>Klassen 7 und 9</i></span></div>
         <div class="pz"><b>5</b><span>Klassen<i>in der Erprobung</i></span></div>
@@ -1424,7 +1454,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
         <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="40" rx="3"/><path d="M20 38h24"/><circle cx="36" cy="38" r="4"/><rect x="20" y="18" width="12" height="10"/></svg><h3>Erweitert durch dynamische Karten</h3><p>Karten, auf denen Lernende etwas verändern, etwa eine Figur verziehen. So werden Zusammenhänge sortierbar, die erst beim Verändern sichtbar werden.</p></div>
         <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="22" width="36" height="26" rx="5"/><circle cx="25" cy="34" r="3"/><circle cx="39" cy="34" r="3"/><path d="M32 22v-8M28 13h8M26 42h12"/></svg><h3>Assistent ausgebaut</h3><p>Der KI-gestützte Assistent aus dem Pilot unterstützt die Entwicklung der neuen Kartensätze. Geprüft wird, ob er auch personenunabhängig trägt.</p></div>
         <div class="kachel5"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><path d="M26 38l12-12"/><path d="M22 30l-6 6a7 7 0 0 0 10 10l6-6M42 34l6-6a7 7 0 0 0-10-10l-6 6"/></svg><h3>Systematisch angebunden</h3><p>Schon der Pilot orientiert sich an Lehrplan und Lehrmitteln. SORT II gleicht die Kartensätze systematisch mit Lehrplan 21, Mathbuch und dem Zürcher Lehrmittel ab.</p></div>
-        <img class="seitenbild kachel5-bild" src="bilder/karte-5.jpg" alt="">
+        <span class="seitenbild zoom kachel5-bild" id="zb-5"><img src="bilder/karte-5.jpg" alt=""></span>
       </div>
     </div>
   </section>
@@ -1439,7 +1469,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
       <div class="plattform2">
         <div class="sort2box"><span class="pf-nr">1</span><h3>Übersichtlich zugänglich</h3><ul class="pf-liste"><li>Kartensätze nach Klasse, Thema und Lehrplan finden</li><li>direkt im Browser einsetzen</li><li>frei und ohne Konto für die Klasse</li></ul></div>
         <div class="sort2box"><span class="pf-nr">2</span><h3>Lernprozesse sichtbar</h3><ul class="pf-liste"><li>nach der Sortierphase sehen, wie jede Gruppe vorgegangen ist</li><li>die Stellen finden, die sich für das Gespräch lohnen: wo Gruppen verschieden entschieden haben und wo alle dasselbe taten</li><li>die Aufzeichnungen bleiben bei der Lehrperson</li></ul></div>
-        <img class="seitenbild" src="bilder/karte-6.jpg" alt="">
+        <span class="seitenbild zoom" id="zb-6"><img src="bilder/karte-6.jpg" alt=""></span>
       </div>
     </div>
     <div class="seite">
@@ -1473,7 +1503,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="augen">Das Vorhaben · Karte 7</div>
     <h2>Wie lernen Lehrpersonen, damit zu unterrichten?</h2>
     <div class="seite">
-      <p class="kurz">Wer Sortieraktivitäten nur austeilt, bekommt sortierte Karten zurück, aber noch keinen Unterricht. Lehrpersonen lernen den Einsatz, indem sie es tun und darüber sprechen.</p>
+      <div class="kurz-bild"><p class="kurz">Wer Sortieraktivitäten nur austeilt, bekommt sortierte Karten zurück, aber noch keinen Unterricht. Lehrpersonen lernen den Einsatz, indem sie es tun und darüber sprechen.</p><span class="kurzrahmen"><img src="bilder/karte-7.jpg" alt=""></span></div>
       <p class="ausgang"><span class="bk">● Ausgangspunkt im Pilot</span> Eine Handreichung, dazu zu jeder Sortierung eine Anleitung und eine Druckvorlage.</p>
       <div class="sort2box"><span class="bk">○ Das macht SORT II: ein Fortbildungsformat in vier Schritten</span>
         <div class="kreis4">
@@ -1493,7 +1523,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="augen">Umsetzung · Karte 8</div>
     <h2>Wer steht dahinter?</h2>
     <div class="seite">
-      <p class="kurz">Drei Dozierende der Mathematik-Lehrpersonenbildung an der PH Luzern tragen das Vorhaben gemeinsam. Dazu kommen wissenschaftliche Mitarbeit für die Begleitforschung, studentische Hilfskräfte und eine technische Position für die Plattform.</p>
+      <div class="kurz-bild"><p class="kurz">Drei Dozierende der Mathematik-Lehrpersonenbildung an der PH Luzern tragen das Vorhaben gemeinsam. Dazu kommen wissenschaftliche Mitarbeit für die Begleitforschung, studentische Hilfskräfte und eine technische Position für die Plattform.</p><span class="kurzrahmen"><img src="bilder/karte-8.jpg" alt=""></span></div>
       <div class="team gross">
         <div class="person"><img src="bilder/team-allmendinger.jpg" alt="Henrike Allmendinger"><div><h3>Henrike Allmendinger</h3><p>Dozentin für Mathematikdidaktik an der PH Luzern. <b>Bringt das Format mit:</b> setzt Sortieraktivitäten seit Jahren in selbstreguliert angelegter Lehre ein und hat sie im Pilot systematisiert.</p><a class="profil" href="https://www.phlu.ch/henrike-allmendinger.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
         <div class="person"><div class="init" aria-hidden="true">ML</div><div><h3>Martin Lacher</h3><p>Dozent für Mathematik Sek&nbsp;I an der PH Luzern. <b>Bringt die Lehrmittel mit:</b> leitet «Das neue Mathbuch» und die Mathbuch-Applets, forscht zu explorierendem Arbeiten und Selbstregulation.</p><a class="profil" href="https://www.phlu.ch/martin-lacher.html" target="_blank" rel="noopener">Profil PH Luzern ↗</a></div></div>
@@ -1540,7 +1570,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
         <div class="feldkarte bleibt3"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M24 52h16M32 44v8"/><rect x="14" y="18" width="10" height="8" rx="1"/><rect x="27" y="18" width="10" height="8" rx="1"/><rect x="40" y="18" width="10" height="8" rx="1"/></svg><h3>Die Plattform</h3><p>Sie ist so gebaut, dass sie nach dem Projekt weiterlaufen kann: Die Daten fallen nicht an der Hochschule an.</p></div>
         <div class="feldkarte bleibt3"><svg class="picon" viewBox="0 0 64 64" aria-hidden="true"><rect x="22" y="8" width="34" height="22" rx="2"/><circle cx="14" cy="24" r="5"/><path d="M5 50c0-12 18-12 18 0"/><circle cx="44" cy="42" r="4"/><path d="M36 58c0-9 16-9 16 0"/></svg><h3>Die Fortbildung</h3><p>Sie geht in das Programm der Weiterbildung der PH Luzern über.</p></div>
       </div>
-      <img class="seitenbild bleibt-bild" src="bilder/karte-9.jpg" alt="">
+      <span class="seitenbild zoom bleibt-bild" id="zb-9b"><img src="bilder/karte-9.jpg" alt=""></span>
     </div>
   </section>
 
@@ -1564,7 +1594,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
         <li data-geld="sach" tabindex="0" role="button"><i class="m4"></i><span>Fortbildung, Verbreitung, Material, KI-Werkzeuge <span class="mehr-i">ⓘ</span></span><b>39’100</b></li>
         <li data-geld="ovh" tabindex="0" role="button" class="leise"><i></i><span>dazu Overhead der Hochschule, 20&nbsp;% <span class="mehr-i">ⓘ</span></span><b>97’900</b></li>
       </ul>
-      <img class="seitenbild" src="bilder/karte-10.jpg" alt="">
+      <span class="seitenbild zoom" id="zb-10"><img src="bilder/karte-10.jpg" alt=""></span>
       </div>
       <p class="seitenvermerk">Ein Klick auf einen Posten zeigt, wie er zustande kommt. Personalkosten nach den Lohnansätzen der PH Luzern inklusive Sozialabgaben.</p>
       <p class="kontakt">Kontakt: Dr. Henrike Allmendinger, henrike.allmendinger@phlu.ch</p>
@@ -1681,7 +1711,7 @@ const FELD={};Object.entries(GRUPPEN).forEach(([g,t])=>{const f=document.createE
 KM.forEach(m=>{
   const b=document.createElement('button');b.className='pk';b.dataset.k=m.k;
   if(m.g==='umsetzung')b.classList.add('band');b.style.setProperty('--akz',akzent(m));
-  b.innerHTML=`<span class="pk-vorne">${bildHtml(m)}<span class="pk-txt"><span class="pk-nr">Karte ${m.k}</span><span class="pk-frage">${m.f}</span></span></span><span class="pk-rueck"><span class="pk-stempel" aria-hidden="true">✓</span><span class="pk-nr">Karte ${m.k} · ${m.kurz}</span><span class="pk-kern">${m.kern}</span><span class="pk-wieder">nochmals öffnen ↻</span></span>`;
+  b.innerHTML=`<span class="pk-vorne"><span class="pk-bildrahmen">${bildHtml(m)}</span><span class="pk-txt"><span class="pk-nr">Karte ${m.k}</span><span class="pk-frage">${m.f}</span></span></span><span class="pk-rueck"><span class="pk-stempel" aria-hidden="true">✓</span><span class="pk-nr">Karte ${m.k} · ${m.kurz}</span><span class="pk-kern">${m.kern}</span><span class="pk-wieder">nochmals öffnen ↻</span></span>`;
   b.onclick=()=>oeffne(m.k,b);
   FELD[m.g].appendChild(b);
 });
