@@ -1254,7 +1254,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
         <div class="figur" id="fig-jonas"><img class="fz" src="bilder/jonas-geschlossen.png" alt=""><img class="fs" src="bilder/jonas-sprechend.png" alt=""><span class="fname">Jonas</span></div>
       </div>
     </div>
-    <p class="minilegende">Eine Gruppe sortiert frei und muss zuerst entscheiden, wonach. Beispiel «Bruch · Dezimalzahl · Bild» aus dem SORT-Antrag; das Gespräch ist nachgestellt.</p>
+    <p class="minilegende">Eine Gruppe sortiert frei und muss zuerst entscheiden, wonach. Beispiel «Bruch · Dezimalzahl · Bild», das Gespräch ist zur Veranschaulichung erfunden.</p>
   </div>
   <div class="schritte">
     <p class="st-label">Die Herausforderung</p>
@@ -1444,7 +1444,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     </div>
     <div class="seite">
       <h3 class="seitentitel">So könnte die Plattform aussehen</h3>
-      <p class="text">Ein Prototyp mit nachgestellten Daten: Vier Gruppen einer Klasse 9 haben sechzehn Aussagen aus dem Kartensatz «Ähnlichkeit» nach «immer», «manchmal» oder «nie» sortiert. Links die ganze Klasse, rechts eine Gruppe zum Abspielen.</p>
+      <p class="text">Ein Prototyp mit Beispieldaten: So sähe es aus, wenn vier Gruppen einer Klasse 9 sechzehn Aussagen aus dem Kartensatz «Ähnlichkeit» nach «immer», «manchmal» oder «nie» sortiert hätten. Links die ganze Klasse, rechts eine Gruppe zum Abspielen.</p>
       <div class="monitor">
         <div class="titel"><b>SORT</b> · Sitzungen ansehen · Klasse 9b · Ähnlichkeit <span class="r proto">Prototyp</span></div>
         <div class="mgrid">
@@ -1850,7 +1850,7 @@ vbEl.addEventListener('click',e=>{if(e.target===vbEl)vbzu();});
 document.getElementById('vbzu').onclick=vbzu;
 
 // ---------- Karte 4: Lehrpersonen-Ansicht ----------
-// Aussagekarten aus dem Kartensatz Aehnlichkeit (Pilot). Entscheidungen der Gruppen nachgestellt.
+// Aussagekarten aus dem Kartensatz Aehnlichkeit (Pilot). Entscheidungen der Gruppen sind Beispieldaten.
 const AUSSAGEN={W01:'Zwei Quadrate sind ähnlich.',W02:'Zwei Rechtecke sind ähnlich.',W03:'Zwei gleichseitige Dreiecke sind ähnlich.',W04:'Zwei rechtwinklige Dreiecke sind ähnlich.',W05:'Zwei Rauten sind ähnlich.',W06:'Zwei Dreiecke, die in zwei Winkeln übereinstimmen, sind ähnlich.',W07:'Zwei Vierecke, die in allen vier Winkeln übereinstimmen, sind ähnlich.',W08:'Ähnliche Figuren haben gleich grosse Winkel.',W09:'Zwei kongruente Figuren sind ähnlich.',W10:'Zwei ähnliche Figuren sind kongruent.',W11:'Verdoppelt man alle Seiten einer Figur, verdoppelt sich ihr Flächeninhalt.',W12:'Addiert man zu jeder Seite 2 cm, entsteht eine ähnliche Figur.',W13:'Zwei stumpfwinklige Dreiecke sind ähnlich.',W14:'Zwei gleichschenklige Dreiecke mit gleichem Winkel an der Spitze sind ähnlich.',W15:'Zwei Parallelogramme mit gleichem Seitenverhältnis sind ähnlich.',W16:'Eine Figur ist zu ihrem Spiegelbild ähnlich.'};
 const BASIS={W01:'i',W02:'m',W03:'i',W04:'m',W05:'m',W06:'i',W07:'m',W08:'i',W09:'i',W10:'m',W11:'n',W12:'m',W13:'m',W14:'i',W15:'m',W16:'o'};
 const ABW={A:{W12:'i',W11:'i',W16:'i',W10:'n',W13:'n'},B:{W04:'i',W16:'n',W13:'n'},C:{W12:'n',W07:'i',W16:'i',W13:'n'},D:{W12:'i',W11:'i',W16:'m',W15:'i',W13:'n'}};
@@ -1911,7 +1911,7 @@ function lehrer(){
 }
 const OHR='<svg class="ohr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5c1.4 1.9 1.4 5.1 0 7M18.8 6c2.6 3.4 2.6 8.6 0 12" fill="none"/></svg>';
 function zeit(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
-// Nachgestelltes Gespraech der Gruppe B zu W12 und W11
+// Beispielgespraech der Gruppe B zu W12 und W11 (erfunden)
 const GESPRAECH={
   W12:[['2:12','L','«Addiert man zu jeder Seite 2 cm …» Das wird einfach grösser. Also ähnlich.'],
        ['2:19','R','Grösser heisst nicht ähnlich. Ähnlich heisst: alles gleich gestreckt.'],
@@ -1988,7 +1988,7 @@ document.querySelectorAll('.wk').forEach(w=>{const um=()=>{w.classList.toggle('u
  geo();}
 
 
-// ---------- Einstieg: freie Sortierung Bruch, Dezimalzahl, Bild (Beispiel aus dem SORT-Antrag, Gespraech nachgestellt) ----------
+// ---------- Einstieg: freie Sortierung Bruch, Dezimalzahl, Bild (Gespraech zur Veranschaulichung erfunden) ----------
 (function(){
   const t=document.getElementById('minitisch');if(!t)return;
   function kreis(z,n){ // Kreis mit z von n Teilen gefaerbt
