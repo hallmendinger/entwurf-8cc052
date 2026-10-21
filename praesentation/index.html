@@ -1221,6 +1221,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 .monitor .titel .proto{font:700 .68rem "Fira Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#fffdf9;background:var(--braun);border-radius:99px;padding:.1rem .6rem}
 .m-legende{margin-top:.5rem;font-size:.78rem;display:flex;flex-wrap:wrap;gap:.3rem .8rem;color:var(--mut)}
 .team.gross .person p b{color:var(--braun);font-weight:600}
+/* v44: Beispielaktivitaet als grosses Pop-up ueber der Karte */
+.vollbild{padding:3vh 3vw;background:rgba(40,28,16,.55)!important;animation:ein .2s ease-out}
+.vollbild .leiste{background:var(--papier);border-radius:12px 12px 0 0;border-bottom:1px solid var(--linie)}
+.vollbild iframe{border-radius:0 0 12px 12px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+@media(max-width:700px){.vollbild{padding:0}.vollbild .leiste,.vollbild iframe{border-radius:0}}
 </style>
 </head>
 <body>
@@ -1841,6 +1846,7 @@ BEISPIELE.forEach(([datei,thema,t,art,d,lit])=>{
 const vbEl=document.getElementById('vollbild'),vbFrame=document.getElementById('vbframe');
 function vb(src,t){vbFrame.src=src;document.getElementById('vbtitel').textContent=t+' · eine Sortierung aus dem Pilot SORT';vbEl.classList.add('offen');document.getElementById('vbzu').focus();}
 function vbzu(){vbEl.classList.remove('offen');vbFrame.src='about:blank';}
+vbEl.addEventListener('click',e=>{if(e.target===vbEl)vbzu();});
 document.getElementById('vbzu').onclick=vbzu;
 
 // ---------- Karte 4: Lehrpersonen-Ansicht ----------
@@ -2117,19 +2123,19 @@ if(ARBEIT)document.body.classList.add('mit-lit');
 // Wissenschaftlicher Hintergrund je Karte: kurzer Text mit Bezuegen, darunter die Literatur
 const HG={
 '1-1':{t:'Woher das Format kommt',a:[
- ['Sortieren als Form des Ordnens','Im Projekt KOSIMA beschreiben Prediger, Barzel, Leuders und Hußmann das Ordnen als eigenen Kernprozess des Mathematiklernens, neben Anknüpfen, Erkunden und Vertiefen. Zu den Tätigkeiten, mit denen Lernende Wissen ordnen, zählen sie ausdrücklich das selbstständige Sortieren nach eigenen Kriterien und das Zuordnen von Formeln, Bildern und Situationen (Prediger et al. 2011; Prediger et al. 2013). Ein Kartenbeispiel aus diesem Umfeld ist der «Funktionenschatz», in dem Lernende Darstellungen von Funktionstypen auf Karten einander zuordnen (Heitzer 2011).'],
+ ['Sortieren als Form des Ordnens','Im Projekt KOSIMA beschreiben Prediger, Barzel, Leuders und Hußmann das Ordnen als eigenen Kernprozess des Mathematiklernens, neben Anknüpfen, Erkunden und Vertiefen. Beim Ordnen verknüpfen Lernende ihre eigenen Erkenntnisse mit der fertigen Mathematik, durch Tätigkeiten wie Zuordnen, Ergänzen von Beispielen und Erklären (Prediger et al. 2011; Prediger et al. 2013). Ein Beispiel aus diesem Umfeld ist der «Funktionenschatz», in dem Lernende rückblickend Darstellungen verschiedener Funktionstypen in einer Übersicht zusammenführen (Heitzer 2011).'],
  ['Bekannte Formate: Zuordnen, Memory, Domino','Viele Lehrpersonen kennen Kartenformate aus der Methodenpraxis. Schon die Standards Unit beschreibt Zuordnungskarten, die in der einfachsten Form Dominosteine sind (Swan 2005). Im sprachsensiblen Fachunterricht gehören Zuordnung, Memory, Domino und der «Kärtchentisch», ein Kartensatz, der geordnet und klassifiziert wird, zu den verbreiteten Methoden-Werkzeugen (Leisen 2010). In <i>mathematik lehren</i> 164 zeigen mehrere Beiträge Formate, mit denen Lernende Darstellungen selbst ordnen und vernetzen (Heitzer 2011; Hußmann et al. 2011). Sortieraktivitäten knüpfen daran an, verlangen aber mehr als das Finden passender Paare: ein Kriterium und seine Begründung.']],
- l:[['Heitzer, J. (2011). Der schulische Funktionenschatz. Ein Beispiel für rückblickendes Systematisieren. <i>mathematik lehren</i>, 164, 58–61.'],
+ l:[['Heitzer, J. (2011). Der schulische Funktionenschatz – ein Beispiel für rückblickendes Systematisieren. <i>mathematik lehren</i>, 164, 58–61.'],
     ['Hußmann, S., Schacht, F., Greefrath, G., Mühlenfeld, U. &amp; Witzmann, C. (2011). Besser verstehen mit verschiedenen Darstellungen. Aufgabenformate für eigentätiges Systematisieren. <i>mathematik lehren</i>, 164, 48–51.'],
     ['Leisen, J. (2010). <i>Handbuch Sprachförderung im Fach. Sprachsensibler Fachunterricht in der Praxis.</i> Bonn: Varus.','pruefen'],
     ['Prediger, S., Barzel, B., Leuders, T. &amp; Hußmann, S. (2011). Systematisieren und Sichern. Nachhaltiges Lernen durch aktives Ordnen. <i>mathematik lehren</i>, 164, 2–9.'],
-    ['Prediger, S., Leuders, T., Barzel, B. &amp; Hußmann, S. (2013). Anknüpfen, Erkunden, Ordnen, Vertiefen. Ein Modell zur Strukturierung von Design und Unterrichtshandeln. In <i>Beiträge zum Mathematikunterricht 2013</i>. Münster: WTM.'],
-    ['Swan, M. (2005). <i>Improving learning in mathematics: challenges and strategies.</i> London: DfES Standards Unit.']]},
+    ['Prediger, S., Leuders, T., Barzel, B. &amp; Hußmann, S. (2013). Anknüpfen, Erkunden, Ordnen, Vertiefen. Ein Modell zur Strukturierung von Design und Unterrichtshandeln. In G. Greefrath, F. Käpnick &amp; M. Stein (Hrsg.), <i>Beiträge zum Mathematikunterricht 2013</i> (S. 769–772). Münster: WTM.'],
+    ['Swan, M. (2005). <i>Improving learning in mathematics: challenges and strategies.</i> Department for Education and Skills, Standards Unit.']]},
 '1-2':{t:'Woran die Unterscheidung anschliesst',a:[
- ['Aktivitätstypen','Am Shell Centre in Nottingham hat Malcolm Swan Karten-Aktivitäten für den Mathematikunterricht systematisch beschrieben: Objekte klassifizieren, etwa den «Eindringling» finden, Darstellungen einander zuordnen und Aussagen danach beurteilen, ob sie immer, manchmal oder nie gelten (Swan 2005; Swan 2008). Daraus sind im Mathematics Assessment Project Unterrichtsstunden für die Sekundarstufe entstanden (Swan &amp; Burkhardt 2014). In den USA ist «Card Sort» eine feste Unterrichtsroutine, bei der jede gelegte Karte begründet wird (Illustrative Mathematics).'],
+ ['Aktivitätstypen','Am Shell Centre in Nottingham hat Malcolm Swan Karten-Aktivitäten für den Mathematikunterricht systematisch beschrieben: Objekte klassifizieren, etwa den «Eindringling» finden, Darstellungen einander zuordnen und Aussagen danach beurteilen, ob sie immer, manchmal oder nie gelten (Swan 2005; Swan 2008). In derselben Tradition sind im Mathematics Assessment Project Unterrichtsstunden entstanden, in denen Lernende Karten auf Papier ordnen (Swan &amp; Burkhardt 2014). In den USA ist «Card Sort» eine feste Unterrichtsroutine, die sich so anlegen lässt, dass jede gelegte Karte begründet wird (Illustrative Mathematics).'],
  ['Was SORT daraus macht','Die Unterscheidung nach Grundform und drei Stellschrauben (Offenheit, Eindeutigkeit, Vollständigkeit) ist im Pilot SORT entstanden. Sie schliesst an diese Typen an und beschreibt, wie viel eine Gruppe selbst festlegen muss.']],
  l:[['Illustrative Mathematics (o. J.). Instructional Routines: Card Sort. Kendall Hunt. im.kendallhunt.com'],
-    ['Swan, M. (2005). <i>Improving learning in mathematics: challenges and strategies.</i> London: DfES Standards Unit.'],
+    ['Swan, M. (2005). <i>Improving learning in mathematics: challenges and strategies.</i> Department for Education and Skills, Standards Unit.'],
     ['Swan, M. (2008). A Designer Speaks. <i>Educational Designer</i>, 1(1).'],
     ['Swan, M. &amp; Burkhardt, H. (2014). Lesson Design for Formative Assessment. <i>Educational Designer</i>, 2(7).']]},
 '2-1':{t:'Worauf sich der Mehrwert stützt',a:[
@@ -2146,7 +2152,7 @@ const HG={
     ['Michaels, S., O’Connor, C. &amp; Resnick, L. B. (2008). Deliberative discourse idealized and realized: Accountable talk in the classroom and in civic life. <i>Studies in Philosophy and Education</i>, 27(4), 283–297.','pruefen'],
     ['Panadero, E. (2017). A review of self-regulated learning: Six models and four directions for research. <i>Frontiers in Psychology</i>, 8, 422.'],
     ['Prediger, S., Barzel, B., Hußmann, S. &amp; Leuders, T. (2021). Towards a research base for textbooks as teacher support: the case of engaging students in active knowledge organization in the KOSIMA project. <i>ZDM</i>, 53(6), 1233–1248.'],
-    ['Prediger, S., Leuders, T., Barzel, B. &amp; Hußmann, S. (2013). Anknüpfen, Erkunden, Ordnen, Vertiefen. In <i>Beiträge zum Mathematikunterricht 2013</i>. Münster: WTM.'],
+    ['Prediger, S., Leuders, T., Barzel, B. &amp; Hußmann, S. (2013). Anknüpfen, Erkunden, Ordnen, Vertiefen. Ein Modell zur Strukturierung von Design und Unterrichtshandeln. In G. Greefrath, F. Käpnick &amp; M. Stein (Hrsg.), <i>Beiträge zum Mathematikunterricht 2013</i> (S. 769–772). Münster: WTM.'],
     ['Rüede, C., Mok, S. Y. &amp; Staub, F. C. (2023). Fostering flexibility using comparing solution strategies and classroom discussion: Effects of two professional development programs. <i>Journal for Research in Mathematics Education</i>, 54(1), 43–63.'],
     ['Stebler, R., Pauli, C. &amp; Reusser, K. (2018). Personalisiertes Lernen. Zur Analyse eines Bildungsschlagwortes und erste Ergebnisse aus der perLen-Studie. <i>Zeitschrift für Pädagogik</i>, 64(2), 159–178.'],
     ['Stein, M. K., Engle, R. A., Smith, M. S. &amp; Hughes, E. K. (2008). Orchestrating productive mathematical discussions: Five practices for helping teachers move beyond show and tell. <i>Mathematical Thinking and Learning</i>, 10(4), 313–340.'],
@@ -2163,11 +2169,11 @@ const HG={
 '5-1':{t:'Wie Qualität gesichert wird',a:[
  ['Gestaltungsprinzipien','Aufgaben für das Ordnen brauchen eine eigene Gestaltung: Sie sollen jede einzelne Person aktivieren und trotzdem zu geteiltem Wissen führen (Barzel et al. 2013). Die Kriterien, nach denen SORT II Kartensätze baut und prüft, sind daraus und aus der Erprobung im Pilot entwickelt.'],
  ['Entwicklung und Forschung verschränkt','Erste Hinweise, dass gezielt entwickelte Aufgaben zum Ordnen wirken, geben zwei kontrollierte Studien aus KOSIMA (Prediger et al. 2021). SORT II verbindet Entwicklung und Begleitforschung auf ähnliche Weise: Jede Sortierung wird in Klassen angeschaut und danach überarbeitet.']],
- l:[['Barzel, B., Leuders, T., Prediger, S. &amp; Hußmann, S. (2013). Designing tasks for engaging students in active knowledge organization. In A. Watson et al. (Hrsg.), <i>ICMI Study 22 on Task Design</i> (S. 285–294). Oxford.','pruefen'],
+ l:[['Barzel, B., Leuders, T., Prediger, S. &amp; Hußmann, S. (2013). Designing tasks for engaging students in active knowledge organization. In A. Watson et al. (Hrsg.), <i>ICMI Study 22 on Task Design: Proceedings of the Study Conference</i> (S. 285–294). ICMI.','pruefen'],
     ['Prediger, S., Barzel, B., Hußmann, S. &amp; Leuders, T. (2021). Towards a research base for textbooks as teacher support. <i>ZDM</i>, 53(6), 1233–1248.'],
     ['Prediger, S., Barzel, B., Hußmann, S. &amp; Leuders, T. (2021). Towards a research base for textbooks as teacher support. <i>ZDM</i>, 53(6), 1233–1248.']]},
 '6-1':{t:'Was es schon gibt, und was neu ist',a:[
- ['Bestehende Angebote','Digitale Kartensortierungen gibt es bereits, etwa «Card Sort» von Desmos, heute Teil von Amplify Classroom. Dort erstellen und teilen Lehrpersonen Kartensätze; die Lehrperson sieht den Stand jeder Person, gemessen an einem Lösungsschlüssel, und die häufigsten Fehlzuordnungen. Fachdidaktisch entwickelte Kartensätze gibt es im Mathematics Assessment Project, dort auf Papier (Swan &amp; Burkhardt 2014).'],
+ ['Bestehende Angebote','Digitale Kartensortierungen gibt es bereits, etwa «Card Sort» von Desmos, heute Teil von Amplify Classroom. Dort erstellen Lehrpersonen Kartensätze; die Lehrperson sieht den Stand jeder Person, gemessen an einem Lösungsschlüssel, und die häufigsten Fehlzuordnungen. Fachdidaktisch entwickelte Kartensätze gibt es im Mathematics Assessment Project, dort auf Papier (Swan &amp; Burkhardt 2014).'],
  ['Was SORT II anders macht','SORT II stellt gezielt entwickelte Kartensätze bereit und zeichnet den Prozess der Gruppe auf: Kartenbewegungen und Gespräch. Bestehende Werkzeuge zeigen, wo die Lernenden stehen; SORT II soll zeigen, wie sie dorthin gekommen sind.']],
  l:[['Amplify Classroom / Desmos: Card Sort. Hilfeseiten (Archiv 2024) und Desmos-Blog, 29.7.2016. Stand der Recherche: Oktober 2026.','pruefen'],
     ['Swan, M. &amp; Burkhardt, H. (2014). Lesson Design for Formative Assessment. <i>Educational Designer</i>, 2(7).']]},
@@ -2180,7 +2186,7 @@ const HG={
  ['Fortbildung über Aufgaben','Eine Fortbildung, die mit kollaborativen Aufgabentypen arbeitet, hat die Unterrichtspraxis von Lehrpersonen verändert und ihre Überzeugungen herausgefordert (Swan 2007). Nach einer Fortbildung zu anspruchsvollen Aufgaben hielten Lehrpersonen deren Anspruch im Unterricht besser aufrecht (Boston &amp; Smith 2009).'],
  ['Wie wirksame Fortbildung gebaut ist','Wirksam sind Fortbildungen, die Input, Erprobung im eigenen Unterricht und gemeinsame Reflexion verknüpfen (Lipowsky &amp; Rzejak 2021). Genau so sind die vier Schritte angelegt.']],
  l:[['Boston, M. D. &amp; Smith, M. S. (2009). Transforming secondary mathematics teaching: Increasing the cognitive demands of instructional tasks used in teachers’ classrooms. <i>Journal for Research in Mathematics Education</i>, 40(2), 119–156.'],
-    ['Lipowsky, F. &amp; Rzejak, D. (2021). <i>Fortbildungen für Lehrpersonen wirksam gestalten.</i> Gütersloh: Bertelsmann Stiftung.'],
+    ['Lipowsky, F. &amp; Rzejak, D. (2021). <i>Fortbildungen für Lehrpersonen wirksam gestalten. Ein praxisorientierter und forschungsgestützter Leitfaden.</i> Gütersloh: Bertelsmann Stiftung.'],
     ['Remillard, J. T. (2005). Examining key concepts in research on teachers’ use of mathematics curricula. <i>Review of Educational Research</i>, 75(2), 211–246.'],
     ['Stein, M. K., Grover, B. W. &amp; Henningsen, M. (1996). Building student capacity for mathematical thinking and reasoning: An analysis of mathematical tasks used in reform classrooms. <i>American Educational Research Journal</i>, 33(2), 455–488.'],
     ['Swan, M. (2007). The impact of task-based professional development on teachers’ practices and beliefs: A design research study. <i>Journal of Mathematics Teacher Education</i>, 10(4–6), 217–237.']]}
