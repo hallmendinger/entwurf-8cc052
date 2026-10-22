@@ -1358,11 +1358,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
     <div class="seite">
       <h3 class="seitentitel">Woran sich Sortierungen unterscheiden<button class="litm" data-lit="swan2005" aria-label="Literatur">Lit.</button></h3>
       <p class="text">Eine Grundform und drei Stellschrauben. Sie entscheiden, wie viel die Gruppe selbst festlegen muss und wie viel die Karten vorgeben.</p>
-      <p class="arten-legende">Wo die beiden Beispiele liegen: <span><em class="zm zm-kreis"></em> Ähnlichkeitsklassen</span> <span><em class="zm zm-raute"></em> Wo steckt dieser Term überall?</span></p>
+      <p class="arten-legende">Wo die beiden Beispiele liegen: <span><em class="zm zm-kreis"></em> Wonach kann man diese Karten ordnen?</span> <span><em class="zm zm-raute"></em> Wo steckt dieser Term überall?</span></p>
       <div class="arten">
         <div class="art-zeile"><b>Grundform<i>zwei Formen</i></b><div class="skala zwei"><span>Gruppieren<i>am Ende stehen Gruppen</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>Reihen bilden<i>am Ende steht eine Reihenfolge</i></span></div></div>
-        <div class="art-zeile"><b>Offenheit<i>von offen bis geschlossen</i></b><div class="skala"><span>offen<i>«Sortiert in Gruppen»</i></span><span>Richtung vorgegeben<i>«Sortiert nach …»</i><em class="zm zm-kreis"></em></span><span>Kategorien vorgegeben<i>«je ein Term, eine Figur, …»</i><em class="zm zm-raute"></em></span><span>geschlossen<i>alle Felder stehen fest</i></span></div></div>
-        <div class="art-zeile"><b>Eindeutigkeit<i>vier Typen</i></b><div class="skala"><span>eindeutig<i>genau eine richtige Zuordnung</i><em class="zm zm-kreis"></em><em class="zm zm-raute"></em></span><span>mathematisch mehrdeutig<i>mehrere Kriterien treffen zu</i></span><span>wissensabhängig<i>bestimmbar mit dem nötigen Wissen</i></span><span>subjektiv<i>kein objektives Richtig</i></span></div></div>
+        <div class="art-zeile"><b>Offenheit<i>von offen bis geschlossen</i></b><div class="skala"><span>offen<i>«Sortiert in Gruppen»</i><em class="zm zm-kreis"></em></span><span>Richtung vorgegeben<i>«Sortiert nach …»</i></span><span>Kategorien vorgegeben<i>«je ein Term, eine Figur, …»</i><em class="zm zm-raute"></em></span><span>geschlossen<i>alle Felder stehen fest</i></span></div></div>
+        <div class="art-zeile"><b>Eindeutigkeit<i>vier Typen</i></b><div class="skala"><span>eindeutig<i>genau eine richtige Zuordnung</i><em class="zm zm-raute"></em></span><span>mathematisch mehrdeutig<i>mehrere Kriterien treffen zu</i><em class="zm zm-kreis"></em></span><span>wissensabhängig<i>bestimmbar mit dem nötigen Wissen</i></span><span>subjektiv<i>kein objektives Richtig</i></span></div></div>
         <div class="art-zeile"><b>Vollständigkeit<i>von allen bis wenigen Karten</i></b><div class="skala"><span>vollständig<i>alle Karten</i><em class="zm zm-kreis"></em></span><span>mit Ausnahmen<i>was nicht passt, kommt beiseite</i><em class="zm zm-raute"></em></span><span>selektiv<i>«Findet möglichst viele …»</i></span><span>punktuell<i>«Findet drei, die …»</i></span></div></div>
       </div>
     </div>
@@ -1876,7 +1876,7 @@ document.getElementById('umdrehen').onclick=()=>{gelesen.clear();markiereGelesen
 
 // ---------- Karte 2: Galerie der echten Sortierungen ----------
 const BEISPIELE=[
-  ['aehnlichkeit_1','Ähnlichkeit · Klasse 9','<em class="zm zm-kreis"></em> Ähnlichkeitsklassen','Offen gruppieren','Die Gruppe legt Figuren zusammen, die zueinander ähnlich sind. Wie viele Gruppen es gibt, wird nicht verraten, und eine Figur ganz allein ist auch eine Gruppe.'],
+  ['lineare_funktionen_1','Lineare Funktionen · Klasse 9','<em class="zm zm-kreis"></em> Wonach kann man diese Karten ordnen?','Offen gruppieren','Auf dem Tisch liegen Graphen, Gleichungen, Wertetabellen und Situationen. Die Gruppe wählt selbst, wonach sie ordnet, und schreibt das Kriterium über jede Gruppe. Ob nach Darstellung oder nach Funktion: Beides ist richtig.'],
   ['variablen_und_terme_2','Variablen und Terme · Klasse 7','<em class="zm zm-raute"></em> Wo steckt dieser Term überall?','Darstellungen zuordnen','Zu jedem Term gehören eine Punktfigurenfolge, eine Fläche und eine Sachsituation. Die Gruppe sucht die Vierergruppen und übersetzt dabei zwischen den Darstellungen. Einzelne Karten passen nirgends.']];
 const gal=document.getElementById('galerie');
 BEISPIELE.forEach(([datei,thema,t,art,d,lit])=>{
