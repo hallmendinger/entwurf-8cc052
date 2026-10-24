@@ -1819,8 +1819,8 @@ function fuss(){
   let rechts;
   if(seite<ss.length-1)rechts=`<button class="weiterseite" data-s="${seite+1}">Weiter ›</button>`;
   else if(m)rechts=`<button class="naechste" data-k="${n+1}">${bildHtml(m)}<span class="nx-t"><span class="nx-l">Weiter mit Karte ${m.k}</span><span class="nx-f">${m.f}</span></span><span class="nx-p">→</span></button>`;
-  else{const offen=KM.filter(x=>x.k!==n&&!gelesen.has(x.k)).map(x=>x.k);
-    rechts=`<button class="naechste ende" data-tisch="1"><span class="nx-t"><span class="nx-l">${offen.length?'Noch offen: Karte '+offen.join(', '):'Alle Karten gelesen'}</span><span class="nx-f">Zurück zur Übersicht</span></span><span class="nx-p">→</span></button>`;}
+  else{const alle=KM.every(x=>x.k===n||gelesen.has(x.k));
+    rechts=`<button class="naechste ende" data-tisch="1"><span class="nx-t">${alle?'<span class="nx-l">Alle Karten gelesen</span><span class="nx-f">Zurück zur Übersicht</span>':'<span class="nx-f">Zurück zum Tisch</span>'}</span><span class="nx-p">→</span></button>`;}
   f.innerHTML=links+punkte+rechts;
   f.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>zeigeSeite(+b.dataset.s));
   f.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>zeige(+b.dataset.k));
