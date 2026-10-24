@@ -1268,6 +1268,17 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 @media(min-width:761px){.weichen button img{height:min(130px,12vh)!important;object-fit:cover;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}}
 #zb-6 img{transform:none}
 #zb-6{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 82%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 82%,transparent 100%)}
+/* v52: Bedienung (Rundgang 24.10.) */
+.miniwrap{position:relative}
+.demo-leiste{position:absolute;top:-.8rem;left:.8rem;right:.8rem;z-index:3;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.demo-etikett,.demo-knopf{font:400 1rem "Patrick Hand",cursive;border-radius:6px;padding:.05rem .65rem;box-shadow:0 2px 6px rgba(30,15,0,.3)}
+.demo-etikett{background:var(--braun);color:#fffdf9}
+.demo-knopf{pointer-events:auto;background:#fffdf9;color:var(--braun);border:1px solid var(--braun);cursor:pointer}
+.demo-knopf:hover{background:var(--creme)}
+.lp-x{position:sticky;top:-.4rem;float:right;margin:-.6rem -.7rem 0 .6rem;width:2rem;height:2rem;border:0;border-radius:50%;background:var(--karte);color:var(--mut);font-size:1.5rem;line-height:1;cursor:pointer;z-index:2}
+.lp-x:hover{color:var(--tinte);background:var(--creme)}
+.lp-x:focus:not(:focus-visible){outline:none}
+.planhinweis.oben{margin:0 0 .7rem}
 </style>
 </head>
 <body>
@@ -1286,6 +1297,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 </header>
 <section class="rand worum" aria-label="Worum es geht">
   <div class="miniwrap">
+    <div class="demo-leiste"><span class="demo-etikett">Beispiel · läuft von selbst</span><button class="demo-knopf" id="demoknopf" type="button">❚❚ Anhalten</button></div>
     <div class="minitisch2 holztisch" id="minitisch" aria-hidden="true">
       <div class="aufgabe">Ordnet die Karten. Wonach, entscheidet ihr.</div>
       <div class="gruppen3"><div class="gruppe" data-g="1"><span class="glabel">Gruppe A</span></div><div class="gruppe" data-g="2"><span class="glabel">Gruppe B</span></div><div class="gruppe" data-g="3"><span class="glabel">Gruppe C</span></div></div>
@@ -1332,11 +1344,11 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
   </div>
   <main class="rand">
     <div class="holz">
+      <p class="planhinweis oben">Karte anklicken zum Öffnen. Gelesene Karten drehen sich um und zeigen ihren Kernsatz.</p>
       <div class="plan" id="plan">
         <svg class="aeste" id="aeste" aria-hidden="true"></svg>
 
       </div>
-      <p class="planhinweis">Antippen öffnet eine Karte. Gelesene Karten zeigen hier ihren Kernsatz.</p>
     </div>
   </main>
 </div>
@@ -1618,6 +1630,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 </div>
 
 <dialog id="litpop" class="litpop">
+  <button class="lp-x" type="button" aria-label="Schliessen">×</button>
   <div class="lp-kopf"><span class="lp-art">Literaturbezug</span><span class="lp-status" id="lpstatus"></span></div>
   <h3 id="lptitel"></h3>
   <div class="lp-teil"><b>Quelle</b><p id="lpquelle"></p></div>
@@ -1627,6 +1640,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 </dialog>
 
 <dialog id="hgpop" class="litpop hgpop">
+  <button class="lp-x" type="button" aria-label="Schliessen">×</button>
   <div class="lp-kopf"><span class="lp-art">Wissenschaftlicher Hintergrund</span></div>
   <h3 id="hgtitel"></h3>
   <div id="hginhalt"></div>
@@ -1634,6 +1648,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 </dialog>
 
 <dialog id="infopop" class="litpop">
+  <button class="lp-x" type="button" aria-label="Schliessen">×</button>
   <div class="lp-kopf"><span class="lp-art" id="ipart"></span></div>
   <h3 id="iptitel"></h3>
   <div id="ipinhalt"></div>
@@ -1641,6 +1656,7 @@ body.arbeit .profil-fehlt::after{content:" [Link fehlt]";color:#b3261e}
 </dialog>
 
 <dialog id="geldpop" class="litpop">
+  <button class="lp-x" type="button" aria-label="Schliessen">×</button>
   <div class="lp-kopf"><span class="lp-art">Wie der Betrag zustande kommt</span></div>
   <h3 id="gptitel"></h3>
   <div id="gpinhalt"></div>
@@ -1803,7 +1819,8 @@ function fuss(){
   let rechts;
   if(seite<ss.length-1)rechts=`<button class="weiterseite" data-s="${seite+1}">Weiter ›</button>`;
   else if(m)rechts=`<button class="naechste" data-k="${n+1}">${bildHtml(m)}<span class="nx-t"><span class="nx-l">Weiter mit Karte ${m.k}</span><span class="nx-f">${m.f}</span></span><span class="nx-p">→</span></button>`;
-  else rechts=`<button class="naechste ende" data-tisch="1"><span class="nx-t"><span class="nx-l">Alle Karten gelesen</span><span class="nx-f">Zurück zur Übersicht</span></span><span class="nx-p">→</span></button>`;
+  else{const offen=KM.filter(x=>x.k!==n&&!gelesen.has(x.k)).map(x=>x.k);
+    rechts=`<button class="naechste ende" data-tisch="1"><span class="nx-t"><span class="nx-l">${offen.length?'Noch offen: Karte '+offen.join(', '):'Alle Karten gelesen'}</span><span class="nx-f">Zurück zur Übersicht</span></span><span class="nx-p">→</span></button>`;}
   f.innerHTML=links+punkte+rechts;
   f.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>zeigeSeite(+b.dataset.s));
   f.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>zeige(+b.dataset.k));
@@ -1844,6 +1861,7 @@ document.querySelectorAll('.weichen button,.kapitel .sprung').forEach(b=>b.oncli
 document.getElementById('zu').onclick=schliesse;
 blatt.addEventListener('click',e=>{if(e.target===blatt)schliesse();});
 document.addEventListener('keydown',e=>{
+  if(document.querySelector('dialog[open]'))return; // Escape schliesst dann nur das Fenster, nicht auch die Karte
   if(document.getElementById('vollbild').classList.contains('offen')){if(e.key==='Escape')vbzu();return;}
   if(!blatt.classList.contains('offen'))return;
   if(e.key==='Escape')schliesse();
@@ -2082,7 +2100,12 @@ document.querySelectorAll('.wk').forEach(w=>{const um=()=>{w.classList.toggle('u
   ];
   reset();
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){['b1','d1','k1'].forEach(k=>lege(k,'1'));['b3','d3','k3'].forEach(k=>lege(k,'2'));lege('x','3');sag('Lea','Gleich viel wert, egal wie es aussieht.');return;}
-  let i=0;(function weiter(){const [d,f]=ABLAUF[i];setTimeout(()=>{f();i=(i+1)%ABLAUF.length;weiter();},d);})();
+  // Anhalten und Weiterlaufen: der Film spielt sonst in Schleife und laesst sich nicht stoppen
+  let i=0,uhr=null,laeuft=true;
+  function weiter(){const [d,f]=ABLAUF[i];uhr=setTimeout(()=>{f();i=(i+1)%ABLAUF.length;weiter();},d);}
+  const knopf=document.getElementById('demoknopf');
+  knopf.onclick=()=>{laeuft=!laeuft;if(laeuft){weiter();knopf.textContent='❚❚ Anhalten';}else{clearTimeout(uhr);knopf.textContent='▶ Weiterlaufen';}};
+  weiter();
 })();
 
 
@@ -2160,6 +2183,7 @@ document.addEventListener('click',e=>{
 },true);
 document.addEventListener('keydown',e=>{const m=e.target.closest&&e.target.closest('span.litm');if(m&&(e.key==='Enter'||e.key===' ')){e.preventDefault();e.stopPropagation();m.click();}},true);
 document.getElementById('lpzu').onclick=()=>lp.close();
+document.querySelectorAll('.lp-x').forEach(b=>b.onclick=()=>b.closest('dialog').close());
 lp.addEventListener('click',e=>{if(e.target===lp)lp.close();});
 if(ARBEIT)document.body.classList.add('mit-lit');
 // Wissenschaftlicher Hintergrund je Karte: kurzer Text mit Bezuegen, darunter die Literatur
