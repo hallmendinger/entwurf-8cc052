@@ -11,7 +11,7 @@
 <style>
 :root{--papier:#fbf8f3;--karte:#fffdf9;--linie:#e4d9c7;--mut:#6c6357;--tinte:#28231f;--nacht:#1d1a17;--hell:#f6ecdf;--hellmut:#b9ad9f;
   /* drei Stränge: hell-dunkel klar verschieden, dazu je eine Form */
-  --ks:#2f4f8f;--ks-g:#e3e9f5;--pl:#5d8a45;--pl-g:#e6efdf;--fb:#d9a04f;--fb-g:#f8ecd8}
+  --ks:#2f4f8f;--ks-g:#e3e9f5;--pl:#5d8a45;--pl-g:#e6efdf;--fb:#8a3d6b;--fb-g:#f3e2ec;--er:#2a7f86;--er-g:#e0f0f0;--le:#6b5e50;--vb:#b0592b}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
 body{background:var(--papier);color:var(--tinte);font:400 1rem/1.5 "Fira Sans",system-ui,sans-serif}
@@ -142,7 +142,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 #s4 .ks{background:var(--ks-g);border-left:6px solid var(--ks)}
 #s4 .pl{background:var(--pl-g);border-left:6px solid var(--pl)}
 #s4 .fb{background:var(--fb-g);border-left:6px solid var(--fb)}
-#s4 .er{background:#f1ebe2;border-left:6px solid #9a8f82}
+#s4 .er{background:var(--er-g);border-left:6px solid var(--er)}
 #s4 .z.pilotz{opacity:.75}
 
 /* L2 · Vorhaben, L3 · Passung */
@@ -548,6 +548,61 @@ html{font-size:clamp(15px,calc(.55vw + .9vh),21px)}
 .bsp-brett .bz{padding:.3rem .4rem;gap:.25rem}
 .bsp-karten{gap:.3rem}
 .bsp-brett{gap:.4rem;padding:.4rem}
+
+/* v11: Rikes zweiter Durchgang 3.11. */
+.l1-zwei{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;min-height:0}
+.l1-block{padding:1rem 1.3rem 1.1rem;display:flex;flex-direction:column;gap:.55rem;min-height:0}
+.l1-block:nth-child(1){transform:rotate(-.35deg)}.l1-block:nth-child(2){transform:rotate(.35deg)}
+.l1-block h3{font:400 1.65rem/1.1 "Patrick Hand"}
+.l1-block>img{width:100%;height:17vh;object-fit:cover;display:block}
+.l1-block p{font-size:.95rem;line-height:1.45}
+.l1-vgl{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:stretch}
+.l1-vgl .vgl{padding:.5rem .7rem;display:flex;flex-direction:column;gap:.3rem}
+.l1-vgl .vgl small{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.l1-vgl .vgl b{font-size:.95rem;line-height:1.25}
+.l1-vgl .vgl.a{border:2px dashed #9a8f82}
+.l1-vgl .vgl.b{border:3px solid var(--tinte)}
+.l1-vgl .chips span{font-size:.9rem;padding:.15rem .45rem}
+.l1-vgl .vgl.a .chips span{border-style:dashed;border-color:#9a8f82}
+.l1-pf{align-self:center;font-size:1.4rem}
+.l1-weg{flex:1;display:flex;align-items:center;justify-content:center;gap:1rem;min-height:0}
+.l1-weg figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.l1-weg img{width:min(9rem,16vh);height:min(9rem,16vh);object-fit:contain;mix-blend-mode:multiply}
+.l1-weg figcaption{font:400 1.15rem "Patrick Hand"}
+.l1-weg figure.blass{opacity:.4}
+.l1-bruch{display:flex;gap:.45rem;align-items:center}
+.l1-bruch i{width:1.3rem;height:3px;background:var(--tinte)}
+.l1-bruch i:nth-child(2){transform:rotate(35deg) translateY(-4px);width:.9rem}
+.l1-bruch i:nth-child(3){opacity:.35}
+.l2-text{grid-template-columns:1.25fr 1fr}
+.l2-text h4{font:400 1.35rem/1.1 "Patrick Hand";margin-bottom:.3rem}
+.l2-text b{font-weight:600}
+.l2-merk{margin-top:.4rem;display:inline-block;border-left:4px solid var(--tinte);padding:.1rem .6rem;font-weight:600}
+#sU .drei .pk .chf{background:#f1ebe2;color:var(--tinte)}
+/* Ablauf in kleineren Fenstern */
+#s4 .plan{grid-template-rows:auto repeat(4,minmax(0,1fr));overflow:hidden}
+#s4 .strang .sic{width:min(4.6rem,7vh);height:min(4.6rem,7vh)}
+#s4 .z{font-size:clamp(.82rem,1.6vh,1rem);padding:.4rem .6rem;min-height:0;overflow:hidden}
+#s4{gap:1.6vh;padding:3vh 3.5vw}
+/* Kosten */
+#sK .posten{gap:.55rem;padding:1.3rem 1.6rem}
+.grossbalken{display:flex;gap:3px;height:3.2rem;margin:.3rem 0 .8rem}
+.grossbalken .seg{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.85rem;min-width:0;overflow:hidden;cursor:pointer}
+.grossbalken .seg:hover{filter:brightness(1.15)}
+.seg.le{background:var(--le)}.seg.ks{background:var(--ks)}.seg.pl{background:var(--pl)}.seg.er{background:var(--er)}.seg.fb{background:var(--fb)}.seg.vb{background:var(--vb)}
+.seg.oh{background:repeating-linear-gradient(45deg,#cfc3b5 0 5px,#fff 5px 10px);color:var(--tinte);border:1px solid #9a8f82}
+.zeile2{display:grid;grid-template-columns:1.4rem 1fr 6rem 3.5rem 5rem;gap:.8rem;align-items:center;text-align:left;width:100%;padding:.3rem .4rem;border-left:5px solid var(--zf,transparent)}
+.zeile2.le{--zf:var(--le)}.zeile2.ks{--zf:var(--ks)}.zeile2.pl{--zf:var(--pl)}.zeile2.er{--zf:var(--er)}.zeile2.fb{--zf:var(--fb)}.zeile2.vb{--zf:var(--vb)}.zeile2.oh{--zf:#cfc3b5}
+button.zeile2:hover{background:#f1ebe2}
+.zeile2 svg{width:1.2rem;height:1.2rem}
+.zeile2 b{text-align:right;font-variant-numeric:tabular-nums}
+.zeile2 small{text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
+.zeile2 em{font-style:normal;font-size:.85rem;font-weight:600;color:var(--mut);text-align:right}
+.zeile2.summe{border-top:2px solid var(--tinte);border-left-color:transparent;margin-top:.3rem;padding-top:.5rem}
+.zeile2.summe span,.zeile2.summe b{font-weight:700}
+@media (max-width:820px){.l1-zwei{grid-template-columns:minmax(0,1fr)}.zeile2{grid-template-columns:1.4rem 1fr 5rem}.zeile2 small,.zeile2 em{display:none}.grossbalken span{display:none}}
+/* Sicherheitsnetz für kleine Fenster: lieber scrollen als abschneiden */
+.v{overflow-y:auto;overflow-x:hidden}
 </style>
 </head>
 <body>
@@ -635,32 +690,40 @@ html{font-size:clamp(15px,calc(.55vw + .9vh),21px)}
 <!-- L · Leseansicht -->
 <section class="v holz" id="sL" data-nr="Lesen 1" data-name="Woran wir ansetzen">
   <div class="kopfzeile"><div class="notiz blatt"><span class="num">1</span><h2>Woran wir ansetzen</h2></div></div>
-  <p class="l1-lead blatt">Viele Volksschulen haben selbständige Lernzeiten eingeführt, etwa ein Lernatelier oder einen Wochenplan. Die Schülerinnen und Schüler arbeiten dort an Aufgaben, die die Lehrperson vorbereitet hat.</p>
-  <div class="l1-paar">
-    <div class="l1-seite blatt heute">
-      <span class="augen">Heute meist</span>
+  <p class="l1-lead blatt">Viele Volksschulen haben selbständige Lernzeiten eingeführt, etwa ein Lernatelier oder einen Wochenplan. Die Schülerinnen und Schüler arbeiten dort an Aufgaben, die die Lehrperson vorbereitet hat. Wir setzen an zwei Stellen an.</p>
+  <div class="l1-zwei">
+    <div class="l1-block blatt">
+      <span class="augen">Erster Ansatzpunkt · die Aufgaben</span>
+      <h3>Es fehlen Aufgaben, über die eine Gruppe reden muss</h3>
       <img src="bilder/skizze-01-woran-wir-ansetzen.jpg" alt="Lernatelier, alle rechnen für sich">
-      <div class="vgl a"><b>Rechne aus.</b><div class="chips"><span>½ + ⅔ =</span><span>¾ + ⅛ =</span><span>⅝ + ⅜ =</span></div></div>
-      <p>Lehrpersonen wählen meist Aufgaben, die alle sicher allein lösen können. Jede und jeder rechnet für sich.</p>
+      <div class="l1-vgl">
+        <div class="vgl a"><small>heute meist</small><b>Rechne aus.</b><div class="chips"><span>½ + ⅔ =</span><span>¾ + ⅛ =</span></div></div>
+        <span class="l1-pf" aria-hidden="true">→</span>
+        <div class="vgl b"><small>was fehlt</small><b>Welche ergeben mehr als 1? Ohne auszurechnen.</b><div class="chips"><span>½ + ⅔</span><span>¾ + ⅛</span></div></div>
+      </div>
+      <p>Lehrpersonen wählen meist Aufgaben, die alle sicher allein lösen können. In Mathematik fehlen kognitiv aktivierende Aufgaben, über die sich Schülerinnen und Schüler austauschen müssen. Solche Aufgaben zu entwickeln, braucht mehr Zeit, als Lehrpersonen im Alltag haben.</p>
     </div>
-    <div class="l1-pfeil" aria-hidden="true">→</div>
-    <div class="l1-seite blatt fehlt">
-      <span class="augen">Was fehlt</span>
-      <img src="bilder/in-aktion3.jpg" alt="Gruppe ordnet gemeinsam Karten">
-      <div class="vgl b"><b>Welche ergeben mehr als 1? Ohne auszurechnen.</b><div class="chips"><span>½ + ⅔</span><span>¾ + ⅛</span><span>⅝ + ⅜</span></div></div>
-      <p>In Mathematik fehlen kognitiv aktivierende Aufgaben, über die sich Schülerinnen und Schüler austauschen müssen. Solche Aufgaben zu entwickeln, braucht mehr Zeit, als Lehrpersonen im Alltag haben.</p>
+    <div class="l1-block blatt">
+      <span class="augen">Zweiter Ansatzpunkt · der Weg zurück</span>
+      <h3>Was in der Lernzeit entsteht, kommt nicht im Unterricht an</h3>
+      <div class="l1-weg">
+        <figure><img src="bilder/skizze-09-icon-arbeitsblatt.jpg" alt=""><figcaption>Ergebnis der Lernzeit</figcaption></figure>
+        <span class="l1-bruch" aria-hidden="true"><i></i><i></i><i></i></span>
+        <figure class="blass"><img src="bilder/skizze-10-icon-gemeinsames-lernen.jpg" alt=""><figcaption>Klassengespräch</figcaption></figure>
+      </div>
+      <p>Was in diesen Lernzeiten entsteht, kommt zudem selten in den Klassenunterricht zurück. Die Lehrperson sieht am Ende vor allem die Ergebnisse.</p>
     </div>
   </div>
-  <div class="l1-fuss">
-    <p class="blatt">Was in diesen Lernzeiten entsteht, kommt zudem selten in den Klassenunterricht zurück. Die Lehrperson sieht am Ende vor allem die Ergebnisse.</p>
-    <div class="knopfreihe"><button class="knopf" data-geh="s3">← Übersicht</button><button class="knopf voll" data-geh="sL2">Weiter: 2 Was wir vorhaben ›</button></div>
-  </div>
+  <div class="l1-fuss"><span></span><div class="knopfreihe"><button class="knopf" data-geh="s3">← Übersicht</button><button class="knopf voll" data-geh="sL2">Weiter: 2 Was wir vorhaben ›</button></div></div>
 </section>
 
 <!-- L2 · Vorhaben -->
 <section class="v holz" id="sL2" data-nr="Lesen 2" data-name="Was wir vorhaben">
   <div class="kopfzeile"><div class="notiz blatt"><span class="num">2</span><h2>Was wir vorhaben</h2></div><button class="beispielkarte blatt" data-geh="sB"><b>Wie sieht eine Kärtchenaktivität aus?</b><span>Beispiele ansehen und ausprobieren ›</span></button></div>
-  <div class="l2-text blatt"><p>Bei einer digitalen Kärtchenaktivität ordnet eine Gruppe Karten und begründet, warum jede Karte dort liegt. Die Plattform hält dabei fest, in welcher Reihenfolge die Gruppe die Karten gelegt und welche sie wieder umgelegt hat. Die Lehrperson kann den Weg jeder Gruppe danach abspielen. Sie sieht, wo eine Gruppe gezögert oder ihre Meinung geändert hat, und setzt genau dort im Klassengespräch an. Mit Karten auf Papier geht das nicht.</p><p>Im Pilotprojekt SORT entstehen im Schuljahr 2026/27 acht Kartensätze für die 7. und 9. Klasse. Erprobt werden sie in fünf Schulklassen. In SORT II kommt die 8. Klasse dazu, und wir bauen daraus in drei Schuljahren ein Angebot für alle Schulen der Sekundarstufe I.</p></div>
+  <div class="l2-text blatt">
+    <div><h4>Neu: Man sieht, wie eine Gruppe gearbeitet hat</h4><p>Bei einer digitalen Kärtchenaktivität ordnet eine Gruppe Karten und begründet, warum jede Karte dort liegt. Die Plattform hält dabei fest, in welcher Reihenfolge die Gruppe die Karten gelegt und welche sie wieder umgelegt hat. <b>Die Lehrperson kann den Weg jeder Gruppe danach abspielen.</b> Sie sieht, wo eine Gruppe gezögert oder ihre Meinung geändert hat, und setzt genau dort im Klassengespräch an.</p><p class="l2-merk">Mit Karten auf Papier geht das nicht.</p></div>
+    <div><h4>Vom Pilot zum Angebot</h4><p>Im Pilotprojekt SORT entstehen im Schuljahr 2026/27 acht Kartensätze für die 7. und 9. Klasse. Erprobt werden sie in fünf Schulklassen. <b>In SORT II kommt die 8. Klasse dazu</b>, und wir bauen daraus in drei Schuljahren ein Angebot für alle Schulen der Sekundarstufe I.</p></div>
+  </div>
   <div class="l2-drei">
     <div class="l2-karte blatt ks"><img src="bilder/in-aktion1.jpg" alt=""><div class="l2-k-text"><h3><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg>Kartensätze</h3><ul><li>für alle drei Klassenstufen</li><li>erprobt in rund zwölf Schulklassen im Jahr</li><li>frei verfügbar</li></ul></div></div>
     <div class="l2-karte blatt pl"><img src="bilder/skizze-04-plattform-lehrperson.jpg" alt=""><div class="l2-k-text"><h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg>Plattform</h3><ul><li><i>Vorher</i> finden Lehrpersonen die Kartensätze nach Klasse, Thema und Lehrplan.</li><li><i>Nachher</i> sehen sie, wie jede Gruppe gearbeitet hat.</li></ul></div></div>
@@ -719,7 +782,7 @@ html{font-size:clamp(15px,calc(.55vw + .9vh),21px)}
     <span class="z fb">zweite Durchführung</span>
     <span class="z fb">im Angebot der PH Luzern</span>
 
-    <span class="strang"><img class="sic" src="bilder/skizze-08-icon-schulhaus.jpg" alt=""><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg>Erprobung</span>
+    <span class="strang"><img class="sic" src="bilder/skizze-08-icon-schulhaus.jpg" alt=""><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="var(--er)" stroke-width="3"/></svg>Erprobung</span>
     <span class="z er pilotz">5 Schulklassen</span>
     <span class="z er">rund 12 Schulklassen</span>
     <span class="z er">rund 12 Schulklassen</span>
@@ -734,7 +797,7 @@ html{font-size:clamp(15px,calc(.55vw + .9vh),21px)}
   <div class="drei">
     <button class="pk" data-geh="sT"><img class="uic" src="bilder/skizze-12-icon-team.jpg" alt=""><h3>Wer wir sind</h3><p>Henrike Allmendinger, Martin Lacher und Luzia Christen unterrichten Mathematik und Mathematikdidaktik an der PH Luzern.</p><span class="lesen">Ansehen ›</span></button>
     <button class="pk" data-geh="s4"><img class="uic" src="bilder/skizze-11-icon-drei-schuljahre.jpg" alt=""><h3>Wie läuft es ab?</h3><p>In drei Schuljahren, 2027/28 bis 2029/30, bauen wir auf, setzen ein und überarbeiten, schliessen ab und übergeben.</p><span class="lesen">Ansehen ›</span></button>
-    <button class="pk dunkel" data-geh="sK"><span class="uic chf">CHF</span><h3>Was kostet es?</h3><p>Wir beantragen CHF 581’100 für drei Schuljahre. Die Seite zeigt, wie sich der Betrag auf die Arbeitspakete verteilt.</p><span class="lesen">Ansehen ›</span></button>
+    <button class="pk" data-geh="sK"><span class="uic chf">CHF</span><h3>Was kostet es?</h3><p>Wir beantragen CHF 581’100 für drei Schuljahre. Die Seite zeigt, wie sich der Betrag auf die Arbeitspakete verteilt.</p><span class="lesen">Ansehen ›</span></button>
   </div>
   <div class="fusszeile"><div class="rechts"><button class="knopf" data-geh="sL3">← 3 Passung zu Mercator</button><button class="knopf voll" data-geh="s3">Zur Übersicht ›</button></div></div>
 </section>
@@ -789,14 +852,17 @@ html{font-size:clamp(15px,calc(.55vw + .9vh),21px)}
       <small><b>Ein Klick auf einen Posten zeigt, wie er zustande kommt.</b></small>
     </div>
     <div class="posten blatt">
-      <button class="zeile ks" data-ap="ap2"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg><span>Kartensätze und Applets</span><i class="balken" style="width:100%"></i><b>140’200</b><em>Details ›</em></button>
-      <button class="zeile x" data-ap="ap4"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Erprobung und Begleitforschung</span><i class="balken" style="width:77%"></i><b>108’100</b><em>Details ›</em></button>
-      <button class="zeile pl" data-ap="ap3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg><span>Plattform</span><i class="balken" style="width:54%"></i><b>75’300</b><em>Details ›</em></button>
-      <button class="zeile x" data-ap="ap1"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Leitung und Koordination</span><i class="balken" style="width:49%"></i><b>68’700</b><em>Details ›</em></button>
-      <button class="zeile fb" data-ap="ap5"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="var(--fb)"/></svg><span>Fortbildung</span><i class="balken" style="width:41%"></i><b>56’900</b><em>Details ›</em></button>
-      <button class="zeile x" data-ap="ap6"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Verbreitung</span><i class="balken" style="width:25%"></i><b>35’000</b><em>Details ›</em></button>
-      <button class="zeile oh" data-ap="ovh"><svg viewBox="0 0 24 24"></svg><span>Overhead der Hochschule, 20 %</span><i class="balken" style="width:69%"></i><b>96’900</b><em>Details ›</em></button>
-      <div class="zeile summe"><svg viewBox="0 0 24 24"></svg><span>Total</span><i></i><b>581’100</b><em></em></div>
+      <svg width="0" height="0" style="position:absolute"><defs><pattern id="schraffur" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#fff"/><rect width="2.5" height="5" fill="#cfc3b5"/></pattern></defs></svg>
+      <span class="augen">So verteilt sich der Betrag auf die Arbeitspakete</span>
+      <div class="grossbalken"><button class="seg le" data-ap="ap1" style="flex:68700" title="Leitung und Koordination: CHF 68’700"><span>12 %</span></button><button class="seg ks" data-ap="ap2" style="flex:140200" title="Kartensätze und Applets: CHF 140’200"><span>24 %</span></button><button class="seg pl" data-ap="ap3" style="flex:75300" title="Plattform: CHF 75’300"><span>13 %</span></button><button class="seg er" data-ap="ap4" style="flex:108100" title="Erprobung und Begleitforschung: CHF 108’100"><span>19 %</span></button><button class="seg fb" data-ap="ap5" style="flex:56900" title="Fortbildung: CHF 56’900"><span>10 %</span></button><button class="seg vb" data-ap="ap6" style="flex:35000" title="Verbreitung: CHF 35’000"><span>6 %</span></button><button class="seg oh" data-ap="ovh" style="flex:96900" title="Overhead der Hochschule, 20 %: CHF 96’900"><span>17 %</span></button></div>
+      <button class="zeile2 le" data-ap="ap1"><svg viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12Z" fill="var(--le)"/></svg><span>Leitung und Koordination</span><b>68’700</b><small>12 %</small><em>Details ›</em></button>
+      <button class="zeile2 ks" data-ap="ap2"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg><span>Kartensätze und Applets</span><b>140’200</b><small>24 %</small><em>Details ›</em></button>
+      <button class="zeile2 pl" data-ap="ap3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg><span>Plattform</span><b>75’300</b><small>13 %</small><em>Details ›</em></button>
+      <button class="zeile2 er" data-ap="ap4"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="var(--er)" stroke-width="3"/></svg><span>Erprobung und Begleitforschung</span><b>108’100</b><small>19 %</small><em>Details ›</em></button>
+      <button class="zeile2 fb" data-ap="ap5"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="var(--fb)"/></svg><span>Fortbildung</span><b>56’900</b><small>10 %</small><em>Details ›</em></button>
+      <button class="zeile2 vb" data-ap="ap6"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="var(--vb)" stroke-width="3"/></svg><span>Verbreitung</span><b>35’000</b><small>6 %</small><em>Details ›</em></button>
+      <button class="zeile2 oh" data-ap="ovh"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="url(#schraffur)" stroke="#9a8f82" stroke-width="1.5"/></svg><span>Overhead der Hochschule, 20 %</span><b>96’900</b><small>17 %</small><em>Details ›</em></button>
+      <div class="zeile2 summe"><svg viewBox="0 0 24 24"></svg><span>Total</span><b>581’100</b><small>100 %</small><em></em></div>
     </div>
   </div>
   <dialog class="detail blatt" id="kdetail"><div class="dkopf"><h3 id="kd-titel"></h3><button class="knopf" id="kd-zu">Schliessen ×</button></div><div id="kd-inhalt"></div><p class="kd-fuss">Stundensätze: Leitung und Kernteam 117 CHF (Planungssatz), wissenschaftliche Mitarbeit 61.40, Hilfskräfte 32.90, Technik 150, Grafik 150. ≈ heisst: Schätzung, wird noch geprüft. Personalkosten nach den Lohnansätzen der PH Luzern inklusive Sozialabgaben.</p></dialog>
