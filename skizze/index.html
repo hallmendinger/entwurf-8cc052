@@ -109,6 +109,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .pk.dunkel{background:var(--nacht);color:var(--hell)}
 #s3 .gross .pk{display:grid;grid-template-columns:2.2rem 1fr;grid-template-rows:auto 1fr auto;column-gap:.6rem;row-gap:.3rem;padding:1rem 1.2rem}
 #s3 .gross .pk .num{grid-row:1/4}
+#s3 .gross .pk{position:relative}
+#s3 .gross .pk .start{position:absolute;top:-1rem;left:1rem;margin:0}
 #s3 .gross .pk p{font-size:1.02rem;line-height:1.42}
 #s3 .gross .pk h3{font-size:1.7rem}
 #s3 .gross .pk:nth-child(1){transform:rotate(-.6deg);outline:3px solid var(--tinte);outline-offset:-3px}
@@ -304,7 +306,11 @@ html,body{height:auto;overflow:auto}
 #sB{display:none;padding:3.5vh 4vw;flex-direction:column;gap:2.2vh}
 #sB.an{display:flex}
 .bsp{flex:1;display:grid;grid-template-columns:1fr 15rem;gap:1.6rem;min-height:0}
-.bsp-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem;align-items:start}
+.bsp-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.3rem;align-items:start;align-content:start}
+.bsp-steuer{grid-column:1/-1;display:flex;justify-content:flex-start}
+.bsp-vorrat{display:flex;flex-wrap:wrap;gap:.35rem;min-height:2.2rem;padding:.3rem 0;border-bottom:1px solid var(--linie)}
+.bsp-vorrat:empty{min-height:0;padding:0;border:0}
+.bk.neu{outline:3px solid var(--tinte);outline-offset:1px}
 .bsp-karte{padding:1.1rem 1.2rem 1.2rem;display:flex;flex-direction:column;gap:.45rem}
 .bsp-karte:nth-child(1){transform:rotate(-.5deg)}
 .bsp-karte:nth-child(3){transform:rotate(.5deg)}
@@ -415,10 +421,6 @@ html,body{height:auto;overflow:auto}
       <button class="pk" data-geh="sL2"><span class="num">2</span><h3>Was wir vorhaben</h3><p>Wir entwickeln Kartensätze für alle drei Klassenstufen, dazu eine Plattform und eine Fortbildung für Lehrpersonen.</p><span class="lesen">Lesen ›</span></button>
       <button class="pk dunkel" data-geh="sL3"><span class="num">3</span><h3>Passung zu Mercator</h3><p>Wir verbinden «gemeinschaftliches Lernen» mit «lernwirksamem Feedback»: Die Lehrperson sieht, wie Gruppen gearbeitet haben, und greift das im Klassengespräch auf.</p><span class="lesen">Lesen ›</span></button>
       <button class="pk" data-geh="sU"><span class="num">4</span><h3>Umsetzung</h3><p>Drei Dozierende der PH Luzern erproben die Kartensätze drei Schuljahre lang in rund zwölf Schulklassen im Jahr.</p><span class="lesen">Lesen ›</span></button>
-    </div>
-    <div class="reihe">
-      <button class="pk" data-geh="s2"><h3>Ausprobieren</h3><span class="lesen">›</span></button>
-      <button class="pk" data-geh="sB"><h3>Wie sieht eine Kärtchenaktivität aus?</h3><span class="lesen">›</span></button>
     </div>
   </div>
 </section>
@@ -538,14 +540,15 @@ html,body{height:auto;overflow:auto}
   </div>
   <div class="bsp">
     <div class="bsp-drei">
-      <div class="bsp-karte blatt"><span class="augen">Offen gruppieren</span><h3>Wonach ordnen wir?</h3><p>Ordnet in Gruppen. Wonach, entscheidet ihr.</p><div class="bsp-zeilen"><div class="bz"><i>Gruppe A</i><div class="bsp-karten"><span class="bk">½</span><span class="bk">0,5</span><span class="bk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 0 1 12.00 22.00 Z" fill="var(--tinte)"/></svg></span></div></div><div class="bz"><i>Gruppe B</i><div class="bsp-karten"><span class="bk">¾</span><span class="bk">0,75</span><span class="bk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 1 1 2.00 12.00 Z" fill="var(--tinte)"/></svg></span></div></div><div class="bz"><i>Gruppe C</i><div class="bsp-karten"><span class="bk">0,34</span></div></div></div></div>
-      <div class="bsp-karte blatt"><span class="augen">Der Grösse nach ordnen</span><h3>Wer ist grösser?</h3><p>Legt die Karten der Grösse nach, von klein nach gross.</p><div class="bsp-zeilen"><div class="bz"><i>klein → gross</i><div class="bsp-karten"><span class="bk">¼</span><span class="bk">0,3</span><span class="bk">30 %</span><span class="bk">0,33</span><span class="bk">⅓</span></div></div></div></div>
-      <div class="bsp-karte blatt"><span class="augen">Aussagen beurteilen</span><h3>Stimmt das immer?</h3><p>Stimmt die Aussage immer, manchmal oder nie?</p><div class="bsp-zeilen"><div class="bz"><i>immer</i><div class="bsp-karten"><span class="bk satz">½ ist gleich 0,5.</span></div></div><div class="bz"><i>manchmal</i><div class="bsp-karten"><span class="bk satz">Ein Bruch ist kleiner als 1.</span><span class="bk satz">Mit grösserem Nenner ist der Bruch kleiner.</span></div></div><div class="bz"><i>nie</i><div class="bsp-karten"><span class="bk satz">Ein Bruch mit Zähler 0 ist grösser als 0.</span></div></div></div></div>
+      <div class="bsp-karte blatt"><span class="augen">Offen gruppieren</span><h3>Wonach ordnen wir?</h3><p>Ordnet in Gruppen. Wonach, entscheidet ihr.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="0">½</span><span class="bk" data-f="0" data-s="1">0,5</span><span class="bk" data-f="1" data-s="3">¾</span><span class="bk" data-f="1" data-s="4">0,75</span><span class="bk" data-f="0" data-s="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 0 1 12.00 22.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="1" data-s="5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 1 1 2.00 12.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="2" data-s="6">0,34</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>Gruppe A</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>Gruppe B</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>Gruppe C</i><div class="bsp-karten"></div></div></div></div>
+      <div class="bsp-karte blatt"><span class="augen">Der Grösse nach ordnen</span><h3>Wer ist grösser?</h3><p>Legt die Karten der Grösse nach, von klein nach gross.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="4">⅓</span><span class="bk" data-f="0" data-s="1">0,3</span><span class="bk" data-f="0" data-s="0">¼</span><span class="bk" data-f="0" data-s="3">0,33</span><span class="bk" data-f="0" data-s="2">30 %</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>klein → gross</i><div class="bsp-karten"></div></div></div></div>
+      <div class="bsp-karte blatt"><span class="augen">Aussagen beurteilen</span><h3>Stimmt das immer?</h3><p>Stimmt die Aussage immer, manchmal oder nie?</p><div class="bsp-vorrat"><span class="bk satz" data-f="0" data-s="0">½ ist gleich 0,5.</span><span class="bk satz" data-f="1" data-s="1">Ein Bruch ist kleiner als 1.</span><span class="bk satz" data-f="1" data-s="2">Mit grösserem Nenner ist der Bruch kleiner.</span><span class="bk satz" data-f="2" data-s="3">Ein Bruch mit Zähler 0 ist grösser als 0.</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>immer</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>manchmal</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>nie</i><div class="bsp-karten"></div></div></div></div>
+      <div class="bsp-steuer"><button class="knopf" id="bsp-nochmal">↺ Nochmals legen</button></div>
     </div>
     <div class="bsp-pilot">
       <span class="augen hellaugen">Im Pilot gebaut, zum Ausprobieren</span>
-      <button class="vk blatt" data-set="lineare_funktionen_1" data-titel="Wonach kann man diese Karten ordnen?"><img src="vorschau/lineare_funktionen_1.jpg" alt=""><b>Wonach kann man diese Karten ordnen?</b><span>Lineare Funktionen · Klasse 9</span><em>Öffnen ›</em></button>
-      <button class="vk blatt" data-set="variablen_und_terme_2" data-titel="Wo steckt dieser Term überall?"><img src="vorschau/variablen_und_terme_2.jpg" alt=""><b>Wo steckt dieser Term überall?</b><span>Variablen und Terme · Klasse 7</span><em>Öffnen ›</em></button>
+      <button class="vk blatt" data-url="https://sort-phlu.github.io/sort/rueckmeldung/lineare_funktionen/wonach-ordnen/" data-titel="Wonach kann man diese Karten ordnen?"><img src="vorschau/lineare_funktionen_1.jpg" alt=""><b>Wonach kann man diese Karten ordnen?</b><span>Lineare Funktionen · Klasse 9</span><em>Öffnen ›</em></button>
+      <button class="vk blatt" data-url="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_2/" data-titel="Wo steckt dieser Term überall?"><img src="vorschau/variablen_und_terme_2.jpg" alt=""><b>Wo steckt dieser Term überall?</b><span>Variablen und Terme · Klasse 7</span><em>Öffnen ›</em></button>
     </div>
   </div>
   <dialog class="vollbild" id="vollbild"><div class="vb-kopf"><b id="vb-titel"></b><button class="knopf" id="vb-zu">Schliessen ×</button></div><iframe id="vb-frame" title="Kärtchenaktivität aus dem Pilot"></iframe></dialog>
@@ -649,9 +652,27 @@ const start=vs.findIndex(v=>v.id===location.hash.slice(1));zeige(start<0?0:start
 /* Beispiele: Kartensätze aus dem Pilot im grossen Fenster */
 (function(){
   const d=document.getElementById('vollbild'),fr=document.getElementById('vb-frame');
-  document.querySelectorAll('#sB .vk').forEach(b=>b.addEventListener('click',()=>{fr.src='sets/'+b.dataset.set+'.html';document.getElementById('vb-titel').textContent=b.dataset.titel+' · aus dem Pilot SORT';d.showModal()}));
+  document.querySelectorAll('#sB .vk').forEach(b=>b.addEventListener('click',()=>{fr.src=b.dataset.url;document.getElementById('vb-titel').textContent=b.dataset.titel+' · aus dem Pilot SORT';d.showModal()}));
   const zu=()=>{d.close();fr.src='about:blank'};
   document.getElementById('vb-zu').onclick=zu;d.addEventListener('click',e=>{if(e.target===d)zu()});
+})();
+
+/* Beispiele: die Karten legen sich nacheinander, wie in der Präsentation */
+(function(){
+  const sek=document.getElementById('sB');let lauf=null;
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function zurueck(){sek.querySelectorAll('.bsp-karte').forEach(k=>{const v=k.querySelector('.bsp-vorrat');[...k.querySelectorAll('.bk')].sort((a,b)=>a.dataset.o-b.dataset.o).forEach(c=>{c.classList.remove('neu');v.appendChild(c)})})}
+  sek.querySelectorAll('.bk').forEach((c,i)=>c.dataset.o=i);
+  function lege(c){const k=c.closest('.bsp-karte'),ziel=k.querySelector(`.bz[data-f="${c.dataset.f}"] .bsp-karten`);const a=c.getBoundingClientRect();ziel.appendChild(c);const b=c.getBoundingClientRect();
+    k.querySelectorAll('.bk.neu').forEach(x=>x.classList.remove('neu'));c.classList.add('neu');
+    if(still)return;c.animate([{transform:`translate(${a.left-b.left}px,${a.top-b.top}px)`},{transform:'none'}],{duration:550,easing:'cubic-bezier(.3,.8,.3,1)'})}
+  function start(){clearInterval(lauf);zurueck();let s=0;const max=Math.max(...[...sek.querySelectorAll('.bk')].map(c=>+c.dataset.s));
+    const takt=()=>{sek.querySelectorAll(`.bk[data-s="${s}"]`).forEach(lege);s++;if(s>max){clearInterval(lauf);setTimeout(()=>sek.querySelectorAll('.bk.neu').forEach(x=>x.classList.remove('neu')),900)}};
+    if(still){while(s<=max)takt();return}
+    lauf=setInterval(takt,800)}
+  document.getElementById('bsp-nochmal').onclick=start;
+  new MutationObserver(()=>{if(sek.classList.contains('an'))setTimeout(start,400);else{clearInterval(lauf)}}).observe(sek,{attributes:true,attributeFilter:['class']});
+  if(sek.classList.contains('an'))setTimeout(start,400);
 })();
 </script>
 
