@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SORT II · Projektskizze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--papier:#fbf8f3;--karte:#fffdf9;--linie:#e4d9c7;--mut:#6c6357;--tinte:#28231f;--nacht:#1d1a17;--hell:#f6ecdf;--hellmut:#b9ad9f;
+  /* drei Stränge: hell-dunkel klar verschieden, dazu je eine Form */
+  --ks:#2f4f8f;--ks-g:#e3e9f5;--pl:#5d8a45;--pl-g:#e6efdf;--fb:#d9a04f;--fb-g:#f8ecd8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--papier);color:var(--tinte);font:400 1rem/1.5 "Fira Sans",system-ui,sans-serif}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+
+/* Leiste zum Umschalten, gehört nicht zum Entwurf */
+.leiste{height:44px;display:flex;align-items:center;gap:1.4rem;padding:0 1.4rem;background:var(--nacht);color:var(--hell);font-size:.92rem}
+.leiste .marke{white-space:nowrap;display:flex;align-items:baseline;gap:.6rem}
+.leiste .marke b{font-size:1.05rem}
+.leiste .marke span{color:var(--hellmut);font-size:.82rem}
+.leiste nav{flex:1;display:flex;gap:1.3rem;justify-content:center}
+.leiste .extra{display:flex;gap:1.1rem}
+.leiste button{color:var(--hell);white-space:nowrap;padding:.55rem 0;border-bottom:3px solid transparent}
+.leiste button:hover{border-bottom-color:var(--hellmut)}
+.leiste button[aria-current=true]{border-bottom-color:var(--hell);font-weight:600}
+.leiste .extra button{color:var(--hellmut)}
+.leiste .extra button[aria-current=true]{color:var(--hell)}
+
+.v{display:none;height:calc(100vh - 44px);position:relative;overflow:hidden}
+.v.an{display:block}
+.holz{background:url(bilder/tisch.jpg) center/cover}
+.augen{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.knopf{display:inline-flex;align-items:center;gap:.5rem;border:2px solid var(--tinte);padding:.6rem 1.1rem;font-weight:600;background:var(--karte);box-shadow:0 3px 8px #0003;white-space:nowrap}
+.knopf.voll{background:var(--tinte);color:var(--papier)}
+.blatt{background:var(--karte);box-shadow:0 5px 14px #0004}
+.hand{font-family:"Patrick Hand",cursive;font-weight:400}
+
+/* 1 · Bild */
+#s1{background:url(bilder/in-aktion2.jpg) 70% 40%/cover}
+#s1::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1d1a17f2 0%,#1d1a17e0 38%,#1d1a1700 70%)}
+#s1 .inhalt{position:relative;height:100%;max-width:38rem;padding:6vh 0 6vh 6vw;color:var(--hell);display:flex;flex-direction:column;gap:1.5rem;justify-content:center}
+#s1 .augen{color:#cfc3b5}
+#s1 h1{font-size:5rem;line-height:.9}
+#s1 .satz{font-size:1.45rem;line-height:1.4}
+#s1 .satz b{font-weight:600;border-bottom:2px solid var(--hell)}
+#s1 .zwei{display:flex;flex-direction:column;gap:.55rem;margin-top:.6rem}
+#s1 .zwei button{border:2px solid var(--hell);padding:.75rem 1rem;font-size:1.1rem;display:flex;justify-content:space-between;color:var(--hell)}
+#s1 .zwei button:first-child{background:var(--hell);color:var(--nacht);font-weight:600}
+#s1 .zwei small{display:block;font-weight:400;font-size:.9rem;opacity:.8}
+#s1 .wer{font-size:.9rem;color:#cfc3b5}
+
+/* 2 · Ausprobieren */
+#s2{display:none;grid-template-columns:minmax(0,24rem) 1fr;gap:4vw;padding:5vh 5vw}
+#s2.an{display:grid}
+#s2 .text{padding:1.8rem 2rem;display:flex;flex-direction:column;gap:1rem;align-self:center}
+#s2 .auf{font-size:1.6rem;font-weight:600;line-height:1.25}
+#s2 .text p{font-size:1.1rem;line-height:1.5}
+#s2 .hinweis{font-size:.92rem!important;color:var(--mut)}
+#s2 .tisch{display:flex;flex-direction:column;gap:1.2rem;min-height:0}
+#s2 .stapel{display:flex;gap:.8rem;flex-wrap:wrap;min-height:3.6rem}
+#s2 .k{background:var(--karte);border:1.5px solid #8d7a62;padding:.7rem 1.1rem;font:600 1.5rem "Fira Sans";box-shadow:0 3px 6px #0003;cursor:grab;user-select:none;touch-action:none}
+#s2 .k.gewaehlt{outline:4px solid var(--tinte);outline-offset:2px}
+#s2 .faecher{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;flex:1}
+#s2 .fach{background:#fffdf9cc;border:2px dashed #7a6a55;padding:.8rem;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+#s2 .fach:nth-child(2){border-style:solid}
+#s2 .fach:nth-child(3){border-style:dotted;border-width:3px}
+#s2 .fach h3{font:400 1.5rem "Patrick Hand"}
+#s2 .fach.ziel{background:#fff}
+#s2 .fuss{display:flex;justify-content:flex-end;align-items:center;gap:1rem}
+#s2 .bilanz{display:none;background:var(--nacht);color:var(--hell);padding:.9rem 1.2rem;font-size:1.02rem;line-height:1.45;flex:1}
+#s2 .bilanz.da{display:block}
+#s2 .knopf.gross{font-size:1.15rem;padding:.8rem 1.4rem}
+
+/* 3 · Übersicht (aus 3c) */
+#s3{display:none;grid-template-columns:19rem 1fr}
+#s3.an{display:grid}
+.steck{background:var(--nacht);color:var(--hell);padding:4vh 1.8rem;display:flex;flex-direction:column;gap:1.3rem}
+.steck .augen{color:var(--hellmut)}
+.steck h1{font-size:3.2rem;line-height:1}
+.steck dl{display:grid;gap:1.15rem}
+.steck dt{font-size:1.25rem;font-weight:600;line-height:1.2}
+.steck dd{font-size:.92rem;color:var(--hellmut);line-height:1.35}
+.steck .block{display:flex;flex-direction:column;gap:.35rem}
+.steck .block.pilot{border:2px dashed var(--hellmut);padding:.8rem .9rem}
+.steck .block:not(.pilot){border-top:2px solid var(--hell);padding-top:1rem}
+.steck .kopfz{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.steck .zeit{font-size:.92rem;color:var(--hellmut);margin-bottom:.3rem}
+.steck .block p{font-size:1rem;line-height:1.35}
+.steck .block dl{gap:.8rem}
+.steck img{height:30px;width:auto;margin-top:auto;align-self:flex-start;background:#fff;padding:4px 6px}
+#s3 .rechts{padding:5vh 4vw;display:flex;flex-direction:column;gap:2.2rem;justify-content:center}
+#s3 .titel{position:relative;padding:1.1rem 2.2rem 1.2rem;transform:rotate(-1deg);align-self:center;text-align:center;background:#fffef8 repeating-linear-gradient(#fffef8 0 2.05rem,#e8e1d3 2.05rem calc(2.05rem + 1px));box-shadow:0 6px 16px #0004}
+#s3 .titel h2{font:400 3rem/1.05 "Patrick Hand",cursive}
+#s3 .titel p{font:400 1.55rem/1.2 "Patrick Hand",cursive;color:var(--mut);margin-top:.2rem}
+#s3 .titel .band{position:absolute;top:-.7rem;width:5.5rem;height:1.5rem;background:#f3ead4cc;box-shadow:0 1px 2px #0002}
+#s3 .titel .band.l{left:-1.2rem;transform:rotate(-14deg)}
+#s3 .titel .band.r{right:-1.2rem;transform:rotate(12deg)}
+#s3 .gross{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.pk{background:var(--karte);box-shadow:0 4px 10px #0003;padding:1.2rem 1.3rem;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:.6rem}
+.pk:hover{transform:translateY(-4px)!important;box-shadow:0 12px 22px #0005}
+.pk .num{font:400 2.6rem/1 "Patrick Hand";}
+.pk h3{font:400 1.9rem/1.05 "Patrick Hand"}
+.pk p{font-size:1.08rem;line-height:1.45}
+.pk .lesen{margin-top:auto;font-weight:600}
+.pk.dunkel{background:var(--nacht);color:var(--hell)}
+#s3 .gross .pk{min-height:15.5rem}
+#s3 .gross .pk:nth-child(1){transform:rotate(-.6deg);outline:3px solid var(--tinte);outline-offset:-3px}
+#s3 .gross .pk:nth-child(3){transform:rotate(.6deg)}
+#s3 .start{font:400 1.25rem "Patrick Hand";color:var(--tinte);background:var(--karte);padding:.1rem .6rem;position:absolute;margin:-2.2rem 0 0 -.2rem;transform:rotate(-3deg);box-shadow:0 2px 5px #0003}
+#s3 .reihe{display:flex;gap:1.2rem;align-items:center}
+#s3 .reihe .pk{flex:1;flex-direction:row;align-items:center;justify-content:space-between;padding:.8rem 1.1rem}
+#s3 .reihe .pk h3{font-size:1.45rem}
+
+/* L · Leseansicht */
+#sL{display:none;padding:4.5vh 5vw;grid-template-columns:1fr 24rem;gap:3vw}
+#sL.an{display:grid}
+#sL .blatt{padding:2.2rem 2.6rem;display:flex;flex-direction:column;gap:1.1rem;transform:rotate(-.3deg)}
+#sL .kopf{display:flex;gap:1rem;align-items:baseline}
+#sL .num{font:400 3rem/1 "Patrick Hand"}
+#sL h2{font:400 2.4rem/1.05 "Patrick Hand"}
+#sL .blatt p{font-size:1.18rem;line-height:1.62;max-width:38rem}
+#sL .weiter{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:1px solid var(--linie);padding-top:1rem}
+#sL .seite{display:flex;flex-direction:column;gap:1.2rem;justify-content:center}
+#sL .vgl{padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.7rem}
+#sL .vgl.a{border:2px dashed #9a8f82;transform:rotate(1deg)}
+#sL .vgl.b{border:4px solid var(--tinte);transform:rotate(-1deg)}
+#sL .vgl b{font-size:1.2rem;line-height:1.25}
+#sL .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+#sL .chips span{border:2px solid var(--tinte);padding:.25rem .55rem;font-weight:600}
+#sL .vgl.a .chips span{border-style:dashed;border-color:#9a8f82}
+#sL .vgl small{color:var(--mut);font-size:.9rem}
+
+/* 4 · Ablauf */
+#s4{display:none;padding:4vh 4vw;flex-direction:column;gap:2.2vh}
+#s4.an{display:flex}
+#s4 .kopf{display:flex;justify-content:space-between;align-items:center;gap:2rem}
+#s4 .kopf .blatt{padding:.8rem 1.4rem;transform:rotate(-.5deg)}
+#s4 .kopf h2{font:400 2.3rem/1 "Patrick Hand"}
+#s4 .plan{padding:1.3rem 1.5rem;flex:1;min-height:0;display:grid;grid-template-columns:11rem repeat(5,1fr);grid-template-rows:auto repeat(4,1fr);gap:.5rem}
+#s4 .jahr{font-weight:700;font-size:1.1rem;padding:.2rem .5rem .5rem;border-bottom:3px solid var(--tinte)}
+#s4 .jahr small{display:block;font-weight:400;font-size:.85rem;color:var(--mut)}
+#s4 .jahr.pilot{border-bottom-style:dashed}
+#s4 .strang{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:1.05rem}
+#s4 .strang svg{width:1.5rem;height:1.5rem;flex:none}
+#s4 .z{padding:.6rem .75rem;font-size:1rem;line-height:1.35;display:flex;align-items:center}
+#s4 .z.leer{background:none!important;border:0!important;color:var(--mut)}
+#s4 .ks{background:var(--ks-g);border-left:6px solid var(--ks)}
+#s4 .pl{background:var(--pl-g);border-left:6px solid var(--pl)}
+#s4 .fb{background:var(--fb-g);border-left:6px solid var(--fb)}
+#s4 .er{background:#f1ebe2;border-left:6px solid #9a8f82}
+#s4 .z.pilotz{opacity:.75}
+
+/* L2 · Vorhaben, L3 · Passung */
+#sL2,#sL3{display:none;padding:4.5vh 5vw;gap:3vw}
+#sL2{grid-template-columns:1fr 23rem}
+#sL2.an,#sL3.an{display:grid}
+#sL2 .blatt.text,#sL3 .blatt.text{padding:2.2rem 2.6rem;display:flex;flex-direction:column;gap:1.1rem;transform:rotate(-.3deg)}
+#sL2 .kopf,#sL3 .kopf{display:flex;gap:1rem;align-items:baseline}
+#sL2 .num,#sL3 .num{font:400 3rem/1 "Patrick Hand"}
+#sL2 h2,#sL3 h2{font:400 2.4rem/1.05 "Patrick Hand"}
+#sL2 .blatt.text p{font-size:1.18rem;line-height:1.62;max-width:38rem}
+#sL2 .weiter,#sL3 .weiter{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:1px solid var(--linie);padding-top:1rem}
+#sL2 .seite{display:flex;flex-direction:column;gap:1rem;justify-content:center}
+.baustein{padding:1rem 1.2rem;display:grid;grid-template-columns:1.6rem 1fr;gap:.2rem .7rem;align-items:start}
+.baustein svg{width:1.5rem;height:1.5rem;margin-top:.15rem}
+.baustein b{font:400 1.55rem/1.1 "Patrick Hand"}
+.baustein p{grid-column:2;font-size:1rem;line-height:1.4}
+.baustein ul{grid-column:2;list-style:none;display:grid;gap:.3rem;margin-top:.2rem}
+.baustein li{font-size:1rem;line-height:1.38;padding-left:.9rem;position:relative}
+.baustein li::before{content:"";position:absolute;left:0;top:.6em;width:.4rem;height:2px;background:var(--tinte)}
+.baustein li i{font-style:normal;font-weight:600}
+.baustein.ks{border-left:6px solid var(--ks);transform:rotate(.6deg)}
+.baustein.pl{border-left:6px solid var(--pl);transform:rotate(-.5deg)}
+.baustein.fb{border-left:6px solid var(--fb);transform:rotate(.4deg)}
+#sL2 .klein{font-size:.95rem}
+#sL3{grid-template-columns:1fr}
+#sL3 .blatt.text{max-width:none}
+#sL3 .paare{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.6rem;flex:1;align-content:start}
+#sL3 .paar{background:var(--papier);border:1px solid var(--linie);padding:1rem 1.2rem}
+#sL3 .paar b{display:block;font-size:1.15rem;margin-bottom:.35rem}
+#sL3 .paar p{font-size:1.06rem;line-height:1.5}
+#sL3 .quelle{font-size:.85rem;color:var(--mut)}
+#sL3 .rechts{display:flex;gap:.6rem}
+
+/* Passung als Zuordnung, Kosten, Team */
+#sL3{display:none;padding:3.5vh 5vw;flex-direction:column;gap:1.6vh}
+#sL3.an{display:flex}
+.notiz{padding:.7rem 1.4rem;transform:rotate(-.6deg);align-self:flex-start;display:flex;gap:.9rem;align-items:baseline}
+.notiz .num{font:400 2.6rem/1 "Patrick Hand"}
+.notiz h2{font:400 2.2rem/1.05 "Patrick Hand"}
+.zuordnung{flex:1;display:grid;grid-template-columns:minmax(0,19rem) 2.5rem 1fr;grid-auto-rows:1fr;gap:.9rem 0;align-items:stretch;min-height:0}
+.zuordnung .m{background:var(--nacht);color:var(--hell);padding:.8rem 1.1rem;display:flex;align-items:center;font:400 1.5rem/1.15 "Patrick Hand";box-shadow:0 4px 10px #0003}
+.zuordnung .m:nth-of-type(odd){transform:rotate(-.6deg)}
+.zuordnung .pfeil{display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--nacht)}
+.zuordnung .w{background:var(--karte);padding:.8rem 1.2rem;display:flex;align-items:center;font-size:1.06rem;line-height:1.45;box-shadow:0 4px 10px #0003}
+.fusszeile{display:flex;justify-content:flex-end;align-items:center;gap:1rem}
+.fusszeile .quelle{background:#fffdf9d9;padding:.3rem .7rem;font-size:.85rem;color:var(--mut)}
+.fusszeile .rechts{display:flex;gap:.6rem}
+
+#sK,#sT{display:none;padding:4vh 5vw;flex-direction:column;gap:2.4vh}
+#sK.an,#sT.an{display:flex}
+.kopfzeile{display:flex;justify-content:space-between;align-items:center;gap:1.5rem}
+.kopfzeile .blatt{padding:.7rem 1.4rem;transform:rotate(-.5deg)}
+.kopfzeile h2{font:400 2.3rem/1 "Patrick Hand"}
+.zurueck{min-width:10rem}
+#sK .koerper{flex:1;display:grid;grid-template-columns:19rem 1fr;gap:2.4rem;min-height:0}
+#sK .total{padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;align-self:start;transform:rotate(.5deg)}
+#sK .total .betrag{font:700 2.6rem/1 "Fira Sans"}
+#sK .total p{font-size:1.05rem;line-height:1.45}
+#sK .total small{font-size:.9rem;color:var(--mut);line-height:1.4}
+#sK .posten{padding:1.6rem 1.9rem;display:flex;flex-direction:column;gap:1rem;align-self:start}
+#sK .zeile{display:grid;grid-template-columns:1.5rem 15rem 1fr 6rem;gap:.8rem;align-items:center}
+#sK .zeile svg{width:1.3rem;height:1.3rem}
+#sK .zeile span{font-size:1.04rem}
+#sK .zeile b{text-align:right;font-variant-numeric:tabular-nums}
+#sK .balken{height:1.1rem;background:#cfc3b5}
+#sK .zeile.ks .balken{background:var(--ks)}
+#sK .zeile.pl .balken{background:var(--pl)}
+#sK .zeile.fb .balken{background:var(--fb)}
+#sK .zeile.oh .balken{background:repeating-linear-gradient(45deg,#cfc3b5 0 4px,#fff 4px 8px);border:1px solid #9a8f82}
+#sK .summe{border-top:2px solid var(--tinte);padding-top:.6rem}
+#sK .summe span,#sK .summe b{font-weight:700}
+
+#sT .leute{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;align-content:center}
+#sT .person{padding:1.4rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.55rem;align-items:flex-start}
+#sT .person:nth-child(1){transform:rotate(-.7deg)}
+#sT .person:nth-child(3){transform:rotate(.6deg)}
+#sT .bild{width:6.5rem;height:6.5rem;border-radius:50%;object-fit:cover;background:var(--linie);display:flex;align-items:center;justify-content:center;font:700 1.6rem "Fira Sans";color:var(--mut)}
+#sT .name{font:400 1.75rem/1.05 "Patrick Hand";margin-top:.3rem}
+#sT .rolle{font-weight:600}
+#sT .person p{font-size:1rem;line-height:1.45}
+#sT .dazu{padding:.8rem 1.3rem;font-size:1rem;line-height:1.45;align-self:flex-start;max-width:56rem}
+
+#sK .zeile{grid-template-columns:1.5rem 15rem 1fr 6rem 5rem;text-align:left;width:100%;padding:.25rem .4rem;margin:0 -.4rem}
+#sK button.zeile:hover{background:#f1ebe2}
+#sK .zeile em{font-style:normal;font-size:.85rem;font-weight:600;color:var(--mut);text-align:right}
+#sK button.zeile:hover em{color:var(--tinte)}
+.detail{border:0;margin:auto;max-width:56rem;width:90vw;padding:1.6rem 1.9rem}
+.detail::backdrop{background:#1d1a1799}
+.dkopf{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem}
+.dkopf h3{font:400 1.9rem/1.1 "Patrick Hand"}
+.detail table{border-collapse:collapse;width:100%}
+.detail th,.detail td{text-align:left;padding:.5rem .6rem;border-top:1px solid var(--linie);font-size:1rem;line-height:1.4;vertical-align:top}
+.detail th{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);border-top:0}
+.detail td:nth-child(3),.detail td:nth-child(4),.detail th:nth-child(3),.detail th:nth-child(4){text-align:right;white-space:nowrap}
+.kd-fuss{margin-top:1rem;font-size:.85rem;color:var(--mut);line-height:1.4}
+.leiste .marke{cursor:pointer}
+.knopfreihe{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* Telefonbreite: alles untereinander, die Seite darf scrollen */
+@media (max-width:820px){
+html,body{height:auto;overflow:auto}
+.v{height:auto;min-height:calc(100vh - 44px);padding-left:max(16px,env(safe-area-inset-left,0px))!important;padding-right:max(16px,env(safe-area-inset-right,0px))!important;padding-block:20px!important}
+.leiste{height:auto;flex-wrap:wrap;gap:.2rem 1rem;padding:.5rem max(16px,env(safe-area-inset-right,0px)) .5rem max(16px,env(safe-area-inset-left,0px))}
+.leiste .marke span{display:none}
+.leiste nav{justify-content:flex-start;flex-wrap:wrap;gap:0 .9rem;flex-basis:100%;order:3}
+.leiste button{padding:.3rem 0}
+#s1 .inhalt{padding:0;max-width:none}
+#s1 h1{font-size:3.2rem}
+#s1 .satz{font-size:1.15rem}
+#s2.an,#s3.an,#sL.an,#sL2.an{grid-template-columns:minmax(0,1fr);display:flex;flex-direction:column;gap:1.2rem}
+#s3 .steck{padding:1.2rem}
+#s3 .rechts{padding:0}
+#s3 .gross{grid-template-columns:minmax(0,1fr)}
+#s3 .gross .pk{min-height:0}
+#s3 .reihe{flex-wrap:wrap}
+#s3 .reihe .pk{flex:1 1 45%}
+#s3 .titel h2{font-size:2.1rem}
+#s2 .faecher{grid-template-columns:minmax(0,1fr);min-height:18rem}
+#s2 .fuss{flex-direction:column;align-items:stretch}
+#sL .blatt,#sL2 .blatt.text{padding:1.2rem}
+.weiter{flex-wrap:wrap}
+.knopf{white-space:normal}
+.zuordnung{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto;gap:.4rem}
+.zuordnung .pfeil{display:none}
+.zuordnung .w{margin-bottom:.8rem}
+.fusszeile,.fusszeile .rechts,.kopfzeile,#s4 .kopf{flex-wrap:wrap}
+#s4 .plan{overflow-x:auto;grid-template-columns:8rem repeat(5,9rem)}
+#sK .koerper{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+#sK .zeile{grid-template-columns:1.5rem minmax(0,1fr) 5rem}
+#sK .zeile .balken,#sK .zeile em,#sK .zeile i{display:none}
+#sT .leute{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<header class="leiste">
+  <span class="marke" data-geh="s1" role="link" title="Zur Startseite"><b>SORT II</b><span>Projektskizze an die Stiftung Mercator Schweiz</span></span>
+  <nav>
+    <button data-geh="s3">Übersicht</button>
+    <button data-geh="sL">1 Woran wir ansetzen</button>
+    <button data-geh="sL2">2 Was wir vorhaben</button>
+    <button data-geh="sL3">3 Passung zu Mercator</button>
+  </nav>
+  <span class="extra"><button data-geh="s2">Ausprobieren</button><button data-geh="sT">Team</button><button data-geh="s4">Ablauf</button><button data-geh="sK">Kosten</button></span>
+</header>
+
+<!-- 1 · Bild -->
+<section class="v" id="s1" data-nr="Start" data-name="Einstieg mit Bild">
+  <div class="inhalt">
+    <span class="augen">Projektskizze an die Stiftung Mercator Schweiz</span>
+    <h1>SORT II</h1>
+    <p class="satz">Wir entwickeln <b>digitale Kärtchenaktivitäten</b> für den Mathematikunterricht der Sekundarstufe I. Mit ihnen denken Schülerinnen und Schüler in selbständigen Lernzeiten gemeinsam über Mathematik nach.</p>
+    <div class="zwei">
+      <button data-geh="s2"><span>Selbst ausprobieren<small>Vier Karten, eine Minute</small></span><span>›</span></button>
+      <button data-geh="s3"><span>Gleich zur Übersicht</span><span>›</span></button>
+    </div>
+    <p class="wer">Henrike Allmendinger, Martin Lacher, Luzia Christen · PH Luzern</p>
+  </div>
+</section>
+
+<!-- 2 · Ausprobieren -->
+<section class="v holz" id="s2" data-nr="Ausprobieren" data-name="danach zur Übersicht">
+  <div class="text blatt">
+    <span class="augen">Ausprobieren</span>
+    <p class="auf">Ergibt die Summe weniger als 1, genau 1 oder mehr als 1? Legen Sie jede Karte auf ein Feld, ohne zu rechnen.</p>
+    <p>So beginnt eine digitale Kärtchenaktivität. Eine Gruppe legt die Karten und muss sich einigen, wo jede hingehört.</p>
+    <p class="hinweis">Karte ziehen, oder zuerst die Karte und dann das Feld anklicken.</p>
+  </div>
+  <div class="tisch">
+    <div class="stapel" id="stapel">
+      <div class="k" data-w="g">½ + ⅔</div><div class="k" data-w="k">¾ + ⅛</div><div class="k" data-w="e">⅝ + ⅜</div><div class="k" data-w="g">0,9 + ⅕</div>
+    </div>
+    <div class="faecher">
+      <div class="fach" data-w="k"><h3>weniger als 1</h3></div>
+      <div class="fach" data-w="e"><h3>genau 1</h3></div>
+      <div class="fach" data-w="g"><h3>mehr als 1</h3></div>
+    </div>
+    <div class="fuss">
+      <div class="bilanz" id="bilanz"></div>
+      <button class="knopf" id="zurUe" data-geh="s3">Zur Übersicht ›</button>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Übersicht -->
+<section class="v holz" id="s3" data-nr="Übersicht" data-name="aus 3c, weniger Text">
+  <aside class="steck">
+    <h1>SORT II</h1>
+    <div class="block pilot">
+      <span class="kopfz">Jetzt · Pilot SORT</span>
+      <span class="zeit">2026/27</span>
+      <p>8 Kartensätze, Klassen 7 und 9, erprobt in 5 Klassen</p>
+    </div>
+    <div class="block">
+      <span class="kopfz">Geplant · SORT II</span>
+      <span class="zeit">2027/28 bis 2029/30</span>
+      <dl>
+        <div><dt>Mathematik, Sek I</dt><dd>alle drei Klassenstufen</dd></div>
+        <div><dt>3 Schuljahre</dt><dd>Kartensätze, Plattform, Fortbildung</dd></div>
+        <div><dt>12 Klassen im Jahr</dt><dd>in der Erprobung, Kanton Luzern</dd></div>
+      </dl>
+    </div>
+    <img src="bilder/logo-phlu.png" alt="PH Luzern">
+  </aside>
+  <div class="rechts">
+    <div class="titel blatt"><i class="band l"></i><i class="band r"></i><h2>Digitale Kärtchenaktivitäten</h2><p>für selbständige Lernzeiten in Mathematik</p></div>
+    <div class="gross">
+      <button class="pk" data-geh="sL"><span class="start">hier beginnen</span><span class="num">1</span><h3>Woran wir ansetzen</h3><p>Für selbständige Lernzeiten in Mathematik fehlen kognitiv aktivierende Aufgaben, über die sich Schülerinnen und Schüler austauschen müssen.</p><span class="lesen">Lesen ›</span></button>
+      <button class="pk" data-geh="sL2"><span class="num">2</span><h3>Was wir vorhaben</h3><p>Wir entwickeln Kartensätze für alle drei Klassenstufen, dazu eine Plattform und eine Fortbildung für Lehrpersonen.</p><span class="lesen">Lesen ›</span></button>
+      <button class="pk dunkel" data-geh="sL3"><span class="num">3</span><h3>Passung zu Mercator</h3><p>Wir verbinden «gemeinschaftliches Lernen» mit «lernwirksamem Feedback»: Die Lehrperson sieht, wie Gruppen gearbeitet haben, und greift das im Klassengespräch auf.</p><span class="lesen">Lesen ›</span></button>
+    </div>
+    <div class="reihe">
+      <button class="pk" data-geh="s2"><h3>Ausprobieren</h3><span class="lesen">›</span></button>
+      <button class="pk" data-geh="sT"><h3>Wer steht dahinter?</h3><span class="lesen">›</span></button>
+      <button class="pk" data-geh="s4"><h3>Wie läuft es ab?</h3><span class="lesen">›</span></button>
+      <button class="pk" data-geh="sK"><h3>Was kostet es?</h3><span class="lesen">›</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- L · Leseansicht -->
+<section class="v holz" id="sL" data-nr="Lesen 1" data-name="Leseansicht zu Karte 1: Woran wir ansetzen">
+  <div class="blatt">
+    <div class="kopf"><span class="num">1</span><h2>Woran wir ansetzen</h2></div>
+    <p>Viele Volksschulen haben selbständige Lernzeiten eingeführt, etwa ein Lernatelier oder einen Wochenplan. Die Schülerinnen und Schüler arbeiten dort an Aufgaben, die die Lehrperson vorbereitet hat.</p>
+    <p>In Mathematik fehlen dafür kognitiv aktivierende Aufgaben, über die sich Schülerinnen und Schüler austauschen müssen. Solche Aufgaben zu entwickeln, braucht mehr Zeit, als Lehrpersonen im Alltag haben. Deshalb wählen sie meist Aufgaben, die alle sicher allein lösen können.</p>
+    <p>Was in diesen Lernzeiten entsteht, kommt zudem selten in den Klassenunterricht zurück. Die Lehrperson sieht am Ende vor allem die Ergebnisse.</p>
+    <div class="weiter">
+      <button class="knopf" data-geh="s3">← Übersicht</button>
+      <button class="knopf voll" data-geh="sL2">Weiter: 2 Was wir vorhaben ›</button>
+    </div>
+  </div>
+  <div class="seite">
+    <div class="vgl blatt a"><b>Rechne aus.</b><div class="chips"><span>½ + ⅔ =</span><span>¾ + ⅛ =</span><span>⅝ + ⅜ =</span></div><small>So sehen die Aufgaben meist aus.</small></div>
+    <div class="vgl blatt b"><b>Welche ergeben mehr als 1? Ohne auszurechnen.</b><div class="chips"><span>½ + ⅔</span><span>¾ + ⅛</span><span>⅝ + ⅜</span></div><small>Eine solche Aufgabe regt zum Nachdenken an, und die Gruppe muss sich austauschen.</small></div>
+  </div>
+</section>
+
+<!-- L2 · Vorhaben -->
+<section class="v holz" id="sL2" data-nr="Lesen 2" data-name="Leseansicht zu Karte 2: Was wir vorhaben">
+  <div class="blatt text">
+    <div class="kopf"><span class="num">2</span><h2>Was wir vorhaben</h2></div>
+    <p>Bei einer digitalen Kärtchenaktivität ordnet eine Gruppe Karten und begründet, warum jede Karte dort liegt. Weil die Karten digital sind, sieht die Lehrperson danach, wie jede Gruppe vorgegangen ist. Wo Gruppen verschieden entschieden haben, setzt sie im Klassengespräch an.</p>
+    <p>Im Pilotprojekt SORT entstehen im Schuljahr 2026/27 acht Kartensätze für die 7. und 9. Klasse. Erprobt werden sie in fünf Schulklassen. In SORT II kommt die 8. Klasse dazu, und wir bauen daraus in drei Schuljahren ein Angebot für alle Schulen der Sekundarstufe I.</p>
+    <div class="weiter">
+      <button class="knopf" data-geh="s3">← Übersicht</button>
+      <button class="knopf voll" data-geh="sL3">Weiter: 3 Passung zu Mercator ›</button>
+    </div>
+  </div>
+  <div class="seite">
+    <div class="baustein blatt ks"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg><b>Kartensätze</b><ul><li>für alle drei Klassenstufen</li><li>erprobt in rund zwölf Schulklassen im Jahr</li><li>frei verfügbar</li></ul></div>
+    <div class="baustein blatt pl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg><b>Plattform</b><ul><li><i>Vorher</i> finden Lehrpersonen die Kartensätze nach Klasse, Thema und Lehrplan.</li><li><i>Nachher</i> sehen sie, wie jede Gruppe gearbeitet hat.</li></ul></div>
+    <div class="baustein blatt fb"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="var(--fb)"/></svg><b>Fortbildung</b><ul><li>Lehrpersonen lernen, wann sie welchen Kartensatz einsetzen und wie sie die Ergebnisse ins Klassengespräch holen.</li><li>Danach im Angebot der PH Luzern</li></ul></div>
+    <div style="display:flex;gap:.6rem;justify-content:flex-end"><button class="knopf klein" data-geh="s4">Wie läuft es ab? ›</button><button class="knopf klein" data-geh="sK">Was kostet es? ›</button></div>
+  </div>
+</section>
+
+<!-- L3 · Passung -->
+<section class="v holz" id="sL3" data-nr="Lesen 3" data-name="Passung zu Mercator">
+  <div class="notiz blatt"><span class="num">3</span><h2>Passung zu «Lernen der Zukunft»</h2></div>
+  <div class="zuordnung">
+      <div class="m">«gemeinschaftliches Lernen»</div><div class="pfeil">→</div><div class="w">Bei einer Kärtchenaktivität muss sich die Gruppe auf eine Ordnung einigen. Wer eine Karte anders legen würde, muss das begründen.</div>
+      <div class="m">«lernwirksames Feedback und Reflexion»</div><div class="pfeil">→</div><div class="w">Auf der Plattform sieht die Lehrperson, wie jede Gruppe vorgegangen ist. Im Klassengespräch greift sie auf, wo Gruppen verschieden entschieden haben.</div>
+      <div class="m">«Aus- und Weiterbildung von Lehrpersonen»</div><div class="pfeil">→</div><div class="w">Lehrpersonen lernen in der Fortbildung, wann sie welchen Kartensatz einsetzen und wie sie die Ergebnisse ins Klassengespräch holen. Danach bietet die PH Luzern sie in ihrer Weiterbildung an.</div>
+      <div class="m">«Relevanz und systemische Wirkung»</div><div class="pfeil">→</div><div class="w">Wir veröffentlichen die Kartensätze frei und binden sie an den Lehrplan 21 und die Lehrmittel an. Die Plattform bauen wir so, dass sie nach dem Projekt weiterläuft.</div>
+  </div>
+  <div class="fusszeile">
+    <div class="rechts"><button class="knopf" data-geh="sL2">← 2 Was wir vorhaben</button><button class="knopf voll" data-geh="s3">Zur Übersicht ›</button></div>
+  </div>
+</section>
+
+<!-- 4 · Ablauf -->
+<section class="v holz" id="s4" data-nr="Ablauf" data-name="Wie läuft es ab?">
+  <div class="kopf">
+    <div class="blatt"><h2>Wie läuft es ab?</h2></div>
+    <span class="knopfreihe"><button class="knopf zurueck">← Zurück</button><button class="knopf voll" data-geh="sK">Weiter: Was kostet es? ›</button></span>
+  </div>
+  <div class="plan blatt">
+    <span></span>
+    <span class="jahr pilot">2026/27<small>Pilot SORT</small></span>
+    <span class="jahr">2027/28<small>aufbauen</small></span>
+    <span class="jahr">2028/29<small>einsetzen</small></span>
+    <span class="jahr">2029/30<small>abschliessen</small></span>
+    <span class="jahr">danach<small>PH Luzern</small></span>
+
+    <span class="strang"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg>Kartensätze</span>
+    <span class="z ks pilotz">8 Kartensätze für die 7. und 9. Klasse</span>
+    <span class="z ks">Erste Sätze für die 8. Klasse</span>
+    <span class="z ks">Weitere Themen, dynamische Karten</span>
+    <span class="z ks">Vollständig, frei verfügbar</span>
+    <span class="z ks">bleiben frei verfügbar</span>
+
+    <span class="strang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg>Plattform</span>
+    <span class="z leer">–</span>
+    <span class="z pl">entsteht</span>
+    <span class="z pl">Lehrpersonen nutzen sie</span>
+    <span class="z pl">Ausbau nach Rückmeldungen</span>
+    <span class="z pl">läuft weiter</span>
+
+    <span class="strang"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="var(--fb)"/></svg>Fortbildung</span>
+    <span class="z leer">–</span>
+    <span class="z fb">wird konzipiert</span>
+    <span class="z fb">erste Durchführung</span>
+    <span class="z fb">zweite Durchführung</span>
+    <span class="z fb">im Angebot der PH Luzern</span>
+
+    <span class="strang"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg>Erprobung</span>
+    <span class="z er pilotz">5 Schulklassen</span>
+    <span class="z er">rund 12 Schulklassen</span>
+    <span class="z er">rund 12 Schulklassen</span>
+    <span class="z er">rund 12 Schulklassen</span>
+    <span class="z leer">–</span>
+  </div>
+</section>
+
+<!-- Kosten -->
+<section class="v holz" id="sK" data-nr="Kosten" data-name="Was kostet es?">
+  <div class="kopfzeile">
+    <div class="blatt"><h2>Was kostet es?</h2></div>
+    <span class="knopfreihe"><button class="knopf" data-geh="s4">← Wie läuft es ab?</button><button class="knopf zurueck">← Zurück</button></span>
+  </div>
+  <div class="koerper">
+    <div class="total blatt">
+      <span class="augen">Beantragt bei der Stiftung Mercator Schweiz</span>
+      <span class="betrag">CHF 581’100</span>
+      <p>über drei Schuljahre, rund 194’000 pro Jahr</p>
+      <small>Direkte Kosten CHF 484’200, dazu der Overhead der Hochschule.</small>
+      <small><b>Ein Klick auf einen Posten zeigt, wie er zustande kommt.</b></small>
+    </div>
+    <div class="posten blatt">
+      <button class="zeile ks" data-ap="ap2"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="var(--ks)"/></svg><span>Kartensätze und Applets</span><i class="balken" style="width:100%"></i><b>140’200</b><em>Details ›</em></button>
+      <button class="zeile x" data-ap="ap4"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Erprobung und Begleitforschung</span><i class="balken" style="width:77%"></i><b>108’100</b><em>Details ›</em></button>
+      <button class="zeile pl" data-ap="ap3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="var(--pl)"/></svg><span>Plattform</span><i class="balken" style="width:54%"></i><b>75’300</b><em>Details ›</em></button>
+      <button class="zeile x" data-ap="ap1"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Leitung und Koordination</span><i class="balken" style="width:49%"></i><b>68’700</b><em>Details ›</em></button>
+      <button class="zeile fb" data-ap="ap5"><svg viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="var(--fb)"/></svg><span>Fortbildung</span><i class="balken" style="width:41%"></i><b>56’900</b><em>Details ›</em></button>
+      <button class="zeile x" data-ap="ap6"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="#9a8f82" stroke-width="3"/></svg><span>Verbreitung</span><i class="balken" style="width:25%"></i><b>35’000</b><em>Details ›</em></button>
+      <button class="zeile oh" data-ap="ovh"><svg viewBox="0 0 24 24"></svg><span>Overhead der Hochschule, 20 %</span><i class="balken" style="width:69%"></i><b>96’900</b><em>Details ›</em></button>
+      <div class="zeile summe"><svg viewBox="0 0 24 24"></svg><span>Total</span><i></i><b>581’100</b><em></em></div>
+    </div>
+  </div>
+  <dialog class="detail blatt" id="kdetail"><div class="dkopf"><h3 id="kd-titel"></h3><button class="knopf" id="kd-zu">Schliessen ×</button></div><div id="kd-inhalt"></div><p class="kd-fuss">Stundensätze: Leitung und Kernteam 117 CHF (Planungssatz), wissenschaftliche Mitarbeit 61.40, Hilfskräfte 32.90, Technik 150, Grafik 150. ≈ heisst: Schätzung, wird noch geprüft. Personalkosten nach den Lohnansätzen der PH Luzern inklusive Sozialabgaben.</p></dialog>
+</section>
+
+<!-- Team -->
+<section class="v holz" id="sT" data-nr="Team" data-name="Wer steht dahinter?">
+  <div class="kopfzeile">
+    <div class="blatt"><h2>Wer steht dahinter?</h2></div>
+    <button class="knopf zurueck">← Zurück</button>
+  </div>
+  <div class="leute">
+    <div class="person blatt"><img class="bild" src="bilder/team-allmendinger.jpg" alt=""><span class="name">Henrike Allmendinger</span><span class="rolle">Bringt das Format mit</span><p>Dozentin für Mathematikdidaktik an der PH Luzern. Setzt Kärtchenaktivitäten seit Jahren in ihrer Lehre ein und hat sie im Pilot systematisiert.</p></div>
+    <div class="person blatt"><span class="bild">ML</span><span class="name">Martin Lacher</span><span class="rolle">Bringt die Lehrmittel mit</span><p>Dozent für Mathematik Sek I an der PH Luzern. Leitet «Das neue Mathbuch» und die Mathbuch-Applets.</p></div>
+    <div class="person blatt"><img class="bild" src="bilder/team-christen.jpg" alt=""><span class="name">Luzia Christen</span><span class="rolle">Bringt die Schulpraxis mit</span><p>Sekundarlehrerin und Dozentin für Mathematik Sek I. Kennt als Fachberaterin die Schulen.</p></div>
+  </div>
+  <p class="dazu blatt"><b>Dazu</b> wissenschaftliche Mitarbeit für die Begleitforschung, studentische Hilfskräfte sowie eine technische und eine grafische Stelle für die Plattform.</p>
+</section>
+
+<script>
+const vs=[...document.querySelectorAll('.v')];
+let ak=0;
+const NAME={s1:'Start',s2:'Ausprobieren',s3:'Übersicht',sL:'1 Woran wir ansetzen',sL2:'2 Was wir vorhaben',sL3:'3 Passung',s4:'Ablauf',sK:'Kosten',sT:'Team'};
+/* Abzweige: von dort führt «Zurück» immer an die Stelle im Lesepfad, an der man abgebogen ist */
+const ABZWEIG=new Set(['s4','sK','sT']);
+let herkunft='s3';
+function zeige(i,neu){const vorher=vs[ak]&&vs[ak].id;ak=(i+vs.length)%vs.length;const id=vs[ak].id;
+  if(ABZWEIG.has(id)&&vorher&&!ABZWEIG.has(vorher)&&vorher!==id)herkunft=vorher;
+  vs.forEach((v,j)=>v.classList.toggle('an',j===ak));
+  document.querySelectorAll('.leiste [data-geh]').forEach(b=>b.setAttribute('aria-current',b.dataset.geh===id));
+  if(neu)history.pushState({id},'','#'+id);else history.replaceState({id},'','#'+id);
+  document.querySelectorAll('.v.an .zurueck').forEach(b=>b.textContent='← Zurück zu '+NAME[herkunft])}
+const nach=id=>vs.findIndex(v=>v.id===id);
+function geh(id){if(vs[ak].id!==id)zeige(nach(id),true)}
+document.querySelectorAll('.zurueck').forEach(b=>b.addEventListener('click',()=>geh(herkunft)));
+addEventListener('popstate',e=>{const id=(e.state&&e.state.id)||location.hash.slice(1);if(nach(id)>=0)zeige(nach(id),false)});
+document.querySelectorAll('[data-geh]').forEach(b=>b.addEventListener('click',()=>geh(b.dataset.geh)));
+const start=vs.findIndex(v=>v.id===location.hash.slice(1));zeige(start<0?0:start);
+
+/* 2: sortieren; der Knopf zur Übersicht ist immer da und wird nach dem Legen gross */
+(function(){
+  const st=document.getElementById('stapel'),fae=[...document.querySelectorAll('#s2 .fach')],bi=document.getElementById('bilanz'),zu=document.getElementById('zurUe');
+  let gew=null;
+  const lege=(k,ziel)=>{ziel.appendChild(k);k.classList.remove('gewaehlt');gew=null;pruefe()};
+  function pruefe(){const fertig=!st.children.length;bi.classList.toggle('da',fertig);zu.classList.toggle('voll',fertig);zu.classList.toggle('gross',fertig);if(!fertig)return;
+    const r=[...document.querySelectorAll('#s2 .k')].filter(k=>k.parentElement.dataset.w===k.dataset.w).length;
+    bi.innerHTML='<b>'+(r===4?'Alle vier liegen richtig.':r+' von 4 liegen richtig.')+'</b> In einer Gruppe müssten Sie jetzt begründen, warum jede Karte dort liegt. Solche Gespräche wollen wir in selbständigen Lernzeiten möglich machen.'}
+  document.querySelectorAll('#s2 .k').forEach(k=>{
+    k.onclick=e=>{e.stopPropagation();if(k.dataset.z){delete k.dataset.z;return}if(gew===k){k.classList.remove('gewaehlt');gew=null;return}gew&&gew.classList.remove('gewaehlt');gew=k;k.classList.add('gewaehlt')};
+    k.onpointerdown=e=>{const r=k.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;let bew=false;
+      const mv=ev=>{if(!bew&&Math.hypot(ev.clientX-e.clientX,ev.clientY-e.clientY)<5)return;bew=true;k.style.position='fixed';k.style.zIndex=9;k.style.left=(ev.clientX-dx)+'px';k.style.top=(ev.clientY-dy)+'px';k.style.pointerEvents='none';fae.forEach(f=>f.classList.toggle('ziel',f.contains(document.elementFromPoint(ev.clientX,ev.clientY))))};
+      const up=ev=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);if(!bew)return;k.style.cssText='';const z=document.elementFromPoint(ev.clientX,ev.clientY);const f=z&&z.closest('#s2 .fach, #stapel');fae.forEach(f=>f.classList.remove('ziel'));k.dataset.z=1;if(f)lege(k,f)};
+      addEventListener('pointermove',mv);addEventListener('pointerup',up)};
+  });
+  [...fae,st].forEach(f=>f.addEventListener('click',()=>{if(gew)lege(gew,f)}));
+})();
+
+/* Kosten: Details je Posten, wie in der Präsentation */
+(function(){
+  const PAKET={"ap1": ["Leitung und Koordination", 68700, [["Leitung", "Planung, Personal, Budget, Berichte, Datenschutz, Abschluss", 120, 42100, 0], ["Kernteam", "Teamsitzungen", 45, 15800, 0], ["Wiss. Mitarbeit", "Datenschutzkonzept ausarbeiten, Teamsitzungen", 47, 8600, 0], ["Technik", "Teamsitzungen", 5, 2200, 0]]], "ap2": ["Kartensätze und Applets", 140200, [["Kernteam", "Sets, Applets und dynamische Karten mit Kasper digital bauen, gegenseitig prüfen; Abgleich mit Lehrmitteln", 317, 111200, 1], ["Wiss. Mitarbeit", "Varianten mit Kasper mitbauen, Überarbeitungen umsetzen", 97, 17800, 0], ["Hilfskräfte", "jedes Set vor dem Einsatz auf Schulgeräten testen", 33, 3300, 0], ["Sachkosten", "KI-Werkzeuge, Team-Lizenz mit drei Plätzen", null, 7900, 0]]], "ap3": ["Plattform", 75300, [["Kernteam", "festlegen, wie Lehrpersonen Sets finden und die Sortierprozesse ihrer Klasse ansehen; testen", 27, 9400, 1], ["Technik", "Plattform aufsetzen: Ablage und Suche, Wiedergabe, Sets einbinden; danach Hosting und Wartung", 102, 45700, 1], ["Grafik", "Aussehen der Karten, Piktogramme, Oberfläche der Plattform", 27, 12000, 1], ["Hilfskräfte", "Plattform auf Schulgeräten testen", 10, 1000, 0], ["Sachkosten", "Material und Betrieb", null, 7200, 0]]], "ap4": ["Erprobung und Begleitforschung", 108100, [["Kernteam", "Klassen gewinnen; Begleitforschung leiten: Leitfaden, Stichprobe doppelt kodieren, Befunde deuten", 137, 48000, 1], ["Wiss. Mitarbeit", "Sitzungen kodieren und auswerten, Befunde aufbereiten, Einsatzempfehlungen", 257, 47300, 0], ["Hilfskräfte", "Einwilligungen, Aufzeichnungen einsammeln, anonymisieren, ablegen", 130, 12800, 0]]], "ap5": ["Fortbildung", 56900, [["Kernteam", "Format konzipieren, zwei Durchgänge, Übergabe", 118, 41500, 1], ["Wiss. Mitarbeit", "Beispiele aus Sortierverläufen, zweiten Durchgang mitleiten", 35, 6400, 0], ["Sachkosten", "Kurskosten der zwei Durchgänge: Material, Verpflegung, Raum", null, 9000, 0]]], "ap6": ["Verbreitung", 35000, [["Kernteam", "Handreichung, Tagungen, Praxisartikel", 53, 18700, 0], ["Hilfskräfte", "Veröffentlichung als OER, Projektseite", 13, 1300, 0], ["Sachkosten", "Reisen zu Fachtagungen und Praxisveranstaltungen, Druck", null, 15000, 0]]]};
+  PAKET.ovh=['Overhead',96900,null];
+  const d=document.getElementById('kdetail'),f=x=>x.toLocaleString('de-CH').replace(/[’']/g,'’');
+  document.querySelectorAll('#sK [data-ap]').forEach(b=>b.addEventListener('click',()=>{const p=PAKET[b.dataset.ap];
+    document.getElementById('kd-titel').textContent=p[0]+' · CHF '+f(p[1]);
+    document.getElementById('kd-inhalt').innerHTML=p[2]?'<table><thead><tr><th>Wer</th><th>Was</th><th>h im Jahr</th><th>CHF 3 Jahre</th></tr></thead><tbody>'+p[2].map(([w,was,h,chf,sch])=>`<tr><td>${w}</td><td>${was}</td><td>${h==null?'':(sch?'≈ ':'')+h}</td><td>${f(chf)}</td></tr>`).join('')+'</tbody></table>':'<p style="font-size:1.05rem">20 % der direkten Kosten, entspricht der Leistungsbereichsebene der PH Luzern.</p>';
+    d.showModal()}));
+  document.getElementById('kd-zu').onclick=()=>d.close();
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});
+})();
+</script>
+
+
+</body>
+</html>
