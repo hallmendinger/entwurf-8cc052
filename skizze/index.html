@@ -305,9 +305,9 @@ html,body{height:auto;overflow:auto}
 .beispielkarte:hover{box-shadow:0 10px 20px #0004}
 #sB{display:none;padding:3.5vh 4vw;flex-direction:column;gap:2.2vh}
 #sB.an{display:flex}
-.bsp{flex:1;display:grid;grid-template-columns:1fr 15rem;gap:1.6rem;min-height:0}
+.bsp{flex:1;display:grid;grid-template-columns:1fr 18.5rem;gap:1.4rem;min-height:0}
+.bsp-links{position:relative;display:flex;flex-direction:column;gap:.9rem;min-height:0}
 .bsp-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.3rem;align-items:start;align-content:start}
-.bsp-steuer{grid-column:1/-1;display:flex;justify-content:flex-start}
 .bsp-vorrat{display:flex;flex-wrap:wrap;gap:.35rem;min-height:2.2rem;padding:.3rem 0;border-bottom:1px solid var(--linie)}
 .bsp-vorrat:empty{min-height:0;padding:0;border:0}
 .bk.neu{outline:3px solid var(--tinte);outline-offset:1px}
@@ -341,6 +341,85 @@ html,body{height:auto;overflow:auto}
 #sU .drei,.bsp,.bsp-drei,#s3 .gross{grid-template-columns:minmax(0,1fr)}
 #sU .drei .pk{min-height:0}
 }
+
+/* v4: Beispiele gleich gross, Zeichen je Beispiel, selbst sortieren oder vorführen, Merkmale einblendbar */
+:root{--m1:#6b4c9a;--m2:#c2622d;--m3:#1f7a80}
+.bsp-intro{display:flex;align-items:center;gap:1rem;justify-content:space-between;background:#fffdf9e6;padding:.55rem .9rem;box-shadow:0 2px 6px #0002}
+.bsp-intro p{font-size:1rem}
+.knopf.klein{padding:.35rem .7rem;font-size:.9rem;box-shadow:0 2px 5px #0002}
+.bsp-drei{flex:1;grid-auto-rows:1fr;align-items:stretch!important}
+.bsp-karte{border-top:6px solid var(--mf);min-height:0}
+.bsp-karte.m1{--mf:var(--m1)}.bsp-karte.m2{--mf:var(--m2)}.bsp-karte.m3{--mf:var(--m3)}
+.bsp-kopf{display:flex;align-items:center;gap:.5rem}
+.bsp-karte .bsp-zeilen{flex:1}
+.bsp-tun{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
+.mk{display:inline-block;width:1rem;height:1rem;flex:none}
+.mk.m1{background:var(--m1)}
+.mk.m2{background:var(--m2);border-radius:50%}
+.mk.m3{background:var(--m3);transform:rotate(45deg) scale(.85)}
+.bsp-karte .bk{cursor:grab;touch-action:none;user-select:none}
+.bsp-karte .bk.zieht{cursor:grabbing;box-shadow:0 8px 16px #0004;z-index:50}
+.bz.ziel,.bsp-vorrat.ziel{background:#f1ebe2}
+.kriterien{position:absolute;inset:3.4rem 0 0 0;z-index:5;padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:.9rem;overflow:auto}
+.kriterien[hidden]{display:none}
+.kr-kopf{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.kr-kopf h3{font:400 1.8rem/1 "Patrick Hand"}
+.kr-leg{display:flex;gap:1rem;flex:1;flex-wrap:wrap;font-size:.92rem}
+.kr-leg span{display:flex;align-items:center;gap:.4rem}
+.kr-zeilen{display:grid;gap:.8rem}
+.kz{display:grid;grid-template-columns:14rem 1fr;align-items:center;gap:1rem;border-top:1px solid var(--linie);padding-top:.7rem}
+.kz h4{font-size:1.02rem}
+.kz ul{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:.5rem}
+.kz li{border:1.5px dashed #b9ad9f;padding:.35rem .5rem;font-size:.92rem;display:flex;align-items:center;gap:.4rem;min-height:2.3rem;color:var(--mut)}
+.kz li.hier{border-style:solid;border-color:var(--tinte);color:var(--tinte);font-weight:600}
+.kz .mks{display:flex;gap:.2rem}
+.kr-mehr{font-size:.95rem;line-height:1.45;color:var(--mut)}
+.kr-mehr b{color:var(--tinte);margin-right:.3rem}
+
+/* v5: Merkmale rechts, Einordnung je Beispiel, Originale hinter einem Knopf */
+.bsp-rechts{display:flex;flex-direction:column;gap:.8rem;min-height:0}
+.merkmale{padding:.9rem 1rem 1rem;display:flex;flex-direction:column;gap:.55rem}
+.merkmale h3{font:400 1.55rem/1.05 "Patrick Hand"}
+.merkmale>p{font-size:.88rem;color:var(--mut)}
+.ew-reihe{display:flex;gap:.35rem;flex-wrap:wrap}
+.ew{display:flex;align-items:center;gap:.35rem;border:1.5px solid var(--tinte);padding:.25rem .5rem;font-size:.85rem;font-weight:600;background:var(--karte)}
+.ew[aria-pressed=true]{background:var(--tinte);color:var(--papier)}
+.ew .mk{width:.75rem;height:.75rem}
+.mm{border-top:1px solid var(--linie);padding-top:.45rem;display:flex;flex-direction:column;gap:.3rem}
+.mm h4{font-size:.88rem}
+.stufen{display:flex;flex-wrap:wrap;gap:.25rem}
+.st{border:1.5px dashed #b9ad9f;color:var(--mut);padding:.12rem .4rem;font-size:.8rem;display:inline-flex;align-items:center;gap:.25rem}
+.st.hier{border-style:solid;border-color:var(--tinte);color:var(--tinte);font-weight:600;background:#fff}
+.st .mks{display:inline-flex;gap:.15rem;font-style:normal}
+.st .mks:empty{display:none}
+.st .mk{width:.7rem;height:.7rem}
+.kr-mehr{font-size:.82rem;color:var(--mut);line-height:1.35}
+.pilot-knopf{align-self:stretch;justify-content:center}
+.bsp-karte.markiert{outline:3px solid var(--tinte);outline-offset:3px}
+.wahlfenster{border:0;padding:0;width:min(46rem,92vw);margin:auto}
+.wahlfenster::backdrop{background:#1d1a17b3}
+.wahlfenster .vb-kopf{padding:.7rem 1rem}
+.pw-zwei{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem}
+.pw-zwei .vk{border:1px solid var(--linie);background:var(--karte)}
+
+/* v5b: dichter, damit nichts scrollt */
+.ew-text{font-size:.82rem;color:var(--mut);margin-bottom:-.2rem}
+.ew-reihe{display:grid;grid-template-columns:repeat(3,1fr);gap:.3rem}
+.ew{justify-content:center;padding:.25rem .3rem;font-size:.78rem;gap:.3rem;white-space:nowrap}
+.merkmale{gap:.45rem;padding:.8rem .9rem .9rem}
+.mm{padding-top:.4rem;gap:.25rem}
+.mm h4{font-size:.84rem}
+.st{font-size:.76rem;padding:.08rem .35rem}
+.bsp-intro{padding:.4rem .9rem}
+.bsp-intro p{font-size:.95rem}
+.bsp-links{gap:.7rem}
+.bsp-karte{padding:.9rem 1rem 1rem;gap:.35rem}
+.bsp-karte h3{font-size:1.55rem}
+.bsp-karte p{font-size:.92rem;line-height:1.35}
+.bsp-karte .bk{font-size:.95rem;padding:.2rem .45rem}
+.bsp-karte .bk.satz{font-size:.8rem}
+.bsp-zeilen{gap:.4rem;margin-top:.3rem}
+.bz{padding:.35rem .5rem}
 </style>
 </head>
 <body>
@@ -539,18 +618,31 @@ html,body{height:auto;overflow:auto}
     <button class="knopf zurueck">← Zurück</button>
   </div>
   <div class="bsp">
-    <div class="bsp-drei">
-      <div class="bsp-karte blatt"><span class="augen">Offen gruppieren</span><h3>Wonach ordnen wir?</h3><p>Ordnet in Gruppen. Wonach, entscheidet ihr.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="0">½</span><span class="bk" data-f="0" data-s="1">0,5</span><span class="bk" data-f="1" data-s="3">¾</span><span class="bk" data-f="1" data-s="4">0,75</span><span class="bk" data-f="0" data-s="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 0 1 12.00 22.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="1" data-s="5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 1 1 2.00 12.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="2" data-s="6">0,34</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>Gruppe A</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>Gruppe B</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>Gruppe C</i><div class="bsp-karten"></div></div></div></div>
-      <div class="bsp-karte blatt"><span class="augen">Der Grösse nach ordnen</span><h3>Wer ist grösser?</h3><p>Legt die Karten der Grösse nach, von klein nach gross.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="4">⅓</span><span class="bk" data-f="0" data-s="1">0,3</span><span class="bk" data-f="0" data-s="0">¼</span><span class="bk" data-f="0" data-s="3">0,33</span><span class="bk" data-f="0" data-s="2">30 %</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>klein → gross</i><div class="bsp-karten"></div></div></div></div>
-      <div class="bsp-karte blatt"><span class="augen">Aussagen beurteilen</span><h3>Stimmt das immer?</h3><p>Stimmt die Aussage immer, manchmal oder nie?</p><div class="bsp-vorrat"><span class="bk satz" data-f="0" data-s="0">½ ist gleich 0,5.</span><span class="bk satz" data-f="1" data-s="1">Ein Bruch ist kleiner als 1.</span><span class="bk satz" data-f="1" data-s="2">Mit grösserem Nenner ist der Bruch kleiner.</span><span class="bk satz" data-f="2" data-s="3">Ein Bruch mit Zähler 0 ist grösser als 0.</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>immer</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>manchmal</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>nie</i><div class="bsp-karten"></div></div></div></div>
-      <div class="bsp-steuer"><button class="knopf" id="bsp-nochmal">↺ Nochmals legen</button></div>
+    <div class="bsp-links">
+      <div class="bsp-intro"><p>Drei Beispiele von vielen Varianten. Karten ziehen, um selbst zu sortieren, oder vorführen lassen.</p></div>
+      <div class="bsp-drei">
+      <div class="bsp-karte blatt m1"><div class="bsp-kopf"><i class="mk m1"></i><span class="augen">Beispiel 1 · Offen gruppieren</span></div><h3>Wonach ordnen wir?</h3><p>Ordnet in Gruppen. Wonach, entscheidet ihr.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="0">½</span><span class="bk" data-f="0" data-s="1">0,5</span><span class="bk" data-f="1" data-s="3">¾</span><span class="bk" data-f="1" data-s="4">0,75</span><span class="bk" data-f="0" data-s="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 0 1 12.00 22.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="1" data-s="5"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#6d655d" stroke-width="1.4"/><path d="M12 12 L12 2 A10 10 0 1 1 2.00 12.00 Z" fill="var(--tinte)"/></svg></span><span class="bk" data-f="2" data-s="6">0,34</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>Gruppe A</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>Gruppe B</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>Gruppe C</i><div class="bsp-karten"></div></div></div><div class="bsp-tun"><button class="knopf klein" data-tun="vor">▶ Vorführen</button><button class="knopf klein" data-tun="zurueck">↺ Karten zurück</button></div></div>
+      <div class="bsp-karte blatt m2"><div class="bsp-kopf"><i class="mk m2"></i><span class="augen">Beispiel 2 · Der Grösse nach ordnen</span></div><h3>Wer ist grösser?</h3><p>Legt die Karten der Grösse nach, von klein nach gross.</p><div class="bsp-vorrat"><span class="bk" data-f="0" data-s="4">⅓</span><span class="bk" data-f="0" data-s="1">0,3</span><span class="bk" data-f="0" data-s="0">¼</span><span class="bk" data-f="0" data-s="3">0,33</span><span class="bk" data-f="0" data-s="2">30 %</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>klein → gross</i><div class="bsp-karten"></div></div></div><div class="bsp-tun"><button class="knopf klein" data-tun="vor">▶ Vorführen</button><button class="knopf klein" data-tun="zurueck">↺ Karten zurück</button></div></div>
+      <div class="bsp-karte blatt m3"><div class="bsp-kopf"><i class="mk m3"></i><span class="augen">Beispiel 3 · Aussagen beurteilen</span></div><h3>Stimmt das immer?</h3><p>Stimmt die Aussage immer, manchmal oder nie?</p><div class="bsp-vorrat"><span class="bk satz" data-f="0" data-s="0">½ ist gleich 0,5.</span><span class="bk satz" data-f="1" data-s="1">Ein Bruch ist kleiner als 1.</span><span class="bk satz" data-f="1" data-s="2">Mit grösserem Nenner ist der Bruch kleiner.</span><span class="bk satz" data-f="2" data-s="3">Ein Bruch mit Zähler 0 ist grösser als 0.</span></div><div class="bsp-zeilen"><div class="bz" data-f="0"><i>immer</i><div class="bsp-karten"></div></div><div class="bz" data-f="1"><i>manchmal</i><div class="bsp-karten"></div></div><div class="bz" data-f="2"><i>nie</i><div class="bsp-karten"></div></div></div><div class="bsp-tun"><button class="knopf klein" data-tun="vor">▶ Vorführen</button><button class="knopf klein" data-tun="zurueck">↺ Karten zurück</button></div></div>
+      </div>
     </div>
-    <div class="bsp-pilot">
-      <span class="augen hellaugen">Im Pilot gebaut, zum Ausprobieren</span>
-      <button class="vk blatt" data-url="https://sort-phlu.github.io/sort/rueckmeldung/lineare_funktionen/wonach-ordnen/" data-titel="Wonach kann man diese Karten ordnen?"><img src="vorschau/lineare_funktionen_1.jpg" alt=""><b>Wonach kann man diese Karten ordnen?</b><span>Lineare Funktionen · Klasse 9</span><em>Öffnen ›</em></button>
-      <button class="vk blatt" data-url="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_2/" data-titel="Wo steckt dieser Term überall?"><img src="vorschau/variablen_und_terme_2.jpg" alt=""><b>Wo steckt dieser Term überall?</b><span>Variablen und Terme · Klasse 7</span><em>Öffnen ›</em></button>
-    </div>
+    <aside class="bsp-rechts">
+      <div class="merkmale blatt">
+        <h3>Worin sie sich unterscheiden</h3>
+        <p class="ew-text">Beispiel einordnen:</p>
+        <div class="ew-reihe"><button class="ew" data-b="1" aria-pressed="false"><i class="mk m1"></i>Beispiel 1</button><button class="ew" data-b="2" aria-pressed="false"><i class="mk m2"></i>Beispiel 2</button><button class="ew" data-b="3" aria-pressed="false"><i class="mk m3"></i>Beispiel 3</button></div>
+        <div class="mm"><h4>Wie wird geordnet?</h4><div class="stufen"><span class="st" data-b="1 3"><i class="mks"></i>Gruppen</span><span class="st" data-b="2"><i class="mks"></i>Reihe</span></div></div>
+        <div class="mm"><h4>Wie offen ist der Auftrag?</h4><div class="stufen"><span class="st" data-b="1"><i class="mks"></i>offen</span><span class="st" data-b="2"><i class="mks"></i>Richtung vorgegeben</span><span class="st" data-b="3"><i class="mks"></i>Kategorien vorgegeben</span><span class="st" data-b=""><i class="mks"></i>geschlossen</span></div></div>
+        <div class="mm"><h4>Wie eindeutig ist die Lösung?</h4><div class="stufen"><span class="st" data-b="2 3"><i class="mks"></i>eindeutig</span><span class="st" data-b="1"><i class="mks"></i>mathematisch mehrdeutig</span><span class="st" data-b=""><i class="mks"></i>wissensabhängig</span><span class="st" data-b=""><i class="mks"></i>subjektiv</span></div></div>
+        <div class="mm"><h4>Werden alle Karten gebraucht?</h4><div class="stufen"><span class="st" data-b="1 2 3"><i class="mks"></i>alle Karten</span><span class="st" data-b=""><i class="mks"></i>mit Ausnahmen</span><span class="st" data-b=""><i class="mks"></i>selektiv</span><span class="st" data-b=""><i class="mks"></i>punktuell</span></div></div>
+      </div>
+      <button class="knopf klein pilot-knopf" id="pilot-auf">Originale aus dem Pilot ausprobieren ›</button>
+    </aside>
   </div>
+  <dialog class="wahlfenster blatt" id="pilotwahl"><div class="vb-kopf"><b>Originale aus dem Pilot</b><button class="knopf klein" id="pw-zu">Schliessen ×</button></div><div class="pw-zwei">
+    <button class="vk" data-url="https://sort-phlu.github.io/sort/rueckmeldung/lineare_funktionen/wonach-ordnen/" data-titel="Wonach kann man diese Karten ordnen?"><img src="vorschau/skizze-lineare-funktionen.jpg" alt=""><b>Wonach kann man diese Karten ordnen?</b><span>Lineare Funktionen · Klasse 9</span><em>Öffnen ›</em></button>
+    <button class="vk" data-url="https://sort-phlu.github.io/sort/rueckmeldung/variablen_und_terme/variante_2/" data-titel="Wo steckt dieser Term überall?"><img src="vorschau/skizze-variablen-und-terme.jpg" alt=""><b>Wo steckt dieser Term überall?</b><span>Variablen und Terme · Klasse 7</span><em>Öffnen ›</em></button>
+  </div></dialog>
   <dialog class="vollbild" id="vollbild"><div class="vb-kopf"><b id="vb-titel"></b><button class="knopf" id="vb-zu">Schliessen ×</button></div><iframe id="vb-frame" title="Kärtchenaktivität aus dem Pilot"></iframe></dialog>
 </section>
 
@@ -606,7 +698,7 @@ const TEIL={sT:'sU',s4:'sU',sK:'sU',sB:'sL2'};
 const ABZWEIG=new Set(['sB']);
 let herkunft='s3';
 function zeige(i,neu){const vorher=vs[ak]&&vs[ak].id;ak=(i+vs.length)%vs.length;const id=vs[ak].id;
-  if(ABZWEIG.has(id)&&vorher&&!ABZWEIG.has(vorher)&&vorher!==id)herkunft=vorher;
+  if(ABZWEIG.has(id)&&vorher&&!ABZWEIG.has(vorher)&&vorher!==id)herkunft=vorher==='s1'?(TEIL[id]||'s3'):vorher;
   vs.forEach((v,j)=>v.classList.toggle('an',j===ak));
   document.querySelectorAll('.leiste [data-geh]').forEach(b=>b.setAttribute('aria-current',b.dataset.geh===(TEIL[id]||id)));
   if(neu)history.pushState({id},'','#'+id);else history.replaceState({id},'','#'+id);
@@ -652,27 +744,44 @@ const start=vs.findIndex(v=>v.id===location.hash.slice(1));zeige(start<0?0:start
 /* Beispiele: Kartensätze aus dem Pilot im grossen Fenster */
 (function(){
   const d=document.getElementById('vollbild'),fr=document.getElementById('vb-frame');
-  document.querySelectorAll('#sB .vk').forEach(b=>b.addEventListener('click',()=>{fr.src=b.dataset.url;document.getElementById('vb-titel').textContent=b.dataset.titel+' · aus dem Pilot SORT';d.showModal()}));
+  document.querySelectorAll('#sB .vk').forEach(b=>b.addEventListener('click',()=>{const pw=document.getElementById('pilotwahl');if(pw.open)pw.close();fr.src=b.dataset.url;document.getElementById('vb-titel').textContent=b.dataset.titel+' · aus dem Pilot SORT';d.showModal()}));
   const zu=()=>{d.close();fr.src='about:blank'};
   document.getElementById('vb-zu').onclick=zu;d.addEventListener('click',e=>{if(e.target===d)zu()});
 })();
 
-/* Beispiele: die Karten legen sich nacheinander, wie in der Präsentation */
+/* Beispiele: jede Aktivität selbst sortieren (Karten ziehen) oder vorführen lassen */
 (function(){
-  const sek=document.getElementById('sB');let lauf=null;
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function zurueck(){sek.querySelectorAll('.bsp-karte').forEach(k=>{const v=k.querySelector('.bsp-vorrat');[...k.querySelectorAll('.bk')].sort((a,b)=>a.dataset.o-b.dataset.o).forEach(c=>{c.classList.remove('neu');v.appendChild(c)})})}
-  sek.querySelectorAll('.bk').forEach((c,i)=>c.dataset.o=i);
-  function lege(c){const k=c.closest('.bsp-karte'),ziel=k.querySelector(`.bz[data-f="${c.dataset.f}"] .bsp-karten`);const a=c.getBoundingClientRect();ziel.appendChild(c);const b=c.getBoundingClientRect();
-    k.querySelectorAll('.bk.neu').forEach(x=>x.classList.remove('neu'));c.classList.add('neu');
-    if(still)return;c.animate([{transform:`translate(${a.left-b.left}px,${a.top-b.top}px)`},{transform:'none'}],{duration:550,easing:'cubic-bezier(.3,.8,.3,1)'})}
-  function start(){clearInterval(lauf);zurueck();let s=0;const max=Math.max(...[...sek.querySelectorAll('.bk')].map(c=>+c.dataset.s));
-    const takt=()=>{sek.querySelectorAll(`.bk[data-s="${s}"]`).forEach(lege);s++;if(s>max){clearInterval(lauf);setTimeout(()=>sek.querySelectorAll('.bk.neu').forEach(x=>x.classList.remove('neu')),900)}};
-    if(still){while(s<=max)takt();return}
-    lauf=setInterval(takt,800)}
-  document.getElementById('bsp-nochmal').onclick=start;
-  new MutationObserver(()=>{if(sek.classList.contains('an'))setTimeout(start,400);else{clearInterval(lauf)}}).observe(sek,{attributes:true,attributeFilter:['class']});
-  if(sek.classList.contains('an'))setTimeout(start,400);
+  document.querySelectorAll('#sB .bsp-karte').forEach(karte=>{
+    const vorrat=karte.querySelector('.bsp-vorrat');let lauf=null;
+    const alle=[...karte.querySelectorAll('.bk')];alle.forEach((c,i)=>c.dataset.o=i);
+    const halt=()=>{clearInterval(lauf);lauf=null};
+    function zurueck(){halt();alle.sort((a,b)=>a.dataset.o-b.dataset.o).forEach(c=>{c.classList.remove('neu');vorrat.appendChild(c)})}
+    function setze(c,ziel,gleiten){const a=c.getBoundingClientRect();ziel.appendChild(c);if(!gleiten||still)return;const b=c.getBoundingClientRect();
+      c.animate([{transform:`translate(${a.left-b.left}px,${a.top-b.top}px)`},{transform:'none'}],{duration:550,easing:'cubic-bezier(.3,.8,.3,1)'})}
+    function vor(){zurueck();let s=0;const max=Math.max(...alle.map(c=>+c.dataset.s));
+      const takt=()=>{alle.forEach(c=>c.classList.remove('neu'));alle.filter(c=>+c.dataset.s===s).forEach(c=>{setze(c,karte.querySelector(`.bz[data-f="${c.dataset.f}"] .bsp-karten`),true);c.classList.add('neu')});s++;if(s>max){halt();setTimeout(()=>alle.forEach(c=>c.classList.remove('neu')),900)}};
+      if(still){while(s<=max)takt();return}takt();lauf=setInterval(takt,800)}
+    karte.querySelector('[data-tun="vor"]').onclick=vor;
+    karte.querySelector('[data-tun="zurueck"]').onclick=zurueck;
+    /* Ziehen mit Maus, Finger oder Stift */
+    const ziele=[vorrat,...karte.querySelectorAll('.bz')];
+    alle.forEach(c=>c.addEventListener('pointerdown',e=>{halt();const r=c.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;let bew=false;
+      const unter=ev=>{c.style.visibility='hidden';const el=document.elementFromPoint(ev.clientX,ev.clientY);c.style.visibility='';return el&&ziele.find(z=>z.contains(el))};
+      const mv=ev=>{if(!bew&&Math.hypot(ev.clientX-e.clientX,ev.clientY-e.clientY)<4)return;bew=true;c.classList.add('zieht');c.style.position='fixed';c.style.left=(ev.clientX-dx)+'px';c.style.top=(ev.clientY-dy)+'px';const z=unter(ev);ziele.forEach(x=>x.classList.toggle('ziel',x===z))};
+      const up=ev=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);if(!bew)return;const z=unter(ev);c.classList.remove('zieht');c.style.position=c.style.left=c.style.top='';ziele.forEach(x=>x.classList.remove('ziel'));if(z)(z===vorrat?vorrat:z.querySelector('.bsp-karten')).appendChild(c)};
+      addEventListener('pointermove',mv);addEventListener('pointerup',up);e.preventDefault()}));
+  });
+  /* Einordnung: die gewählten Beispiele zeigen ihre Stufe in jedem Merkmal */
+  const knoepfe=[...document.querySelectorAll('#sB .ew')],karten=[...document.querySelectorAll('#sB .bsp-karte')];
+  function einordnen(){const an=knoepfe.filter(k=>k.getAttribute('aria-pressed')==='true').map(k=>k.dataset.b);
+    document.querySelectorAll('#sB .st').forEach(st=>{const hier=st.dataset.b.split(' ').filter(b=>an.includes(b));st.classList.toggle('hier',hier.length>0);st.querySelector('.mks').innerHTML=hier.map(b=>`<i class="mk m${b}"></i>`).join('')});
+    karten.forEach((k,i)=>k.classList.toggle('markiert',an.includes(String(i+1))))}
+  knoepfe.forEach(k=>k.onclick=()=>{k.setAttribute('aria-pressed',k.getAttribute('aria-pressed')!=='true');einordnen()});
+  const pw=document.getElementById('pilotwahl');
+  document.getElementById('pilot-auf').onclick=()=>pw.showModal();
+  document.getElementById('pw-zu').onclick=()=>pw.close();
+  pw.addEventListener('click',e=>{if(e.target===pw)pw.close()});
 })();
 </script>
 
